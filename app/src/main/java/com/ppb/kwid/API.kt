@@ -16,7 +16,7 @@ interface Api {
     @GET("movie/top_rated")
     fun getTopRatedMovies(
         @Query("api_key") apiKey: String = "d7c23b0b88eb491c20a317ecfee47db3",
-        @Query("page") page : Int
+        @Query("page") page: Int
     ): Call<GetMoviesResponse>
 
     @GET("movie/{movie_id}/credits")

@@ -44,7 +44,6 @@ class MovieDetailsActivity : AppCompatActivity() {
         releaseDate = findViewById(R.id.movie_release_date)
         overview = findViewById(R.id.movie_overview)
 
-
         rv_casts = findViewById(R.id.cast_and_crew)
         rv_casts.layoutManager = LinearLayoutManager(
             this,
@@ -55,11 +54,10 @@ class MovieDetailsActivity : AppCompatActivity() {
         rv_casts.adapter = castAdapter
 
         CastsRepository.getPopularCasts(
-            id = intent.getLongExtra(MOVIE_id,2),
+            id = intent.getLongExtra(MOVIE_id, 2),
             onSuccess = ::onCastsFetched,
             onError = ::onError
         )
-
 
         val extras = intent.extras
 

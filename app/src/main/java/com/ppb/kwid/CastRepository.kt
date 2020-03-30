@@ -21,9 +21,9 @@ object CastsRepository {
 
     fun getPopularCasts(
         id: Long = 2,
-        onSuccess: (casts: List<Cast>) -> Unit ,
-        onError: () -> Unit) {
-
+        onSuccess: (casts: List<Cast>) -> Unit,
+        onError: () -> Unit
+    ) {
         api.getCasts(id = id)
             .enqueue(object : Callback<GetCastsResponse> {
                 override fun onResponse(

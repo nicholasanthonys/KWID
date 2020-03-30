@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 
-class CastAdapter (
-    private var casts : List<Cast>
+class CastAdapter(
+    private var casts: List<Cast>
 ) : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CastAdapter.CastViewHolder {
@@ -29,7 +29,6 @@ class CastAdapter (
         this.casts = casts
         notifyDataSetChanged()
     }
-
 
     inner class CastViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val poster: ImageView = itemView.findViewById(R.id.item_cast_poster)

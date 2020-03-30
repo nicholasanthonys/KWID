@@ -21,7 +21,8 @@ class HomeActivity : AppCompatActivity() {
 
     lateinit var gso: GoogleSignInOptions
     lateinit var mGoogleSignInClient: GoogleSignInClient
-//    val RC_SIGN_IN: Int = 1
+
+    //    val RC_SIGN_IN: Int = 1
     lateinit var signOut: Button
 
     private lateinit var popularMovies: RecyclerView
@@ -38,7 +39,6 @@ class HomeActivity : AppCompatActivity() {
     companion object {
         fun getLaunchIntent(from: Context) = Intent(from, HomeActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-
         }
     }
 
@@ -46,11 +46,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setupUI()
-
-        signOut = findViewById<View>(R.id.sign_out_button) as Button
-        signOut.setOnClickListener { signOut() }
-
-
 
         popularMovies = findViewById(R.id.popular_movies)
         popularMoviesLayoutMgr = LinearLayoutManager(
@@ -66,14 +61,12 @@ class HomeActivity : AppCompatActivity() {
             false
         )
 
-
         popularMovies.layoutManager = popularMoviesLayoutMgr
-        popularMoviesAdapter = MoviesAdapter(mutableListOf()) {movie ->showMovieDetails(movie)}
+        popularMoviesAdapter = MoviesAdapter(mutableListOf()) { movie -> showMovieDetails(movie) }
         popularMovies.adapter = popularMoviesAdapter
 
-
         topRatedMovies.layoutManager = topRatedLayoutMgr
-        topRatedMoviesAdapter = MoviesAdapter(mutableListOf()) {movie ->showMovieDetails(movie)}
+        topRatedMoviesAdapter = MoviesAdapter(mutableListOf()) { movie -> showMovieDetails(movie) }
         topRatedMovies.adapter = topRatedMoviesAdapter
 
         getPopularMovies()
@@ -122,13 +115,12 @@ class HomeActivity : AppCompatActivity() {
                 val visibleItemCount = topRatedLayoutMgr.childCount
                 val firstVisibleItem = topRatedLayoutMgr.findFirstVisibleItemPosition()
 
-                if(firstVisibleItem + visibleItemCount >= totalItemCount / 2){
+                if (firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
                     topRatedMovies.removeOnScrollListener(this)
-                    topRatedMoviesPage ++
+                    topRatedMoviesPage++
                     getTopRatedMovies()
                 }
             }
-
         })
     }
 
@@ -145,9 +137,9 @@ class HomeActivity : AppCompatActivity() {
         attachTopRatedMoviesOnScrollListener()
     }
 
-    private fun showMovieDetails(movie: Movie){
+    private fun showMovieDetails(movie: Movie) {
         val intent = Intent(this, MovieDetailsActivity::class.java)
-        intent.putExtra(MOVIE_id,movie.id)
+        intent.putExtra(MOVIE_id, movie.id)
         Log.d("MOVIE ID", movie.id.toString())
         intent.putExtra(MOVIE_BACKDROP, movie.backdropPath)
         intent.putExtra(MOVIE_POSTER, movie.posterPath)
@@ -158,25 +150,18 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-
-
     private fun setupUI() {
-        sign_out_button.setOnClickListener {
-
-        }
+        signOut = findViewById<View>(R.id.sign_out_button) as Button
+        signOut.setOnClickListener { signOut() }
     }
 
     private fun signOut() {
-
-
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-//        signOut = findViewById<View>(R.id.signOutBtn) as Button
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
-
 
         mGoogleSignInClient.signOut().addOnCompleteListener { task: Task<Void> ->
             if (task.isSuccessful) {
@@ -184,14 +169,10 @@ class HomeActivity : AppCompatActivity() {
                 signOut.visibility = View.INVISIBLE
                 signOut.isClickable = false
 
-            }
-            else{
+            } else {
                 println("SIGN OUT GAGAL")
             }
-
-
         }
-
         startActivity(LoginActivity.getLaunchIntent(this))
     }
 }
