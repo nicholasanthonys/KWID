@@ -3,7 +3,9 @@ package com.ppb.kwid
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -32,11 +34,19 @@ class CastAdapter(
 
     inner class CastViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val poster: ImageView = itemView.findViewById(R.id.item_cast_poster)
+        private var tvCastName: TextView = itemView.findViewById(R.id.item_cast_name)
+        private var tvCastRole: TextView = itemView.findViewById(R.id.item_cast_character)
+
         fun bind(cast: Cast) {
+
             Glide.with(itemView)
                 .load("https://image.tmdb.org/t/p/w342${cast.profilePath}")
                 .transform(CenterCrop())
                 .into(poster)
+
+            tvCastName.text = cast.name
+            tvCastRole.text = cast.character
+
         }
     }
 }
