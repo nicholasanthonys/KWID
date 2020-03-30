@@ -68,8 +68,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUI(account: GoogleSignInAccount?) {
         startActivity(HomeActivity.getLaunchIntent(this))
-        val dispTxt = findViewById<View>(R.id.dispTxt) as TextView
-        dispTxt.text = account!!.displayName
     }
 
     override fun onStart() {
