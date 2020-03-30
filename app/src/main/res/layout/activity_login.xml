@@ -46,16 +46,16 @@
 
 
 
-    <Button
-        android:id="@+id/signOutBtn"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_marginTop="76dp"
-        android:text="Sign out"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dispTxt" />
+<!--    <Button-->
+<!--        android:id="@+id/signOutBtn"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="60dp"-->
+<!--        android:layout_marginTop="76dp"-->
+<!--        android:text="Sign out"-->
+<!--        android:visibility="invisible"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/dispTxt" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

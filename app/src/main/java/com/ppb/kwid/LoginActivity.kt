@@ -1,5 +1,6 @@
 package com.ppb.kwid
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -21,7 +22,15 @@ class LoginActivity : AppCompatActivity() {
     lateinit var gso: GoogleSignInOptions
     lateinit var mGoogleSignInClient: GoogleSignInClient
     val RC_SIGN_IN: Int = 1
-    lateinit var signOut: Button
+//    lateinit var signOut: Button
+
+    companion object {
+        fun getLaunchIntent(from: Context) = Intent(from, LoginActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        }
+
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-        signOut = findViewById<View>(R.id.signOutBtn) as Button
+//        signOut = findViewById<View>(R.id.signOutBtn) as Button
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
@@ -74,20 +83,23 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateUI(account: GoogleSignInAccount?) {
-
+        startActivity(HomeActivity.getLaunchIntent(this))
         val dispTxt = findViewById<View>(R.id.dispTxt) as TextView
         dispTxt.text = account!!.displayName
-        signOut.visibility = View.VISIBLE
-        signOut.setOnClickListener {
-            mGoogleSignInClient.signOut().addOnCompleteListener {
-                    task: Task<Void> ->
-                if (task.isSuccessful) {
-                    dispTxt.text = " "
-                    signOut.visibility = View.INVISIBLE
-                    signOut.isClickable = false
-                }
-            }
-        }
+//        signOut.visibility = View.VISIBLE
+//        signOut.setOnClickListener {
+//            mGoogleSignInClient.signOut().addOnCompleteListener {
+//                    task: Task<Void> ->
+//                if (task.isSuccessful) {
+//                    println("SIGN OUT SUKSESS")
+//                    dispTxt.text = " "
+//                    signOut.visibility = View.INVISIBLE
+//                    signOut.isClickable = false
+//
+//                }
+//
+//            }
+//        }
 
     }
 
