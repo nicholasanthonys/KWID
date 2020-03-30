@@ -46,6 +46,13 @@ class MoviesAdapter(
                 .into(poster)
             tvMovieName.text = movie.title
             itemView.setOnClickListener { onMovieClick.invoke(movie) }
+
+//            var genres : String = ""
+//            movie.listGenre.forEach {
+//                genres += " " +it.name
+//            }
+//            println("genre : " + genres )
+//            println("=====================================")
         }
     }
 }

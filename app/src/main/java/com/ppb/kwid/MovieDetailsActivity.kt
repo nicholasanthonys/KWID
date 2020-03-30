@@ -12,18 +12,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 
 const val MOVIE_id = "extra_movie_id"
-const val MOVIE_BACKDROP = "extra_movie_backdrop"
-const val MOVIE_POSTER = "extra_movie_poster"
-const val MOVIE_TITLE = "extra_movie_title"
-const val MOVIE_RATING = "extra_movie_rating"
-const val MOVIE_RELEASE_DATE = "extra_movie_release_date"
-const val MOVIE_OVERVIEW = "extra_movie_overview"
 
 
 class MovieDetailsActivity : AppCompatActivity() {
 
     private lateinit var rv_casts: RecyclerView
-    private lateinit var castAdapter: CastAdapter
+    private lateinit var creditAdapter: CreditsAdapter
 //    private lateinit var popularMoviesLayoutMgr: LinearLayoutManager
 
     private lateinit var backdrop: ImageView
@@ -32,6 +26,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var rating: RatingBar
     private lateinit var releaseDate: TextView
     private lateinit var overview: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,51 +45,67 @@ class MovieDetailsActivity : AppCompatActivity() {
             LinearLayoutManager.HORIZONTAL,
             false
         )
-        castAdapter = CastAdapter(listOf())
-        rv_casts.adapter = castAdapter
+        creditAdapter = CreditsAdapter(listOf(), listOf())
+        rv_casts.adapter = creditAdapter
 
-        CastsRepository.getPopularCasts(
+        CastsRepository.getCasts(
             id = intent.getLongExtra(MOVIE_id, 2),
             onSuccess = ::onCastsFetched,
             onError = ::onError
         )
 
-        val extras = intent.extras
 
+        MovieDetailsRepository.getMovieDetails(
+            id = intent.getLongExtra(MOVIE_id, 2),
+            onSuccess = ::onMovieDetailsFetched,
+            onError = ::onError
+        )
+    }
+
+
+    private fun onCastsFetched(cast: List<Cast>,crews: List<Crew>) {
+        creditAdapter.updateCasts(cast,crews)
+        //update textview crew
+        println("Crew : " + crews)
+    }
+
+    private fun onMovieDetailsFetched(movDetails: GetMovieDetailsResponse) {
+        val extras = intent.extras
         if (extras != null) {
-            populateDetails(extras)
+
+            Glide.with(this)
+                .load("https://image.tmdb.org/t/p/w1280${movDetails.backdropPath}")
+                .transform(CenterCrop())
+                .into(backdrop)
+
+            Glide.with(this)
+                .load("https://image.tmdb.org/t/p/w342${movDetails.posterPath}")
+                .transform(CenterCrop())
+                .into(poster)
+
+            title.text = movDetails.title
+            rating.rating = movDetails.rating
+            releaseDate.text = movDetails.releaseDate
+            overview.text = movDetails.overview
+
+            val listGenres: List<Genres> = movDetails.genres
+            var textGenre = ""
+            for (i in listGenres.indices) {
+                if (i > 0) {
+                    textGenre += ", "
+                }
+                textGenre += listGenres[i].name
+            }
+
         } else {
             finish()
         }
-    }
 
-    private fun populateDetails(extras: Bundle) {
-        extras.getString(MOVIE_BACKDROP)?.let { backdropPath ->
-            Glide.with(this)
-                .load("https://image.tmdb.org/t/p/w1280$backdropPath")
-                .transform(CenterCrop())
-                .into(backdrop)
-        }
-
-        extras.getString(MOVIE_POSTER)?.let { posterPath ->
-            Glide.with(this)
-                .load("https://image.tmdb.org/t/p/w342$posterPath")
-                .transform(CenterCrop())
-                .into(poster)
-        }
-
-        title.text = extras.getString(MOVIE_TITLE, "")
-        rating.rating = extras.getFloat(MOVIE_RATING, 0f) / 2
-        releaseDate.text = extras.getString(MOVIE_RELEASE_DATE, "")
-        overview.text = extras.getString(MOVIE_OVERVIEW, "")
-    }
-
-    private fun onCastsFetched(cast: List<Cast>) {
-        castAdapter.updateCasts(cast)
     }
 
     private fun onError() {
         Toast.makeText(this, getString(R.string.error_fetch_movies), Toast.LENGTH_SHORT).show()
     }
+
 }
 

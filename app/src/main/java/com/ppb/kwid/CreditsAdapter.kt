@@ -3,18 +3,18 @@ package com.ppb.kwid
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 
-class CastAdapter(
-    private var casts: List<Cast>
-) : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
+class CreditsAdapter(
+    private var casts: List<Cast>,
+    private var crews : List<Crew>
+) : RecyclerView.Adapter<CreditsAdapter.CastViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CastAdapter.CastViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CreditsAdapter.CastViewHolder {
         val view = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.item_cast, parent, false)
@@ -23,12 +23,13 @@ class CastAdapter(
 
     override fun getItemCount(): Int = casts.size
 
-    override fun onBindViewHolder(holder: CastAdapter.CastViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CreditsAdapter.CastViewHolder, position: Int) {
         holder.bind(casts[position])
     }
 
-    fun updateCasts(casts: List<Cast>) {
+    fun updateCasts(casts: List<Cast>, crews : List<Crew>) {
         this.casts = casts
+        this.crews = crews
         notifyDataSetChanged()
     }
 

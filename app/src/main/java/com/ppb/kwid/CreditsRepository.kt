@@ -19,23 +19,23 @@ object CastsRepository {
         api = retrofit.create(Api::class.java)
     }
 
-    fun getPopularCasts(
-        id: Long = 2,
-        onSuccess: (casts: List<Cast>) -> Unit,
+    fun getCasts(
+        id: Long = 1,
+        onSuccess: (casts: List<Cast>, crews : List<Crew>) -> Unit,
         onError: () -> Unit
     ) {
         api.getCasts(id = id)
-            .enqueue(object : Callback<GetCastsResponse> {
+            .enqueue(object : Callback<GetCreditsResponse> {
                 override fun onResponse(
-                    call: Call<GetCastsResponse>,
-                    response: Response<GetCastsResponse>
+                    call: Call<GetCreditsResponse>,
+                    response: Response<GetCreditsResponse>
                 ) {
                     if (response.isSuccessful) {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
-                            Log.d("CAST     Repository", "CAST: ${responseBody.casts}")
-                            onSuccess.invoke(responseBody.casts)
+                            Log.d("Crew Repository", "CREW: ${responseBody.crews}")
+                            onSuccess.invoke(responseBody.casts,responseBody.crews)
                         } else {
                             println("GET CAST ERROR")
                             Log.d("CAST REPOSITORY", "Failed to get response")
@@ -47,7 +47,7 @@ object CastsRepository {
                     }
                 }
 
-                override fun onFailure(call: Call<GetCastsResponse>, t: Throwable) {
+                override fun onFailure(call: Call<GetCreditsResponse>, t: Throwable) {
                     println("GET CAST ERROR")
                     Log.e("Cast", "onFailure", t)
                     onError.invoke()

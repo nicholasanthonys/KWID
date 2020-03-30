@@ -52,9 +52,8 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-
             <TextView
-                android:id="@+id/movie_release_date"
+                android:id="@+id/title_movie_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#757575"
@@ -63,7 +62,48 @@
                 android:layout_marginStart="39dp"
                 android:layout_toEndOf="@id/movie_poster_card"
                 android:layout_below="@id/movie_title"
-                android:text="TANGGAL RILIS"/>
+                android:text="Genre"/>
+
+
+            <TextView
+                android:id="@+id/movie_genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/title_movie_genre"
+                android:layout_below="@id/movie_title"
+                android:text="Action, Horror"/>
+
+
+
+
+            <TextView
+                android:id="@+id/title_movie_release_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="39dp"
+                android:layout_toEndOf="@id/movie_poster_card"
+                android:layout_below="@id/title_movie_genre"
+                android:text="Tanggal Rilis :"/>
+
+
+            <TextView
+                android:id="@+id/movie_release_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/title_movie_release_date"
+                android:layout_below="@id/movie_genre"
+                android:text="2019-09-17"/>
 
 
             <RatingBar

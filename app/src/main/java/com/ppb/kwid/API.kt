@@ -22,5 +22,13 @@ interface Api {
     fun getCasts(
         @Path("movie_id") id: Long,
         @Query("api_key") apiKey: String = "d7c23b0b88eb491c20a317ecfee47db3"
-    ): Call<GetCastsResponse>
+    ): Call<GetCreditsResponse>
+
+    @GET("movie/{movie_id}")
+    fun getMovieDetails(
+        @Path("movie_id") id: Long,
+        @Query("api_key") apiKey: String = "d7c23b0b88eb491c20a317ecfee47db3"
+    ): Call<GetMovieDetailsResponse>
+
+
 }
