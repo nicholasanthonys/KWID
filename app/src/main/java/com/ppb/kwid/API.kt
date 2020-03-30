@@ -5,7 +5,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-
 interface Api {
     @GET("movie/popular")
     fun getPopularMovies(
@@ -23,7 +22,5 @@ interface Api {
     fun getCasts(
         @Path("movie_id") id: Long,
         @Query("api_key") apiKey: String = "d7c23b0b88eb491c20a317ecfee47db3"
-
-
     ): Call<GetCastsResponse>
 }
