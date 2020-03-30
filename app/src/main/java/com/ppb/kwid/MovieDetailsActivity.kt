@@ -47,10 +47,11 @@ class MovieDetailsActivity : AppCompatActivity() {
         )
         creditAdapter = CreditsAdapter(listOf(), listOf())
         rv_casts.adapter = creditAdapter
+        
 
-        CastsRepository.getCasts(
+        CreditsRepository.getCasts(
             id = intent.getLongExtra(MOVIE_id, 2),
-            onSuccess = ::onCastsFetched,
+            onSuccess = ::onCreditsFetched,
             onError = ::onError
         )
 
@@ -63,7 +64,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
 
-    private fun onCastsFetched(cast: List<Cast>,crews: List<Crew>) {
+    private fun onCreditsFetched(cast: List<Cast>, crews: List<Crew>) {
         creditAdapter.updateCasts(cast,crews)
         //update textview crew
         println("Crew : " + crews)
