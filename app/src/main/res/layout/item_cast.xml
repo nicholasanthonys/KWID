@@ -8,8 +8,7 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/item_cast_poster"
@@ -31,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/item_cast_name"
             android:layout_centerHorizontal="true"
+            android:textAlignment="center"
             android:text="ACTOR Character" />
 
     </RelativeLayout>
