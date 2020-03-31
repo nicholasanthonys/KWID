@@ -1,8 +1,8 @@
-package com.ppb.kwid
+package com.ppb.kwid.Model.Movie
 
 import com.google.gson.annotations.SerializedName
 
-class GetMovieDetailsResponse (
+data class Movie(
     @SerializedName("id") val id: Long,
     @SerializedName("title") val title: String,
     @SerializedName("overview") val overview: String,
@@ -10,6 +10,6 @@ class GetMovieDetailsResponse (
     @SerializedName("backdrop_path") val backdropPath: String,
     @SerializedName("vote_average") val rating: Float,
     @SerializedName("release_date") val releaseDate: String,
-    @SerializedName("runtime") val duration : Int,
-    @SerializedName("genres") val genres : List<Genres>
+    @SerializedName("runtime") val duration : Int
+
 )

@@ -1,6 +1,7 @@
-package com.ppb.kwid
+package com.ppb.kwid.Model.Movie
 
 import com.google.gson.annotations.SerializedName
+import com.ppb.kwid.Model.Movie.Movie
 
 class GetMoviesResponse(
     @SerializedName("page") val page: Int,

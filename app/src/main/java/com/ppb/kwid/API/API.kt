@@ -1,5 +1,8 @@
-package com.ppb.kwid
+package com.ppb.kwid.API
 
+import com.ppb.kwid.Model.Credits.GetCreditsResponse
+import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
+import com.ppb.kwid.Model.Movie.GetMoviesResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

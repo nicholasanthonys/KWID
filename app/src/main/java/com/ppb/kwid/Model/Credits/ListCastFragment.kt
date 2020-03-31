@@ -1,10 +1,11 @@
-package com.ppb.kwid
+package com.ppb.kwid.Model.Credits
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.ppb.kwid.R
 
 class ListCastFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package com.ppb.kwid
+package com.ppb.kwid.Model.Movie
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import org.w3c.dom.Text
+import com.ppb.kwid.R
 
 class MoviesAdapter(
     private var movies: MutableList<Movie>,
@@ -42,10 +41,12 @@ class MoviesAdapter(
         fun bind(movie: Movie) {
             Glide.with(itemView)
                 .load("https://image.tmdb.org/t/p/w342${movie.posterPath}")
-                .transform(CenterCrop())
+                .centerCrop()
                 .into(poster)
             tvMovieName.text = movie.title
             itemView.setOnClickListener { onMovieClick.invoke(movie) }
+
+
 
 //            var genres : String = ""
 //            movie.listGenre.forEach {

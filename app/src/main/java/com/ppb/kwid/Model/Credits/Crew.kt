@@ -1,4 +1,4 @@
-package com.ppb.kwid
+package com.ppb.kwid.Model.Credits
 
 import com.google.gson.annotations.SerializedName
 

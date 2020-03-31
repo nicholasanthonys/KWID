@@ -1,4 +1,4 @@
-package com.ppb.kwid
+package com.ppb.kwid.Activity
 
 import android.content.Context
 import android.content.Intent
@@ -10,11 +10,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
-import kotlinx.android.synthetic.main.activity_home.*
 import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ppb.kwid.*
+import com.ppb.kwid.Model.Movie.Movie
+import com.ppb.kwid.Model.Movie.MoviesAdapter
+import com.ppb.kwid.Model.Movie.MoviesRepository
 
 
 class HomeActivity : AppCompatActivity() {
@@ -62,11 +65,17 @@ class HomeActivity : AppCompatActivity() {
         )
 
         popularMovies.layoutManager = popularMoviesLayoutMgr
-        popularMoviesAdapter = MoviesAdapter(mutableListOf()) { movie -> showMovieDetails(movie) }
+        popularMoviesAdapter =
+            MoviesAdapter(mutableListOf()) { movie ->
+                showMovieDetails(movie)
+            }
         popularMovies.adapter = popularMoviesAdapter
 
         topRatedMovies.layoutManager = topRatedLayoutMgr
-        topRatedMoviesAdapter = MoviesAdapter(mutableListOf()) { movie -> showMovieDetails(movie) }
+        topRatedMoviesAdapter =
+            MoviesAdapter(mutableListOf()) { movie ->
+                showMovieDetails(movie)
+            }
         topRatedMovies.adapter = topRatedMoviesAdapter
 
         getPopularMovies()
