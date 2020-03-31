@@ -11,15 +11,30 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="14dp"
+            >
 
             <ImageView
                 android:id="@+id/movie_backdrop"
                 android:layout_width="match_parent"
-                android:layout_height="291dp" />
+                android:layout_height="280dp"
+                android:scaleType="fitXY"
+                android:padding="0dp"
+            />
+<!--            <View-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="280dp"-->
+<!--                android:layout_alignLeft="@+id/movie_backdrop"-->
+<!--                android:layout_alignTop="@+id/movie_backdrop"-->
+<!--                android:layout_margin="00dp"-->
+<!--                android:background="@drawable/backdrop" />-->
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/movie_poster_card"
@@ -43,7 +58,7 @@
                 android:id="@+id/movie_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="39dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="300dp"
                 android:layout_marginEnd="16dp"
                 android:layout_toEndOf="@+id/movie_poster_card"
@@ -54,12 +69,12 @@
 
             <TextView
                 android:id="@+id/title_movie_genre"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:textColor="#757575"
                 android:textSize="12sp"
                 android:layout_marginTop="8dp"
-                android:layout_marginStart="39dp"
+                android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/movie_poster_card"
                 android:layout_below="@id/movie_title"
                 android:text="Genre"/>
@@ -72,25 +87,76 @@
                 android:textColor="#757575"
                 android:textSize="12sp"
                 android:layout_marginTop="8dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="30dp"
                 android:layout_toEndOf="@id/title_movie_genre"
                 android:layout_below="@id/movie_title"
                 android:text="Action, Horror"/>
 
 
+            <TextView
+                android:id="@+id/title_movie_duration"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/movie_poster_card"
+                android:layout_below="@id/title_movie_genre"
+                android:text="Durasi"/>
 
 
             <TextView
-                android:id="@+id/title_movie_release_date"
+                android:id="@+id/movie_duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#757575"
                 android:textSize="12sp"
                 android:layout_marginTop="8dp"
-                android:layout_marginStart="39dp"
+                android:layout_marginStart="30dp"
+                android:layout_toEndOf="@id/title_movie_release_date"
+                android:layout_below="@id/movie_genre"
+                android:text="123 Minutes"/>
+
+
+            <TextView
+                android:id="@+id/title_movie_director"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
                 android:layout_toEndOf="@id/movie_poster_card"
-                android:layout_below="@id/title_movie_genre"
-                android:text="Tanggal Rilis :"/>
+                android:layout_below="@id/title_movie_duration"
+                android:text="Director"/>
+
+
+            <TextView
+                android:id="@+id/movie_director"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="30dp"
+                android:layout_toEndOf="@id/title_movie_director"
+                android:layout_below="@id/movie_duration"
+                android:text="Anthony Russo, Joe Russo"/>
+
+
+
+            <TextView
+                android:id="@+id/title_movie_release_date"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/movie_poster_card"
+                android:layout_below="@id/title_movie_director"
+                android:text="Release"/>
 
 
             <TextView
@@ -100,22 +166,22 @@
                 android:textColor="#757575"
                 android:textSize="12sp"
                 android:layout_marginTop="8dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="30dp"
                 android:layout_toEndOf="@id/title_movie_release_date"
-                android:layout_below="@id/movie_genre"
+                android:layout_below="@id/movie_director"
                 android:text="2019-09-17"/>
 
 
-            <RatingBar
-                android:id="@+id/movie_rating"
-                style="@style/Widget.AppCompat.RatingBar.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="39dp"
-                android:layout_toEndOf="@id/movie_poster_card"
-                android:layout_below="@id/movie_release_date"
-                />
+<!--            <RatingBar-->
+<!--                android:id="@+id/movie_rating"-->
+<!--                style="@style/Widget.AppCompat.RatingBar.Small"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginStart="39dp"-->
+<!--                android:layout_toEndOf="@id/movie_poster_card"-->
+<!--                android:layout_below="@id/movie_release_date"-->
+<!--                />-->
 
         </RelativeLayout>
 
