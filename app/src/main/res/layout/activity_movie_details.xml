@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/movie_backdrop"
+                android:layout_width="match_parent"
+                android:layout_height="291dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/movie_poster_card"
+                android:layout_width="128dp"
+                android:layout_height="172dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="220dp"
+                app:cardCornerRadius="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+
+                <ImageView
+                    android:id="@+id/movie_poster"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/movie_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginEnd="16dp"
+                android:layout_toEndOf="@+id/movie_poster_card"
+                android:text="Movie Title"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/title_movie_genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="39dp"
+                android:layout_toEndOf="@id/movie_poster_card"
+                android:layout_below="@id/movie_title"
+                android:text="Genre"/>
+
+
+            <TextView
+                android:id="@+id/movie_genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/title_movie_genre"
+                android:layout_below="@id/movie_title"
+                android:text="Action, Horror"/>
+
+
+
+
+            <TextView
+                android:id="@+id/title_movie_release_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="39dp"
+                android:layout_toEndOf="@id/movie_poster_card"
+                android:layout_below="@id/title_movie_genre"
+                android:text="Tanggal Rilis :"/>
+
+
+            <TextView
+                android:id="@+id/movie_release_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#757575"
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/title_movie_release_date"
+                android:layout_below="@id/movie_genre"
+                android:text="2019-09-17"/>
+
+
+            <RatingBar
+                android:id="@+id/movie_rating"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="39dp"
+                android:layout_toEndOf="@id/movie_poster_card"
+                android:layout_below="@id/movie_release_date"
+                />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:id="@+id/tv_cast_and_crew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="Cast and Crew"
+               />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cast_and_crew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="475dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/movie_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="OVERVIEW"
+            />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
