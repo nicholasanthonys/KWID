@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDarkBlue"
+    tools:context=".Activity.AccountDetailActivity">
+
+    <ImageView
+        android:id="@+id/button_back_account_detail"
+        android:src="@drawable/icbaseline_arrow_back_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp" />
+
+    <LinearLayout
+        android:id="@+id/profile_container"
+        android:layout_width="340dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/rounded_rect_shape_white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:text="Your Name Here"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="95dp" />
+
+        <LinearLayout
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:src="@drawable/gold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="Poin"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_poin"
+                android:text="1.800"
+                android:textSize="18sp"
+                android:textAlignment="textEnd"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:src="@drawable/cash"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="Balance"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_balance"
+                android:text="Rp. 1.000.000"
+                android:textSize="18sp"
+                android:textAlignment="textEnd"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_profile_picture"
+        android:src="@drawable/profile_picture"
+        android:padding="5dp"
+        android:background="@color/colorBlack"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:layout_alignTop="@id/profile_container"
+        android:layout_marginTop="-85dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="170dp"
+        android:layout_height="170dp" />
+
+    <LinearLayout
+        android:layout_alignTop="@id/profile_container"
+        android:layout_marginTop="125dp"
+        android:translationZ="-90dp"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </LinearLayout>
+
+</RelativeLayout>
