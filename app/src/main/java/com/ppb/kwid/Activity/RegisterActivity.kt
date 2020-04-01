@@ -1,6 +1,5 @@
 package com.ppb.kwid.Activity
 
-import android.R.attr
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -31,7 +30,6 @@ class RegisterActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
 
         initUI()
-
     }
 
     private fun initUI() {
@@ -41,7 +39,6 @@ class RegisterActivity : AppCompatActivity() {
 
         tvError.text = ""
         tvError.visibility = View.INVISIBLE
-
 
         btnRegister = findViewById(R.id.btn_register_submit)
         btnRegister.setOnClickListener {
@@ -54,10 +51,7 @@ class RegisterActivity : AppCompatActivity() {
         if (email.isNotBlank()) {
             if (password.isNotBlank()) {
                 if (etPassword.text.length >= 6) {
-//                    registerSubmit(email, password)
-
                     return true
-
                 } else {
                     updateUI(null, "password must be 6 character or more")
                 }
@@ -74,13 +68,13 @@ class RegisterActivity : AppCompatActivity() {
     private fun updateUI(user: FirebaseUser?, error: String?) {
         if (user != null) {
             val intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra(MESSAGE,"Register Sukses")
             startActivity(intent)
         } else {
             tvError.visibility = View.VISIBLE
             tvError.text = error
         }
     }
-
 
     private fun registerSubmit(){
         val email = etEmail.text.toString().trim()
@@ -103,17 +97,11 @@ class RegisterActivity : AppCompatActivity() {
 
                             Toast.makeText(applicationContext, "Input not valid", Toast.LENGTH_LONG)
                                 .show()
-                            updateUI(null, "The email is badly formatted")
+                            updateUI(null, "Register Failed")
                         }
-
                     }
 
-
                 })
-
-
         }
-
     }
-
 }

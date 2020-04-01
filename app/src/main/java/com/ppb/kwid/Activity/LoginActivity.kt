@@ -2,7 +2,6 @@ package com.ppb.kwid.Activity
 
 import android.content.Context
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,28 +15,27 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.ppb.kwid.R
 
+const val MESSAGE = "extra_message"
 
 class LoginActivity : AppCompatActivity() {
 
-    lateinit var gso: GoogleSignInOptions
-    lateinit var mGoogleSignInClient: GoogleSignInClient
-
-    val RC_SIGN_IN: Int = 1
+    private lateinit var gso: GoogleSignInOptions
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
+    private val RC_SIGN_IN: Int = 1
 
     //firebase instance
-    lateinit var mAuth: FirebaseAuth
+    private lateinit var mAuth: FirebaseAuth
 
-    lateinit var etLoginEmail: TextView
-    lateinit var etLoginPassword: TextView
-    lateinit var btnLogin: Button
-    lateinit var btnRegister: Button
-    lateinit var tvErrorMessage: TextView
+    private lateinit var etLoginEmail: TextView
+    private lateinit var etLoginPassword: TextView
+    private lateinit var btnLogin: Button
+    private lateinit var btnRegister: Button
+    private lateinit var tvMessage: TextView
 
     companion object {
         fun getLaunchIntent(from: Context) = Intent(from, LoginActivity::class.java).apply {
@@ -50,7 +48,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         initUI()
 
-
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -58,26 +55,21 @@ class LoginActivity : AppCompatActivity() {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
-
         //firebase instance
         mAuth = FirebaseAuth.getInstance()
     }
 
     private fun initUI() {
 
-        tvErrorMessage = findViewById(R.id.login_error_message)
+        tvMessage = findViewById(R.id.login_error_message)
 
         etLoginEmail = findViewById(R.id.et_login_email)
         etLoginPassword = findViewById(R.id.et_login_password)
 
-
         btnLogin = findViewById(R.id.btn_login)
         btnLogin.setOnClickListener { firebaseLogin() }
 
-
         btnRegister = findViewById(R.id.btn_register)
-
-
         btnRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
@@ -85,8 +77,6 @@ class LoginActivity : AppCompatActivity() {
 
         val signIn = findViewById<View>(R.id.signInBtn) as SignInButton
         signIn.setOnClickListener { googlesignIn() }
-
-
     }
 
     private fun validateForm(email: String, password: String): Boolean {
@@ -103,7 +93,6 @@ class LoginActivity : AppCompatActivity() {
         val password = etLoginPassword.text.trim().toString()
 
         if (validateForm(email, password)) {
-
             mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(
                     this
@@ -121,13 +110,10 @@ class LoginActivity : AppCompatActivity() {
                         ).show()
 
                         updateUI(null, "sign in failed")
-
                     }
 
                 }
         }
-
-
     }
 
     private fun googlesignIn() {
@@ -148,8 +134,6 @@ class LoginActivity : AppCompatActivity() {
                 // Google Sign In failed, update UI appropriately
                 Log.w("sign in failed", "Google sign in failed", e)
                 updateUI(null, "sign in failed")
-
-
             }
         }
     }
@@ -158,7 +142,7 @@ class LoginActivity : AppCompatActivity() {
         firebaseAccount: FirebaseUser?,
         error: String
     ) {
-        tvErrorMessage.text = error
+        tvMessage.text = error
 
         if (firebaseAccount != null) {
             startActivity(HomeActivity.getLaunchIntent(this))
@@ -168,9 +152,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = mAuth.currentUser
-        updateUI(currentUser, "")
-
+        if (intent.getStringExtra(MESSAGE) != "Register Sukses") {
+            val currentUser = mAuth.currentUser
+            updateUI(currentUser, "")
+        }
+        else{
+           tvMessage.text = intent.getStringExtra(MESSAGE)
+        }
     }
 
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
@@ -187,13 +175,9 @@ class LoginActivity : AppCompatActivity() {
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("failed", "signInWithCredential:failure", task.exception)
-
                     updateUI(null, "sign in failed")
                 }
-
-                // ...
             }
     }
-
 
 }

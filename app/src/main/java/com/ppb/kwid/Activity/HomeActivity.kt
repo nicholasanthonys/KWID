@@ -25,14 +25,13 @@ import com.ppb.kwid.R
 
 class HomeActivity : AppCompatActivity() {
 
-    lateinit var gso: GoogleSignInOptions
-    lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var gso: GoogleSignInOptions
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
 
     //firebase auth instance
-     lateinit var mAuth: FirebaseAuth
+    private lateinit var mAuth: FirebaseAuth
 
-    //    val RC_SIGN_IN: Int = 1
-    lateinit var signOut: Button
+    private lateinit var signOut: Button
 
     private lateinit var popularMovies: RecyclerView
     private lateinit var popularMoviesAdapter: MoviesAdapter
@@ -58,8 +57,7 @@ class HomeActivity : AppCompatActivity() {
 
         //firbase instance
         mAuth = FirebaseAuth.getInstance()
-        println("nama user : " + mAuth.currentUser?.displayName.toString())
-
+        println("nama user : " + mAuth.currentUser?.email.toString())
 
         popularMovies = findViewById(R.id.popular_movies)
         popularMoviesLayoutMgr = LinearLayoutManager(
