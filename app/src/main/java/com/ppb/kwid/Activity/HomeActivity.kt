@@ -13,10 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.GoogleApi
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.ppb.kwid.Model.Movie.Movie
 import com.ppb.kwid.Model.Movie.MoviesAdapter
 import com.ppb.kwid.Model.Movie.MoviesRepository
@@ -32,6 +30,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
 
     private lateinit var signOut: Button
+    private lateinit var btnProfile : Button
 
     private lateinit var popularMovies: RecyclerView
     private lateinit var popularMoviesAdapter: MoviesAdapter
@@ -53,42 +52,12 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        setupUI()
+        initUI()
 
         //firbase instance
         mAuth = FirebaseAuth.getInstance()
         println("nama user : " + mAuth.currentUser?.email.toString())
 
-        popularMovies = findViewById(R.id.popular_movies)
-        popularMoviesLayoutMgr = LinearLayoutManager(
-            this,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
-
-        topRatedMovies = findViewById(R.id.top_rated_movies)
-        topRatedLayoutMgr = LinearLayoutManager(
-            this,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
-
-        popularMovies.layoutManager = popularMoviesLayoutMgr
-        popularMoviesAdapter =
-            MoviesAdapter(mutableListOf()) { movie ->
-                showMovieDetails(movie)
-            }
-        popularMovies.adapter = popularMoviesAdapter
-
-        topRatedMovies.layoutManager = topRatedLayoutMgr
-        topRatedMoviesAdapter =
-            MoviesAdapter(mutableListOf()) { movie ->
-                showMovieDetails(movie)
-            }
-        topRatedMovies.adapter = topRatedMoviesAdapter
-
-        getPopularMovies()
-        getTopRatedMovies()
     }
 
     private fun onPopularMoviesFetched(movies: MutableList<Movie>) {
@@ -162,11 +131,52 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun setupUI() {
+    private fun initUI() {
         signOut = findViewById<View>(R.id.sign_out_button) as Button
-        var accountGoogle = GoogleSignIn.getLastSignedInAccount(this)
-        println("account google is null ?" + accountGoogle)
+//        var accountGoogle = GoogleSignIn.getLastSignedInAccount(this)
+//        println("account google is null ?" + accountGoogle)
         signOut.setOnClickListener { signOut() }
+
+        btnProfile = findViewById(R.id.btn_profile)
+        btnProfile.setOnClickListener {
+            val intent = Intent(this,AccountDetailActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        popularMovies = findViewById(R.id.popular_movies)
+        popularMovies = findViewById(R.id.popular_movies)
+        popularMoviesLayoutMgr = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
+        topRatedMovies = findViewById(R.id.top_rated_movies)
+        topRatedLayoutMgr = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
+        popularMovies.layoutManager = popularMoviesLayoutMgr
+        popularMoviesAdapter =
+            MoviesAdapter(mutableListOf()) { movie ->
+                showMovieDetails(movie)
+            }
+        popularMovies.adapter = popularMoviesAdapter
+
+        topRatedMovies.layoutManager = topRatedLayoutMgr
+        topRatedMoviesAdapter =
+            MoviesAdapter(mutableListOf()) { movie ->
+                showMovieDetails(movie)
+            }
+        topRatedMovies.adapter = topRatedMoviesAdapter
+
+        getPopularMovies()
+        getTopRatedMovies()
+
+
     }
 
     private fun signOut() {
