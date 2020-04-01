@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/rectangle_white_top_bottom_border"
+    android:padding="25dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="10dp">
+
+        <ImageView
+            android:id="@+id/img_favorite_movie_poster"
+            android:src="@drawable/digimon_adventure_last_evolution_kizuna"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_marginLeft="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_favorite_movie_name"
+            android:text="Digimon Advanture: Last Evolution Kizuna"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_star_1"
+                android:src="@drawable/icround_star"
+                android:layout_marginLeft="10dp"
+                android:elevation="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/img_star_2"
+                android:src="@drawable/icround_star"
+                android:layout_marginLeft="10dp"
+                android:elevation="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/img_star_3"
+                android:src="@drawable/icround_star"
+                android:layout_marginLeft="10dp"
+                android:elevation="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/img_star_4"
+                android:src="@drawable/icround_star"
+                android:layout_marginLeft="10dp"
+                android:elevation="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/img_star_5"
+                android:src="@drawable/icround_star"
+                android:layout_marginLeft="10dp"
+                android:elevation="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3">
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:weightSum="4">
+
+                <TextView
+                    android:text="Genre"
+                    android:textColor="@color/colorTextLower"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/txt_genre"
+                    android:text="Genre"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    android:ellipsize="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:weightSum="4">
+
+                <TextView
+                    android:text="Director"
+                    android:textColor="@color/colorTextLower"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/txt_director"
+                    android:text="Director"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    android:ellipsize="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3" />
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:weightSum="4">
+
+                <TextView
+                    android:text="Rating"
+                    android:textColor="@color/colorTextLower"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/txt_rating"
+                    android:text="Rating"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    android:ellipsize="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</RelativeLayout>
