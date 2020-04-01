@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".Activity.RegisterActivity"></activity>
+        <activity android:name=".Activity.FavoriteMoviesActivity"></activity>
         <activity android:name=".Activity.AccountDetailActivity" />
         <activity android:name=".Activity.MovieDetailsActivity" />
         <activity android:name=".Activity.HomeActivity" />
