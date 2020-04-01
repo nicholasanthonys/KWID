@@ -10,4 +10,5 @@
     <color name="colorTopBar">#F8F8FF</color>
     <color name="colorTextLower">#827070</color>
     <color name="colorBackground">#F5F5F5</color>
+    <color name="colorListLocation">#FFEBD9</color>
 </resources>

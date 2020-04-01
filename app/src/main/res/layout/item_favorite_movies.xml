@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/rectangle_white_top_bottom_border"
+    android:background="@drawable/rectangle_skin_color_top_bottom_border"
     android:padding="25dp">
 
     <androidx.cardview.widget.CardView
