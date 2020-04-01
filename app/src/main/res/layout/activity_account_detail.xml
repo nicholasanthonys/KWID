@@ -17,7 +17,7 @@
 
     <LinearLayout
         android:id="@+id/profile_container"
-        android:layout_width="340dp"
+        android:layout_width="300dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
@@ -27,12 +27,13 @@
         <TextView
             android:id="@+id/profile_name"
             android:text="Your Name Here"
+            android:textColor="@color/colorBlack"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="95dp" />
+            android:layout_marginTop="90dp" />
 
         <LinearLayout
             android:layout_marginTop="25dp"
@@ -50,6 +51,7 @@
             <TextView
                 android:text="Poin"
                 android:textSize="18sp"
+                android:textColor="@color/colorBlack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -57,6 +59,7 @@
                 android:id="@+id/txt_poin"
                 android:text="1.800"
                 android:textSize="18sp"
+                android:textColor="@color/colorBlack"
                 android:textAlignment="textEnd"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -80,6 +83,7 @@
             <TextView
                 android:text="Balance"
                 android:textSize="18sp"
+                android:textColor="@color/colorBlack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -87,6 +91,7 @@
                 android:id="@+id/txt_balance"
                 android:text="Rp. 1.000.000"
                 android:textSize="18sp"
+                android:textColor="@color/colorBlack"
                 android:textAlignment="textEnd"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -98,10 +103,8 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile_picture"
         android:src="@drawable/profile_picture"
-        android:padding="5dp"
-        android:background="@color/colorBlack"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
+        app:civ_border_color="@color/colorBlack"
+        app:civ_border_width="5dp"
         android:layout_alignTop="@id/profile_container"
         android:layout_marginTop="-85dp"
         android:layout_centerHorizontal="true"
@@ -113,10 +116,48 @@
         android:layout_marginTop="125dp"
         android:translationZ="-90dp"
         android:background="@color/colorWhite"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button
+            android:id="@+id/btn_top_up"
+            android:text="Top Up"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:background="@drawable/button_top_up_shape" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_favorite_movies"
+                android:padding="16dp"
+                android:text="Favorite Movies"
+                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:drawableTop="@drawable/fa_solid_movies"
+                android:background="@drawable/rounded_rect_shape_white" />
+
+            <Button
+                android:id="@+id/btn_transaction_history"
+                android:padding="16dp"
+                android:text="Favorite Movies"
+                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_marginLeft="20dp"
+                android:drawableTop="@drawable/fa_solidhistory"
+                android:background="@drawable/rounded_rect_shape_white" />
+        </LinearLayout>
     </LinearLayout>
-
 </RelativeLayout>
