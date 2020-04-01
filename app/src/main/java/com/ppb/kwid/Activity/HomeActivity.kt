@@ -2,28 +2,34 @@ package com.ppb.kwid.Activity
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.GoogleApi
 import com.google.android.gms.tasks.Task
-import android.util.Log
-import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.ppb.kwid.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.ppb.kwid.Model.Movie.Movie
 import com.ppb.kwid.Model.Movie.MoviesAdapter
 import com.ppb.kwid.Model.Movie.MoviesRepository
+import com.ppb.kwid.R
 
 
 class HomeActivity : AppCompatActivity() {
 
     lateinit var gso: GoogleSignInOptions
     lateinit var mGoogleSignInClient: GoogleSignInClient
+
+    //firebase auth instance
+     lateinit var mAuth: FirebaseAuth
 
     //    val RC_SIGN_IN: Int = 1
     lateinit var signOut: Button
@@ -49,6 +55,11 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setupUI()
+
+        //firbase instance
+        mAuth = FirebaseAuth.getInstance()
+        println("nama user : " + mAuth.currentUser?.displayName.toString())
+
 
         popularMovies = findViewById(R.id.popular_movies)
         popularMoviesLayoutMgr = LinearLayoutManager(
@@ -155,17 +166,20 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupUI() {
         signOut = findViewById<View>(R.id.sign_out_button) as Button
+        var accountGoogle = GoogleSignIn.getLastSignedInAccount(this)
+        println("account google is null ?" + accountGoogle)
         signOut.setOnClickListener { signOut() }
     }
 
     private fun signOut() {
+        mAuth.signOut()
+
         gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
-
         mGoogleSignInClient.signOut().addOnCompleteListener { task: Task<Void> ->
             if (task.isSuccessful) {
                 println("SIGN OUT SUKSESS")
