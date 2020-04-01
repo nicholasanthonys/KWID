@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginStart="20dp" />
 
     <LinearLayout
         android:id="@+id/profile_container"
@@ -28,7 +28,7 @@
             android:id="@+id/profile_name"
             android:text="Your Name Here"
             android:textColor="@color/colorBlack"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -37,6 +37,7 @@
 
         <LinearLayout
             android:layout_marginTop="25dp"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -50,7 +51,7 @@
 
             <TextView
                 android:text="Poin"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="@color/colorBlack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -58,7 +59,7 @@
             <TextView
                 android:id="@+id/txt_poin"
                 android:text="1.800"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="@color/colorBlack"
                 android:textAlignment="textEnd"
                 android:layout_marginLeft="20dp"
@@ -69,6 +70,7 @@
 
         <LinearLayout
             android:layout_marginTop="25dp"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -82,7 +84,7 @@
 
             <TextView
                 android:text="Balance"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="@color/colorBlack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -90,7 +92,7 @@
             <TextView
                 android:id="@+id/txt_balance"
                 android:text="Rp. 1.000.000"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="@color/colorBlack"
                 android:textAlignment="textEnd"
                 android:layout_marginLeft="20dp"
@@ -140,7 +142,7 @@
 
             <Button
                 android:id="@+id/btn_favorite_movies"
-                android:padding="16dp"
+                android:padding="14dp"
                 android:text="Favorite Movies"
                 android:textColor="@color/colorBlack"
                 android:layout_width="wrap_content"
@@ -150,7 +152,7 @@
 
             <Button
                 android:id="@+id/btn_transaction_history"
-                android:padding="16dp"
+                android:padding="14dp"
                 android:text="Favorite Movies"
                 android:textColor="@color/colorBlack"
                 android:layout_width="wrap_content"
