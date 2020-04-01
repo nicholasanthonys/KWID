@@ -3,6 +3,7 @@ package com.ppb.kwid.Activity
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -34,17 +35,26 @@ class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var backdrop: ImageView
     private lateinit var poster: ImageView
     private lateinit var title: TextView
-//    private lateinit var rating: RatingBar
+    //    private lateinit var rating: RatingBar
     private lateinit var releaseDate: TextView
     private lateinit var overview: TextView
-    private lateinit var duration : TextView
-    private lateinit var director : TextView
+    private lateinit var duration: TextView
+    private lateinit var director: TextView
+    private lateinit var btnLiked: Button
+
+    //ini harus diganti dengan yang di database kalau database nya udah jadi
+    private var isLiked: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
+        initUI()
 
+
+    }
+
+    private fun initUI() {
         backdrop = findViewById(R.id.movie_backdrop)
         poster = findViewById(R.id.movie_poster)
         title = findViewById(R.id.movie_title)
@@ -53,6 +63,16 @@ class MovieDetailsActivity : AppCompatActivity() {
         overview = findViewById(R.id.movie_overview)
         duration = findViewById(R.id.movie_duration)
         director = findViewById(R.id.movie_director)
+
+        btnLiked = findViewById(R.id.btn_liked)
+        btnLiked.setOnClickListener {
+            isLiked = !isLiked
+            if (isLiked) {
+                btnLiked.setBackgroundResource(R.drawable.ant_designheart_filled)
+            } else {
+                btnLiked.setBackgroundResource(R.drawable.ant_designheart_outlined)
+            }
+        }
 
 
         rv_casts = findViewById(R.id.cast_and_crew)
@@ -82,12 +102,12 @@ class MovieDetailsActivity : AppCompatActivity() {
 
 
     private fun onCreditsFetched(cast: List<Cast>, crews: List<Crew>) {
-        creditAdapter.updateCasts(cast,crews)
+        creditAdapter.updateCasts(cast, crews)
         //update textview crew
 
         var textDirector = ""
         for (i in crews.indices) {
-            if(crews[i].job == "Director"){
+            if (crews[i].job == "Director") {
                 if (textDirector.isNotEmpty()) {
                     textDirector += ", "
                 }
@@ -104,7 +124,8 @@ class MovieDetailsActivity : AppCompatActivity() {
         if (extras != null) {
 
             val multi = MultiTransformation<Bitmap>(
-                RoundedCornersTransformation(50, 0, RoundedCornersTransformation.CornerType.BOTTOM))
+                RoundedCornersTransformation(50, 0, RoundedCornersTransformation.CornerType.BOTTOM)
+            )
 
 //            Glide.with(this).load(R.drawable.demo)
 //                .apply(RequestOptions.bitmapTransform(multi))
@@ -127,8 +148,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 //            rating.rating = movDetails.rating
             releaseDate.text = movDetails.releaseDate
             overview.text = movDetails.overview
-            duration.text = movDetails.duration.toString()+ " minutes"
-
+            duration.text = movDetails.duration.toString() + " minutes"
 
 
             val listGenres: List<Genres> = movDetails.genres
