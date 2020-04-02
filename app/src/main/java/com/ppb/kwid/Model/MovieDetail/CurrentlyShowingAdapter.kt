@@ -15,6 +15,7 @@ class CurrentlyShowingAdapter(
     private val onMovieClick: (movie: GetMovieDetailsResponse) -> Unit
 ) : RecyclerView.Adapter<CurrentlyShowingAdapter.MovieViewHolder>() {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater
             .from(parent.context)
@@ -28,9 +29,14 @@ class CurrentlyShowingAdapter(
         holder.bind(movies[position])
     }
 
-    fun updateMovies(movie: GetMovieDetailsResponse) {
+    fun updateMovies(movie: GetMovieDetailsResponse,isRefresh: Boolean) {
         this.movies.add(movie)
-        notifyDataSetChanged()
+        println("woy list nya ada yang update")
+        println("dari adapter Panjang List : " + movies.size)
+        notifyItemRangeInserted(
+            this.movies.size,
+            movies.size - 1
+        )
     }
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -34,6 +34,7 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var signOut: Button
     private lateinit var btnProfile: Button
+    private lateinit var btnRefresh: Button
 
     private lateinit var popularMovies: RecyclerView
     private lateinit var popularMoviesAdapter: MoviesAdapter
@@ -55,6 +56,8 @@ class HomeActivity : AppCompatActivity() {
     //demo firestore
     // Access a Cloud Firestore instance from your Activity
     val db = Firebase.firestore
+
+    var myList: MutableList<Long> = mutableListOf()
 
     companion object {
         fun getLaunchIntent(from: Context) = Intent(from, HomeActivity::class.java).apply {
@@ -101,8 +104,6 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initUI() {
         signOut = findViewById<View>(R.id.sign_out_button) as Button
-//        var accountGoogle = GoogleSignIn.getLastSignedInAccount(this)
-//        println("account google is null ?" + accountGoogle)
         signOut.setOnClickListener { signOut() }
 
         btnProfile = findViewById(R.id.btn_profile)
@@ -150,10 +151,16 @@ class HomeActivity : AppCompatActivity() {
 
         currentlyShowing.layoutManager = currentlyShowingLayoutMgr
         currentlyShowingAdapter =
-            CurrentlyShowingAdapter(mutableListOf()) {movie ->
+            CurrentlyShowingAdapter(mutableListOf()) { movie ->
                 showMovieDetails(movie)
             }
         currentlyShowing.adapter = currentlyShowingAdapter
+
+        btnRefresh = findViewById(R.id.btn_refresh)
+
+        btnRefresh.setOnClickListener {
+            refresh()
+        }
 
         getPopularMovies()
         getTopRatedMovies()
@@ -164,9 +171,22 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    private fun refresh() {
+        //refresh currently showing
+        currentlyShowing.layoutManager = currentlyShowingLayoutMgr
+        currentlyShowingAdapter =
+            CurrentlyShowingAdapter(mutableListOf()) { movie ->
+                showMovieDetails(movie)
+            }
+        currentlyShowing.adapter = currentlyShowingAdapter
+        getCurrentlyShowing()
+
+    }
+
     private fun onPopularMoviesFetched(movies: MutableList<Movie>) {
         popularMoviesAdapter.appendMovies(movies)
-        attachPopularMoviesOnScrollListener()
+
+
     }
 
     private fun onError() {
@@ -176,7 +196,6 @@ class HomeActivity : AppCompatActivity() {
     private fun getPopularMovies() {
 
 
-
         MoviesRepository.getPopularMovies(
             popularMoviesPage,
             onSuccess = ::onPopularMoviesFetched,
@@ -184,6 +203,23 @@ class HomeActivity : AppCompatActivity() {
         )
 
     }
+//
+//    private fun attachCurrentlyShowingMoviesOnScrollListener() {
+//        currentlyShowing.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                val totalItemCount = currentlyShowingLayoutMgr.itemCount
+//                val visibleItemCount = currentlyShowingLayoutMgr.childCount
+//                val firstVisibleItem = currentlyShowingLayoutMgr.findFirstVisibleItemPosition()
+//
+//                if (firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
+////                    Log.d("MainActivity", "Fetching movies")
+//                    currentlyShowing.removeOnScrollListener(this)
+////                    popularMoviesPage++
+//                    getCurrentlyShowing()
+//                }
+//            }
+//        })
+//    }
 
     private fun attachPopularMoviesOnScrollListener() {
         popularMovies.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -201,6 +237,7 @@ class HomeActivity : AppCompatActivity() {
             }
         })
     }
+
 
     private fun attachTopRatedMoviesOnScrollListener() {
         topRatedMovies.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -239,7 +276,7 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun showMovieDetails(movie : GetMovieDetailsResponse){
+    private fun showMovieDetails(movie: GetMovieDetailsResponse) {
         val intent = Intent(this, MovieDetailsActivity::class.java)
         intent.putExtra(MOVIE_id, movie.id)
         Log.d("MOVIE ID", movie.id.toString())
@@ -247,11 +284,11 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
-
     private fun getCurrentlyShowing() {
         println("=================================")
         println("udah masuk currently showing")
         println("=================================")
+
 
         db.collection("currentlyShowing")
             .get()
@@ -262,6 +299,8 @@ class HomeActivity : AppCompatActivity() {
                     println("=================================")
                     println("MoviesRepository.getCurrentlyshowing mau dijalankan")
                     println("=================================")
+                    myList.add(document.data.get("id").toString().toLong())
+
                     MovieDetailsRepository.getMovieDetails(
                         id = document.data.get("id").toString().toLong(),
                         onSuccess = ::onCurrentlyShowingMoviesFetched,
@@ -273,18 +312,16 @@ class HomeActivity : AppCompatActivity() {
                 Log.d("DB Read Gagal", "Error getting documents: ", exception)
             }
 
-
-
+        println("panjang list : " + myList.size)
     }
 
 
-
-    private fun onCurrentlyShowingMoviesFetched(movie : GetMovieDetailsResponse) {
-        currentlyShowingAdapter.updateMovies(movie)
+    private fun onCurrentlyShowingMoviesFetched(movie: GetMovieDetailsResponse) {
+        currentlyShowingAdapter.updateMovies(movie, false)
+        //attachCurrentlyShowingMoviesOnScrollListener()
 //        topRatedMoviesAdapter.appendMovies(movies)
 //        attachTopRatedMoviesOnScrollListener()
     }
-
 
 
     private fun signOut() {

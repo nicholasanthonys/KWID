@@ -31,6 +31,7 @@ class MoviesAdapter(
         this.movies.addAll(movies)
 //        notifyDataSetChanged()
         notifyItemRangeInserted(this.movies.size, movies.size - 1)
+
     }
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
