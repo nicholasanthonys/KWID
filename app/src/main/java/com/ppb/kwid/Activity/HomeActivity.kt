@@ -51,10 +51,8 @@ class HomeActivity : AppCompatActivity() {
     private var topRatedMoviesPage = 1
 
     // Access a Cloud Firestore instance from your Activity
-    val db = Firebase.firestore
-
-    var myList: MutableList<Long> = mutableListOf()
-
+    private val db = Firebase.firestore
+    
     companion object {
         fun getLaunchIntent(from: Context) = Intent(from, HomeActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -234,7 +232,6 @@ class HomeActivity : AppCompatActivity() {
             .addOnSuccessListener { result ->
                 for (document in result) {
                     Log.d("DB Read Sukses", "${document.id} => ${document.data.get("id")}")
-                    myList.add(document.data.get("id").toString().toLong())
 
                     MovieDetailsRepository.getMovieDetails(
                         id = document.data.get("id").toString().toLong(),

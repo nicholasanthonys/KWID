@@ -41,7 +41,6 @@
             app:layout_constraintBottom_toBottomOf="@id/appbar"
             app:layout_constraintStart_toStartOf="parent" />
 
-
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
@@ -59,7 +58,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="Now Playing"
+                android:text="@string/now_playing"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -69,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="These movies are currently playing in all cinemas"
+                android:text="@string/these_movies_are_currently_playing_in_all_cinemas"
                 android:textColor="@color/colorBlack" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -137,7 +136,6 @@
                 android:clipToPadding="false"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp" />
-
         </LinearLayout>
 
         <Button
@@ -145,8 +143,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Refresh" />
-        
+            android:text="@string/refresh" />
+
         <Button
             android:id="@+id/sign_out_button"
             android:layout_width="wrap_content"
@@ -155,11 +153,10 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="36dp"
-            android:text="Sign Out"
+            android:text="@string/sign_out"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
