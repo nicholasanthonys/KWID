@@ -16,11 +16,11 @@
         android:layout_marginStart="20dp" />
 
     <LinearLayout
+        android:layout_marginTop="150dp"
         android:id="@+id/profile_container"
         android:layout_width="300dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:background="@drawable/rounded_rect_shape_white"
         android:orientation="vertical">
 
@@ -140,20 +140,24 @@
 
             <Button
                 android:id="@+id/btn_favorite_movies"
-                android:padding="14dp"
+                android:paddingTop="14dp"
                 android:text="Favorite Movies"
                 android:textColor="@color/colorBlack"
-                android:layout_width="wrap_content"
+                android:textSize="14sp"
+                android:textAllCaps="false"
+                android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:drawableTop="@drawable/fa_solid_movies"
                 android:background="@drawable/rounded_rect_shape_white" />
 
             <Button
                 android:id="@+id/btn_transaction_history"
-                android:padding="14dp"
+                android:paddingTop="14dp"
                 android:text="Transaction History"
                 android:textColor="@color/colorBlack"
-                android:layout_width="wrap_content"
+                android:textSize="14sp"
+                android:textAllCaps="false"
+                android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="20dp"
                 android:drawableTop="@drawable/fa_solidhistory"
