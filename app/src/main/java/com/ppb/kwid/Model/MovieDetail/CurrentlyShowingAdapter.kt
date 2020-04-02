@@ -7,14 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.ppb.kwid.Model.Movie.Movie
 import com.ppb.kwid.R
 
 class CurrentlyShowingAdapter(
     private var movies: MutableList<GetMovieDetailsResponse>,
     private val onMovieClick: (movie: GetMovieDetailsResponse) -> Unit
 ) : RecyclerView.Adapter<CurrentlyShowingAdapter.MovieViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater
@@ -29,10 +27,8 @@ class CurrentlyShowingAdapter(
         holder.bind(movies[position])
     }
 
-    fun updateMovies(movie: GetMovieDetailsResponse,isRefresh: Boolean) {
+    fun updateMovies(movie: GetMovieDetailsResponse, isRefresh: Boolean) {
         this.movies.add(movie)
-        println("woy list nya ada yang update")
-        println("dari adapter Panjang List : " + movies.size)
         notifyItemRangeInserted(
             this.movies.size,
             movies.size - 1
@@ -50,7 +46,6 @@ class CurrentlyShowingAdapter(
                 .into(poster)
             tvMovieName.text = movie.title
             itemView.setOnClickListener { onMovieClick.invoke(movie) }
-
         }
     }
 }

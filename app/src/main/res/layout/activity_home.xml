@@ -7,12 +7,10 @@
     android:background="#fff"
     tools:context=".Activity.HomeActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
 
         <RelativeLayout
             android:id="@+id/appbar"
@@ -74,7 +72,6 @@
                 android:text="These movies are currently playing in all cinemas"
                 android:textColor="@color/colorBlack" />
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/currently_showing_movies"
                 android:layout_width="match_parent"
@@ -113,7 +110,6 @@
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp" />
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -148,10 +144,9 @@
             android:id="@+id/btn_refresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Refresh"
-            android:layout_gravity="center"/>
-
-
+            android:layout_gravity="center"
+            android:text="Refresh" />
+        
         <Button
             android:id="@+id/sign_out_button"
             android:layout_width="wrap_content"

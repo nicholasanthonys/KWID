@@ -29,9 +29,7 @@ class MoviesAdapter(
 
     fun appendMovies(movies: MutableList<Movie>) {
         this.movies.addAll(movies)
-//        notifyDataSetChanged()
         notifyItemRangeInserted(this.movies.size, movies.size - 1)
-
     }
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -46,15 +44,6 @@ class MoviesAdapter(
                 .into(poster)
             tvMovieName.text = movie.title
             itemView.setOnClickListener { onMovieClick.invoke(movie) }
-
-
-
-//            var genres : String = ""
-//            movie.listGenre.forEach {
-//                genres += " " +it.name
-//            }
-//            println("genre : " + genres )
-//            println("=====================================")
         }
     }
 }

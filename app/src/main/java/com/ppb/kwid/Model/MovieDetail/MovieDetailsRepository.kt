@@ -9,8 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object MovieDetailsRepository {
-     val api: Api
-
+    private val api: Api
 
     init {
         val retrofit = Retrofit.Builder()
@@ -23,7 +22,7 @@ object MovieDetailsRepository {
 
     fun getMovieDetails(
         id: Long = 1,
-        onSuccess: (response : GetMovieDetailsResponse) -> Unit,
+        onSuccess: (response: GetMovieDetailsResponse) -> Unit,
         onError: () -> Unit
     ) {
         api.getMovieDetails(id = id)
@@ -36,7 +35,6 @@ object MovieDetailsRepository {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
-                            Log.d("Movie Details Repo", "MOVIE ID:" + id)
                             Log.d("Movie Details Repo", "MOVIE TITLE: ${responseBody.title}")
                             Log.d("MOVIE DETAILS Repo", "MOVIE DURATION: ${responseBody.duration}")
 
@@ -48,13 +46,11 @@ object MovieDetailsRepository {
                             onError.invoke()
                         }
                     } else {
-                        println("GET CAST ERROR id : " + id)
                         onError.invoke()
                     }
                 }
 
                 override fun onFailure(call: Call<GetMovieDetailsResponse>, t: Throwable) {
-                    println("GET MOVIEDETAILS ERROR")
                     Log.e("Movie Details", "onFailure", t)
                     onError.invoke()
                 }

@@ -15,7 +15,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.ppb.kwid.Model.Movie.*
@@ -51,9 +50,6 @@ class HomeActivity : AppCompatActivity() {
     private var popularMoviesPage = 1
     private var topRatedMoviesPage = 1
 
-    private lateinit var myQuery: QuerySnapshot
-
-    //demo firestore
     // Access a Cloud Firestore instance from your Activity
     val db = Firebase.firestore
 
@@ -70,35 +66,10 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         initUI()
 
-        //firbase instance
+        //firebase instance
         mAuth = FirebaseAuth.getInstance()
         println("nama user : " + mAuth.currentUser?.email.toString())
         println("id user : " + mAuth.currentUser?.uid)
-
-//        //demo firestore
-//        val avenger = hashMapOf(
-//            "id" to 299534,
-//            "name" to "Avengers EndGame"
-//        )
-//
-//        val starwars = hashMapOf(
-//            "id" to 181812,
-//            "name" to "Star Wars: The Rise of Skywalker"
-//        )
-//
-//     println(avenger.get("id"))
-//
-//        db.collection("currentlyShowing").document(avenger.get("name").toString())
-//            .set(avenger)
-//            .addOnSuccessListener { Log.d("db sukses", "DocumentSnapshot successfully written!") }
-//            .addOnFailureListener { e -> Log.w("db gagal", "Error writing document", e) }
-//
-//        db.collection("currentlyShowing").document(starwars.get("name").toString())
-//            .set(starwars)
-//            .addOnSuccessListener { Log.d("db sukses", "DocumentSnapshot successfully written!") }
-//            .addOnFailureListener { e -> Log.w("db gagal", "Error writing document", e) }
-//
-
 
     }
 
@@ -111,7 +82,6 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, AccountDetailActivity::class.java)
             startActivity(intent)
         }
-
 
         popularMovies = findViewById(R.id.popular_movies)
         popularMovies = findViewById(R.id.popular_movies)
@@ -164,9 +134,6 @@ class HomeActivity : AppCompatActivity() {
 
         getPopularMovies()
         getTopRatedMovies()
-        println("=================================")
-        println("menjalankan currently showing")
-        println("=================================")
         getCurrentlyShowing()
 
     }
@@ -185,8 +152,6 @@ class HomeActivity : AppCompatActivity() {
 
     private fun onPopularMoviesFetched(movies: MutableList<Movie>) {
         popularMoviesAdapter.appendMovies(movies)
-
-
     }
 
     private fun onError() {
@@ -194,32 +159,12 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun getPopularMovies() {
-
-
         MoviesRepository.getPopularMovies(
             popularMoviesPage,
             onSuccess = ::onPopularMoviesFetched,
             onError = ::onError
         )
-
     }
-//
-//    private fun attachCurrentlyShowingMoviesOnScrollListener() {
-//        currentlyShowing.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//                val totalItemCount = currentlyShowingLayoutMgr.itemCount
-//                val visibleItemCount = currentlyShowingLayoutMgr.childCount
-//                val firstVisibleItem = currentlyShowingLayoutMgr.findFirstVisibleItemPosition()
-//
-//                if (firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
-////                    Log.d("MainActivity", "Fetching movies")
-//                    currentlyShowing.removeOnScrollListener(this)
-////                    popularMoviesPage++
-//                    getCurrentlyShowing()
-//                }
-//            }
-//        })
-//    }
 
     private fun attachPopularMoviesOnScrollListener() {
         popularMovies.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -229,7 +174,6 @@ class HomeActivity : AppCompatActivity() {
                 val firstVisibleItem = popularMoviesLayoutMgr.findFirstVisibleItemPosition()
 
                 if (firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
-//                    Log.d("MainActivity", "Fetching movies")
                     popularMovies.removeOnScrollListener(this)
                     popularMoviesPage++
                     getPopularMovies()
@@ -285,20 +229,11 @@ class HomeActivity : AppCompatActivity() {
 
 
     private fun getCurrentlyShowing() {
-        println("=================================")
-        println("udah masuk currently showing")
-        println("=================================")
-
-
         db.collection("currentlyShowing")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     Log.d("DB Read Sukses", "${document.id} => ${document.data.get("id")}")
-
-                    println("=================================")
-                    println("MoviesRepository.getCurrentlyshowing mau dijalankan")
-                    println("=================================")
                     myList.add(document.data.get("id").toString().toLong())
 
                     MovieDetailsRepository.getMovieDetails(
@@ -311,16 +246,11 @@ class HomeActivity : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d("DB Read Gagal", "Error getting documents: ", exception)
             }
-
-        println("panjang list : " + myList.size)
     }
 
 
     private fun onCurrentlyShowingMoviesFetched(movie: GetMovieDetailsResponse) {
         currentlyShowingAdapter.updateMovies(movie, false)
-        //attachCurrentlyShowingMoviesOnScrollListener()
-//        topRatedMoviesAdapter.appendMovies(movies)
-//        attachTopRatedMoviesOnScrollListener()
     }
 
 
