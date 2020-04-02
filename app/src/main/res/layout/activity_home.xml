@@ -146,6 +146,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
-    
+
 
 </androidx.core.widget.NestedScrollView>

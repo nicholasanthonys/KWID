@@ -150,7 +150,8 @@ class HomeActivity : AppCompatActivity() {
 
         currentlyShowing.layoutManager = currentlyShowingLayoutMgr
         currentlyShowingAdapter =
-            CurrentlyShowingAdapter(mutableListOf()) {
+            CurrentlyShowingAdapter(mutableListOf()) {movie ->
+                showMovieDetails(movie)
             }
         currentlyShowing.adapter = currentlyShowingAdapter
 
@@ -238,6 +239,13 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun showMovieDetails(movie : GetMovieDetailsResponse){
+        val intent = Intent(this, MovieDetailsActivity::class.java)
+        intent.putExtra(MOVIE_id, movie.id)
+        Log.d("MOVIE ID", movie.id.toString())
+        startActivity(intent)
+    }
+
 
 
     private fun getCurrentlyShowing() {
@@ -251,11 +259,14 @@ class HomeActivity : AppCompatActivity() {
                 for (document in result) {
                     Log.d("DB Read Sukses", "${document.id} => ${document.data.get("id")}")
 
-//                    MoviesRepository.getCurrentlyShowing(
-//                        document.data.get("id").toString().toLong(),
-//                        ::onCurrentlyShowingMoviesFetched,
-//                        ::onError
-//                    )
+                    println("=================================")
+                    println("MoviesRepository.getCurrentlyshowing mau dijalankan")
+                    println("=================================")
+                    MovieDetailsRepository.getMovieDetails(
+                        id = document.data.get("id").toString().toLong(),
+                        onSuccess = ::onCurrentlyShowingMoviesFetched,
+                        onError = ::onError
+                    )
                 }
             }
             .addOnFailureListener { exception ->
@@ -263,14 +274,7 @@ class HomeActivity : AppCompatActivity() {
             }
 
 
-        println("=================================")
-        println("MoviesRepository.getCurrentlyshowing mau dijalankan")
-        println("=================================")
-        MovieDetailsRepository.getMovieDetails(
-            id = "299534".toLong(),
-            onSuccess = ::onCurrentlyShowingMoviesFetched,
-            onError = ::onError
-        )
+
     }
 
 
