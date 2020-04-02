@@ -30,7 +30,6 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private lateinit var rv_casts: RecyclerView
     private lateinit var creditAdapter: CreditsAdapter
-//    private lateinit var popularMoviesLayoutMgr: LinearLayoutManager
 
     private lateinit var backdrop: ImageView
     private lateinit var poster: ImageView
@@ -127,10 +126,6 @@ class MovieDetailsActivity : AppCompatActivity() {
                 RoundedCornersTransformation(50, 0, RoundedCornersTransformation.CornerType.BOTTOM)
             )
 
-//            Glide.with(this).load(R.drawable.demo)
-//                .apply(RequestOptions.bitmapTransform(multi))
-//                .into(imageView))
-
             Glide.with(this)
                 .load("https://image.tmdb.org/t/p/w1280${movDetails.backdropPath}")
                 .apply((RequestOptions.bitmapTransform(multi)))
@@ -163,10 +158,6 @@ class MovieDetailsActivity : AppCompatActivity() {
         } else {
             finish()
         }
-
-    }
-
-    private fun onCurrentlyShowingFetched(movDetails: GetMovieDetailsResponse){
 
     }
 
