@@ -14,4 +14,11 @@
     <string name="these_movies_are_currently_playing_in_all_cinemas">These movies are currently playing in all cinemas</string>
     <string name="refresh">Refresh</string>
     <string name="sign_out">Sign Out</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="durasi">Durasi</string>
+    <string name="durasi_value">123 Minutes</string>
+    <string name="director">Director</string>
+    <string name="director_value">Anthony Russo, Joe Russo</string>
+    <string name="release">Release</string>
+    <string name="relase_value">2019-09-17</string>
 </resources>

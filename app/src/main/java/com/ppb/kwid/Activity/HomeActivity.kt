@@ -52,7 +52,7 @@ class HomeActivity : AppCompatActivity() {
 
     // Access a Cloud Firestore instance from your Activity
     private val db = Firebase.firestore
-    
+
     companion object {
         fun getLaunchIntent(from: Context) = Intent(from, HomeActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
