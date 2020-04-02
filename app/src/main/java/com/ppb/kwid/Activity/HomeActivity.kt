@@ -134,6 +134,7 @@ class HomeActivity : AppCompatActivity() {
         getTopRatedMovies()
         getCurrentlyShowing()
 
+
     }
 
     private fun refresh() {
@@ -218,6 +219,7 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    //untuk currently showing
     private fun showMovieDetails(movie: GetMovieDetailsResponse) {
         val intent = Intent(this, MovieDetailsActivity::class.java)
         intent.putExtra(MOVIE_id, movie.id)

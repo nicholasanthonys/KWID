@@ -1,98 +1,94 @@
 package com.ppb.kwid.Database
 
-import android.content.Context
-import android.database.sqlite.SQLiteOpenHelper
 import android.content.ContentValues
+import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+import android.provider.BaseColumns
+import com.ppb.kwid.Database.DatabaseHelper.FeedEntry.COL_DIRECTOR
+import com.ppb.kwid.Database.DatabaseHelper.FeedEntry.COL_GENRE
+import com.ppb.kwid.Database.DatabaseHelper.FeedEntry.COL_MOVIE_ID
+import com.ppb.kwid.Database.DatabaseHelper.FeedEntry.COL_TILTE
+import com.ppb.kwid.Database.DatabaseHelper.FeedEntry.COL_USER_ID
+import com.ppb.kwid.Database.DatabaseHelper.FeedEntry.TABLE_NAME
 
-/**
- * Let's start by creating our database CRUD helper class
- * based on the SQLiteHelper.
- */
+
+
 class DatabaseHelper(context: Context) :
-    SQLiteOpenHelper(context, DATABASE_NAME, null, 1) {
+    SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
-    /**
-     * Our onCreate() method.
-     * Called when the database is created for the first time. This is
-     * where the creation of tables and the initial population of the tables
-     * should happen.
-     */
-    override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL("CREATE TABLE $TABLE_NAME (ID INTEGER PRIMARY KEY " +
-                "AUTOINCREMENT,NAME TEXT,GALAXY TEXT,TYPE TEXT)")
+    val dbHelper = DatabaseHelper(context)
+
+    object FeedEntry : BaseColumns {
+        const val TABLE_NAME = "table_favorite_movies"
+        const val COL_USER_ID = "user_id"
+        const val COL_MOVIE_ID = "movie_id"
+        const val COL_TILTE = "movie_title"
+        const val COL_GENRE = "genre"
+        const val COL_DIRECTOR = "director"
+
     }
 
-    /**
-     * Let's create Our onUpgrade method
-     * Called when the database needs to be upgraded. The implementation should
-     * use this method to drop tables, add tables, or do anything else it needs
-     * to upgrade to the new schema version.
-     */
+    override fun onCreate(db: SQLiteDatabase) {
+        db.execSQL(
+            "CREATE TABLE $TABLE_NAME (user_id TEXT,  " +
+                    "movie_id TEXT, movie_title TEXT, genre TEXT, director TEXT )"
+        )
+    }
+
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        // This database is only a cache for online data, so its upgrade policy is
+        // to simply to discard the data and start over
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME)
         onCreate(db)
     }
 
-    /**
-     * Let's create our insertData() method.
-     * It Will insert data to SQLIte database.
-     */
-    fun insertData(name: String, surname: String, marks: String) {
+    fun insertTableFavoriteMovies(
+        user_id: String,
+        movie_id: String,
+        title: String,
+        genre: String,
+        director: String
+    ) {
         val db = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put(COL_2, name)
-        contentValues.put(COL_3, surname)
-        contentValues.put(COL_4, marks)
+        contentValues.put(COL_USER_ID, user_id)
+        contentValues.put(COL_MOVIE_ID, movie_id)
+        contentValues.put(COL_TILTE, title)
+        contentValues.put(COL_GENRE, genre)
+        contentValues.put(COL_DIRECTOR, director)
         db.insert(TABLE_NAME, null, contentValues)
-    }
-
-    /**
-     * Let's create  a method to update a row with new field values.
-     */
-    fun updateData(id: String, name: String, surname: String, marks: String):
-            Boolean {
-        val db = this.writableDatabase
-        val contentValues = ContentValues()
-        contentValues.put(COL_1, id)
-        contentValues.put(COL_2, name)
-        contentValues.put(COL_3, surname)
-        contentValues.put(COL_4, marks)
-        db.update(TABLE_NAME, contentValues, "ID = ?", arrayOf(id))
-        return true
     }
 
     /**
      * Let's create a function to delete a given row based on the id.
      */
-    fun deleteData(id : String) : Int {
+    fun deleteFavoriteMovies(user_id: String, movie_id: String): Int {
         val db = this.writableDatabase
-        return db.delete(TABLE_NAME,"ID = ?", arrayOf(id))
+        return db.delete(TABLE_NAME, "user_id = ? AND movie_id = ?", arrayOf(user_id, movie_id))
     }
 
     /**
      * The below getter property will return a Cursor containing our dataset.
      */
-    val allData : Cursor
+    val allData: Cursor
         get() {
             val db = this.writableDatabase
             val res = db.rawQuery("SELECT * FROM " + TABLE_NAME, null)
             return res
         }
 
-    /**
-     * Let's create a companion object to hold our static fields.
-     * A Companion object is an object that is common to all instances of a given
-     * class.
-     */
-    companion object {
-        val DATABASE_NAME = "stars.db"
-        val TABLE_NAME = "star_table"
-        val COL_1 = "ID"
-        val COL_2 = "NAME"
-        val COL_3 = "GALAXY"
-        val COL_4 = "TYPE"
+
+    override fun onDowngrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        onUpgrade(db, oldVersion, newVersion)
     }
+
+    companion object {
+        // If you change the database schema, you must increment the database version.
+        const val DATABASE_VERSION = 1
+        const val DATABASE_NAME = "KWID.db"
+    }
+
+
 }
-//end
