@@ -166,6 +166,10 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     }
 
+    private fun onCurrentlyShowingFetched(movDetails: GetMovieDetailsResponse){
+
+    }
+
     private fun onError() {
         Toast.makeText(this, getString(R.string.error_fetch_movies), Toast.LENGTH_SHORT).show()
     }

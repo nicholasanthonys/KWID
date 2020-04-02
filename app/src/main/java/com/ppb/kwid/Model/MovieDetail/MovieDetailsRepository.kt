@@ -9,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object MovieDetailsRepository {
-    private val api: Api
+     val api: Api
 
 
     init {

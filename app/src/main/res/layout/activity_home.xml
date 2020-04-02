@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#fff"
     tools:context=".Activity.HomeActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
     <RelativeLayout
         android:id="@+id/appbar"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="2dp"
         android:background="@color/colorTopBar"
@@ -39,8 +46,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -105,6 +112,23 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Currently Showing"
+            android:textColor="@color/colorBlack" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/currently_showing_movies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
+
     </LinearLayout>
 
 
@@ -115,9 +139,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="36dp"
+        android:layout_gravity="center_horizontal"
         android:text="Sign Out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+    
+
+</androidx.core.widget.NestedScrollView>

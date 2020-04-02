@@ -15,11 +15,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
-import com.ppb.kwid.Model.Movie.Movie
-import com.ppb.kwid.Model.Movie.MoviesAdapter
-import com.ppb.kwid.Model.Movie.MoviesRepository
+import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.ppb.kwid.Model.Movie.*
+import com.ppb.kwid.Model.MovieDetail.CurrentlyShowingAdapter
+import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
+import com.ppb.kwid.Model.MovieDetail.MovieDetailsRepository
 import com.ppb.kwid.R
-
 
 class HomeActivity : AppCompatActivity() {
 
@@ -30,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
 
     private lateinit var signOut: Button
-    private lateinit var btnProfile : Button
+    private lateinit var btnProfile: Button
 
     private lateinit var popularMovies: RecyclerView
     private lateinit var popularMoviesAdapter: MoviesAdapter
@@ -40,8 +43,18 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var topRatedMoviesAdapter: MoviesAdapter
     private lateinit var topRatedLayoutMgr: LinearLayoutManager
 
+    private lateinit var currentlyShowing: RecyclerView
+    private lateinit var currentlyShowingAdapter: CurrentlyShowingAdapter
+    private lateinit var currentlyShowingLayoutMgr: LinearLayoutManager
+
     private var popularMoviesPage = 1
     private var topRatedMoviesPage = 1
+
+    private lateinit var myQuery: QuerySnapshot
+
+    //demo firestore
+    // Access a Cloud Firestore instance from your Activity
+    val db = Firebase.firestore
 
     companion object {
         fun getLaunchIntent(from: Context) = Intent(from, HomeActivity::class.java).apply {
@@ -57,6 +70,96 @@ class HomeActivity : AppCompatActivity() {
         //firbase instance
         mAuth = FirebaseAuth.getInstance()
         println("nama user : " + mAuth.currentUser?.email.toString())
+        println("id user : " + mAuth.currentUser?.uid)
+
+//        //demo firestore
+//        val avenger = hashMapOf(
+//            "id" to 299534,
+//            "name" to "Avengers EndGame"
+//        )
+//
+//        val starwars = hashMapOf(
+//            "id" to 181812,
+//            "name" to "Star Wars: The Rise of Skywalker"
+//        )
+//
+//     println(avenger.get("id"))
+//
+//        db.collection("currentlyShowing").document(avenger.get("name").toString())
+//            .set(avenger)
+//            .addOnSuccessListener { Log.d("db sukses", "DocumentSnapshot successfully written!") }
+//            .addOnFailureListener { e -> Log.w("db gagal", "Error writing document", e) }
+//
+//        db.collection("currentlyShowing").document(starwars.get("name").toString())
+//            .set(starwars)
+//            .addOnSuccessListener { Log.d("db sukses", "DocumentSnapshot successfully written!") }
+//            .addOnFailureListener { e -> Log.w("db gagal", "Error writing document", e) }
+//
+
+
+    }
+
+    private fun initUI() {
+        signOut = findViewById<View>(R.id.sign_out_button) as Button
+//        var accountGoogle = GoogleSignIn.getLastSignedInAccount(this)
+//        println("account google is null ?" + accountGoogle)
+        signOut.setOnClickListener { signOut() }
+
+        btnProfile = findViewById(R.id.btn_profile)
+        btnProfile.setOnClickListener {
+            val intent = Intent(this, AccountDetailActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        popularMovies = findViewById(R.id.popular_movies)
+        popularMovies = findViewById(R.id.popular_movies)
+        popularMoviesLayoutMgr = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
+        topRatedMovies = findViewById(R.id.top_rated_movies)
+        topRatedLayoutMgr = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
+        currentlyShowing = findViewById(R.id.currently_showing_movies)
+        currentlyShowingLayoutMgr = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
+        popularMovies.layoutManager = popularMoviesLayoutMgr
+        popularMoviesAdapter =
+            MoviesAdapter(mutableListOf()) { movie ->
+                showMovieDetails(movie)
+            }
+        popularMovies.adapter = popularMoviesAdapter
+
+        topRatedMovies.layoutManager = topRatedLayoutMgr
+        topRatedMoviesAdapter =
+            MoviesAdapter(mutableListOf()) { movie ->
+                showMovieDetails(movie)
+            }
+        topRatedMovies.adapter = topRatedMoviesAdapter
+
+        currentlyShowing.layoutManager = currentlyShowingLayoutMgr
+        currentlyShowingAdapter =
+            CurrentlyShowingAdapter(mutableListOf()) {
+            }
+        currentlyShowing.adapter = currentlyShowingAdapter
+
+        getPopularMovies()
+        getTopRatedMovies()
+        println("=================================")
+        println("menjalankan currently showing")
+        println("=================================")
+        getCurrentlyShowing()
 
     }
 
@@ -70,11 +173,15 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun getPopularMovies() {
+
+
+
         MoviesRepository.getPopularMovies(
             popularMoviesPage,
             onSuccess = ::onPopularMoviesFetched,
             onError = ::onError
         )
+
     }
 
     private fun attachPopularMoviesOnScrollListener() {
@@ -131,53 +238,50 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun initUI() {
-        signOut = findViewById<View>(R.id.sign_out_button) as Button
-//        var accountGoogle = GoogleSignIn.getLastSignedInAccount(this)
-//        println("account google is null ?" + accountGoogle)
-        signOut.setOnClickListener { signOut() }
-
-        btnProfile = findViewById(R.id.btn_profile)
-        btnProfile.setOnClickListener {
-            val intent = Intent(this,AccountDetailActivity::class.java)
-            startActivity(intent)
-        }
 
 
-        popularMovies = findViewById(R.id.popular_movies)
-        popularMovies = findViewById(R.id.popular_movies)
-        popularMoviesLayoutMgr = LinearLayoutManager(
-            this,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
+    private fun getCurrentlyShowing() {
+        println("=================================")
+        println("udah masuk currently showing")
+        println("=================================")
 
-        topRatedMovies = findViewById(R.id.top_rated_movies)
-        topRatedLayoutMgr = LinearLayoutManager(
-            this,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
+        db.collection("currentlyShowing")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d("DB Read Sukses", "${document.id} => ${document.data.get("id")}")
 
-        popularMovies.layoutManager = popularMoviesLayoutMgr
-        popularMoviesAdapter =
-            MoviesAdapter(mutableListOf()) { movie ->
-                showMovieDetails(movie)
+//                    MoviesRepository.getCurrentlyShowing(
+//                        document.data.get("id").toString().toLong(),
+//                        ::onCurrentlyShowingMoviesFetched,
+//                        ::onError
+//                    )
+                }
             }
-        popularMovies.adapter = popularMoviesAdapter
-
-        topRatedMovies.layoutManager = topRatedLayoutMgr
-        topRatedMoviesAdapter =
-            MoviesAdapter(mutableListOf()) { movie ->
-                showMovieDetails(movie)
+            .addOnFailureListener { exception ->
+                Log.d("DB Read Gagal", "Error getting documents: ", exception)
             }
-        topRatedMovies.adapter = topRatedMoviesAdapter
-
-        getPopularMovies()
-        getTopRatedMovies()
 
 
+        println("=================================")
+        println("MoviesRepository.getCurrentlyshowing mau dijalankan")
+        println("=================================")
+        MovieDetailsRepository.getMovieDetails(
+            id = "299534".toLong(),
+            onSuccess = ::onCurrentlyShowingMoviesFetched,
+            onError = ::onError
+        )
     }
+
+
+
+    private fun onCurrentlyShowingMoviesFetched(movie : GetMovieDetailsResponse) {
+        currentlyShowingAdapter.updateMovies(movie)
+//        topRatedMoviesAdapter.appendMovies(movies)
+//        attachTopRatedMoviesOnScrollListener()
+    }
+
+
 
     private fun signOut() {
         mAuth.signOut()

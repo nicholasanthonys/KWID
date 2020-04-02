@@ -1,6 +1,7 @@
 package com.ppb.kwid.Model.Movie
 
 import com.ppb.kwid.API.Api
+import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,6 +25,8 @@ object MoviesRepository {
         onSuccess: (movies: MutableList<Movie>) -> Unit,
         onError: () -> Unit
     ) {
+
+
         api.getPopularMovies(page = page).enqueue(object : Callback<GetMoviesResponse> {
             override fun onResponse(
                 call: Call<GetMoviesResponse>,
@@ -82,4 +85,5 @@ object MoviesRepository {
             }
         })
     }
+
 }
