@@ -32,6 +32,7 @@
             <ImageView
                 android:id="@+id/btn_back_movie_detail"
                 android:src="@drawable/icbaseline_arrow_back_with_background"
+                android:elevation="100dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
@@ -202,42 +203,81 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-
-            <TextView
-                android:id="@+id/tv_cast_and_crew"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Cast and Crew"
-               />
+                android:orientation="horizontal"
+                android:weightSum="3">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/cast_and_crew"
+                <Button
+                    android:id="@+id/btn_overview"
+                    android:text="Overview"
+                    android:enabled="false"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_movie_details" />
+
+                <Button
+                    android:id="@+id/btn_cast_and_crew"
+                    android:text="Cast  Crew"
+                    android:enabled="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_movie_details" />
+
+                <Button
+                    android:id="@+id/btn_jadwal"
+                    android:text="Jadwal"
+                    android:enabled="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_movie_details" />
+            </LinearLayout>
+
+            <fragment
+                android:id="@+id/fragment_movie_detail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="475dp" />
-
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/movie_overview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="OVERVIEW"
-            android:textColor="@color/colorBlack"
-            />
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical">-->
 
 
+        <!--            <TextView-->
+        <!--                android:id="@+id/tv_cast_and_crew"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginStart="16dp"-->
+        <!--                android:layout_marginTop="16dp"-->
+        <!--                android:layout_marginEnd="16dp"-->
+        <!--                android:text="Cast and Crew"-->
+        <!--               />-->
+
+        <!--            <androidx.recyclerview.widget.RecyclerView-->
+        <!--                android:id="@+id/cast_and_crew"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:clipToPadding="false"-->
+        <!--                android:paddingStart="16dp"-->
+        <!--                android:paddingEnd="16dp"-->
+        <!--                tools:layout_editor_absoluteX="0dp"-->
+        <!--                tools:layout_editor_absoluteY="475dp" />-->
+
+        <!--        </LinearLayout>-->
     </LinearLayout>
-
 </androidx.core.widget.NestedScrollView>
