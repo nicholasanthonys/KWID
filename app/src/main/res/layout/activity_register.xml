@@ -9,19 +9,16 @@
     android:background="@color/colorBackground"
     tools:context=".Activity.RegisterActivity">
 
-
-
     <TextView
         android:id="@+id/error_message"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
-        android:gravity="center_horizontal"
-        android:padding="10dp"
-        android:text="error"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/et_register_email"/>
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/error_message"
+        android:gravity="center"
+        tools:text="Message" />
 
     <EditText
         android:id="@+id/et_username"
@@ -32,6 +29,7 @@
         android:drawableStart="@drawable/login_email"
         android:drawablePadding="10dp"
         android:hint="@string/placeholder_username"
+        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
         android:inputType="textFilter"
         android:padding="10dp"
         android:textColorHint="@color/hintColor"
@@ -90,7 +88,5 @@
         android:text="@string/register"
         android:textSize="36sp"
         style="?borderlessButtonStyle" />
-
-
 
 </LinearLayout>

@@ -23,6 +23,8 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var etEmail: EditText
     lateinit var etPassword: EditText
     lateinit var tvError: TextView
+    lateinit var etUsername : TextView
+    lateinit var etConfirmPasssword : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +37,9 @@ class RegisterActivity : AppCompatActivity() {
     private fun initUI() {
         etEmail = findViewById(R.id.et_register_email)
         etPassword = findViewById(R.id.et_register_password)
+        etConfirmPasssword = findViewById(R.id.et_confirm_password)
         tvError = findViewById(R.id.error_message)
+        etUsername = findViewById(R.id.et_username)
 
         tvError.text = ""
         tvError.visibility = View.INVISIBLE
@@ -46,26 +50,26 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun validateForm(email : String, password : String): Boolean {
-
-        if (email.isNotBlank()) {
-            if (password.isNotBlank()) {
-                if (etPassword.text.length >= 6) {
+    private fun validateForm(username : String,email : String, password : String, confirmPassword : String): Boolean {
+        if(username.isBlank() || email.isBlank() || password.isBlank() || confirmPassword.isBlank()){
+            updateUI(null,"Please complete all the form")
+        }else{
+            if (etPassword.text.length >= 6) {
+                if(password == confirmPassword){
                     return true
-                } else {
-                    updateUI(null, "password must be 6 character or more")
+                }
+                else{
+                    updateUI(null,"Password doesn't match")
                 }
             } else {
-                updateUI(null, "password cannot be null")
+                updateUI(null, "password must be 6 character or more")
             }
-        } else {
-            updateUI(null, "email cannot be empty")
         }
 
         return false
     }
 
-    private fun updateUI(user: FirebaseUser?, error: String?) {
+    private fun updateUI(user: FirebaseUser?, error: String) {
         if (user != null) {
             val intent = Intent(this, LoginActivity::class.java)
             intent.putExtra(MESSAGE,"Register Sukses")
@@ -73,13 +77,19 @@ class RegisterActivity : AppCompatActivity() {
         } else {
             tvError.visibility = View.VISIBLE
             tvError.text = error
+            if(error?.isNotEmpty()){
+                tvError.setPadding(16,10,16,10)
+            }
         }
     }
 
     private fun registerSubmit(){
+        val username = etUsername.text.trim().toString()
         val email = etEmail.text.toString().trim()
         val password = etPassword.text.toString()
-        if (validateForm(email,password)) {
+        val confirmPassword = etConfirmPasssword.text.toString()
+
+        if (validateForm(username,email,password, confirmPassword)) {
             mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, object : OnCompleteListener<AuthResult?> {
                     override fun onComplete(task: Task<AuthResult?>) {
@@ -87,6 +97,11 @@ class RegisterActivity : AppCompatActivity() {
                         if (task.isSuccessful) { // Sign in success, update UI with the signed-in user's information
                             Log.d("register success", "createUserWithEmail:success")
                             val user = mAuth.currentUser
+
+
+                            //disini masukkan usernamere ke database lokal
+
+
                             updateUI(user, "")
                         } else { // If sign in fails, display a message to the user.
                             Log.w(
