@@ -130,11 +130,9 @@ class HomeActivity : AppCompatActivity() {
             refresh()
         }
 
+        getCurrentlyShowing()
         getPopularMovies()
         getTopRatedMovies()
-        getCurrentlyShowing()
-
-
     }
 
     private fun refresh() {
@@ -151,6 +149,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun onPopularMoviesFetched(movies: MutableList<Movie>) {
         popularMoviesAdapter.appendMovies(movies)
+        attachPopularMoviesOnScrollListener()
     }
 
     private fun onError() {
@@ -219,7 +218,7 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    //untuk currently showing
+
     private fun showMovieDetails(movie: GetMovieDetailsResponse) {
         val intent = Intent(this, MovieDetailsActivity::class.java)
         intent.putExtra(MOVIE_id, movie.id)
@@ -227,7 +226,7 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-
+    //currently showing
     private fun getCurrentlyShowing() {
         db.collection("currentlyShowing")
             .get()
