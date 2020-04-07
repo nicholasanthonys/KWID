@@ -8,7 +8,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
@@ -133,7 +132,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         //Button to change fragment
         btnOverview = findViewById(R.id.btn_overview)
         btnCastCrew = findViewById(R.id.btn_cast_and_crew)
-        btnSchedule = findViewById(R.id.btn_jadwal)
+        btnSchedule = findViewById(R.id.btn_schedule)
 
         btnOverview.setOnClickListener {
             changeFragment(1,overview)

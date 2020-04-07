@@ -17,8 +17,19 @@
     <string name="movie_title">Movie Title</string>
     <string name="durasi">Durasi</string>
     <string name="durasi_value">123 Minutes</string>
-    <string name="director">Director</string>
-    <string name="director_value">Anthony Russo, Joe Russo</string>
-    <string name="release">Release</string>
+    <string name="director_value">Director 1, Director 2</string>
     <string name="relase_value">2019-09-17</string>
+    <string name="directorValue">Director 1, Director 2</string>
+    <string name="background_movie">Background Movie</string>
+    <string name="movie_poster">Movie Poster</string>>
+    <string name="genre">Genre</string>
+    <string name="genre_value">Action, Horror</string>
+    <string name="duration">Durasi</string>
+    <string name="duration_value">123 Minutes</string>
+    <string name="director">Director</string>
+    <string name="release">Release</string>
+    <string name="release_value">2019-09-17</string>
+    <string name="cast_crew">Cast Crew</string>
+    <string name="schedule">Jadwal</string>
+    <string name="overview">Overview</string>
 </resources>

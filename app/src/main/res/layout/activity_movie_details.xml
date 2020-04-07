@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,17 +23,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
                 android:padding="0dp"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:contentDescription="@string/background_movie"/>
 
             <ImageView
                 android:id="@+id/btn_back_movie_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:elevation="100dp"
                 android:src="@drawable/icbaseline_arrow_back_with_background" />
-
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/movie_poster_card"
@@ -49,7 +48,8 @@
                 <ImageView
                     android:id="@+id/movie_poster"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/movie_poster"/>
 
             </androidx.cardview.widget.CardView>
 
@@ -61,7 +61,7 @@
                 android:layout_marginTop="300dp"
                 android:layout_marginEnd="16dp"
                 android:layout_toEndOf="@+id/movie_poster_card"
-                android:text="Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)"
+                android:text="@string/movie_title"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -83,10 +83,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/movie_poster_card"
-                android:text="Genre"
+                android:text="@string/genre"
                 android:textColor="#757575"
                 android:textSize="12sp" />
-
 
             <TextView
                 android:id="@+id/movie_genre"
@@ -96,10 +95,9 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/title_movie_genre"
-                android:text="Action, Horror"
+                android:text="@string/genre_value"
                 android:textColor="#757575"
                 android:textSize="12sp" />
-
 
             <TextView
                 android:id="@+id/title_movie_duration"
@@ -109,10 +107,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/movie_poster_card"
-                android:text="Durasi"
+                android:text="@string/duration"
                 android:textColor="#757575"
                 android:textSize="12sp" />
-
 
             <TextView
                 android:id="@+id/movie_duration"
@@ -122,7 +119,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/title_movie_release_date"
-                android:text="123 Minutes"
+                android:text="@string/duration_value"
                 android:textColor="#757575"
                 android:textSize="12sp" />
 
@@ -135,7 +132,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/movie_poster_card"
-                android:text="Director"
+                android:text="@string/director"
                 android:textColor="#757575"
                 android:textSize="12sp" />
 
@@ -148,7 +145,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/title_movie_director"
-                android:text="Anthony Russo, Joe Russo"
+                android:text="@string/director_value"
                 android:textColor="#757575"
                 android:textSize="12sp" />
 
@@ -161,10 +158,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/movie_poster_card"
-                android:text="Release"
+                android:text="@string/release"
                 android:textColor="#757575"
                 android:textSize="12sp" />
-
 
             <TextView
                 android:id="@+id/movie_release_date"
@@ -174,7 +170,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/title_movie_release_date"
-                android:text="2019-09-17"
+                android:text="@string/release_value"
                 android:textColor="#757575"
                 android:textSize="12sp" />
 
@@ -197,35 +193,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/tv_cast_and_crew"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginStart="16dp"-->
-            <!--                android:layout_marginTop="16dp"-->
-            <!--                android:layout_marginEnd="16dp"-->
-            <!--                android:text="Cast and Crew"-->
-            <!--                />-->
-
-            <!--            <androidx.recyclerview.widget.RecyclerView-->
-            <!--                android:id="@+id/cast_and_crew"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:clipToPadding="false"-->
-            <!--                android:paddingStart="16dp"-->
-            <!--                android:paddingEnd="16dp"-->
-            <!--                tools:layout_editor_absoluteX="0dp"-->
-            <!--                tools:layout_editor_absoluteY="475dp" />-->
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -238,7 +205,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:enabled="true"
-                    android:text="Overview"
+                    android:text="@string/overview"
                     android:textAllCaps="true"
                     android:textColor="@color/colorBlack"
                     android:textSize="14sp"
@@ -252,7 +219,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/button_movie_details"
                     android:enabled="true"
-                    android:text="Cast  Crew"
+                    android:text="@string/cast_crew"
                     android:textAllCaps="true"
                     android:textColor="@color/colorBlack"
                     android:textSize="14sp" />
@@ -260,18 +227,16 @@
 
 
                 <Button
-                    android:id="@+id/btn_jadwal"
+                    android:id="@+id/btn_schedule"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/button_movie_details"
                     android:enabled="true"
-                    android:text="Jadwal"
+                    android:text="@string/schedule"
                     android:textAllCaps="true"
                     android:textColor="@color/colorBlack"
                     android:textSize="14sp" />
-
-
             </LinearLayout>
 
             <FrameLayout
@@ -281,7 +246,6 @@
                 android:background="@color/colorBlack" />
 
         </LinearLayout>
-
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
