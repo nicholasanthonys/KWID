@@ -233,19 +233,6 @@
                 android:weightSum="2">
 
                 <Button
-                    android:id="@+id/btn_cast_and_crew"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_movie_details"
-                    android:enabled="false"
-                    android:text="Cast  Crew"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="14sp" />
-
-
-                <Button
                     android:id="@+id/btn_overview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -256,6 +243,21 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="14sp"
                     android:background="@drawable/button_movie_details" />
+
+
+                <Button
+                    android:id="@+id/btn_cast_and_crew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_movie_details"
+                    android:enabled="true"
+                    android:text="Cast  Crew"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+
+
 
                 <Button
                     android:id="@+id/btn_jadwal"

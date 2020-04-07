@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -45,9 +46,9 @@ class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var duration: TextView
     private lateinit var director: TextView
     private lateinit var btnLiked: Button
-    private lateinit var btnFragmentOverview: Button
-    private lateinit var btnFragmentCastCrew: Button
-    private lateinit var btnFragmentSchedule: Button
+    private lateinit var btnOverview: Button
+    private lateinit var btnCastCrew: Button
+    private lateinit var btnSchedule: Button
 
 
     //instance db helper
@@ -74,7 +75,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
         initUI()
-        println( " this overview adalah  " +  this.overview)
+        println( " this movie id adalah  " +  this.overview)
 
 
     }
@@ -90,18 +91,13 @@ class MovieDetailsActivity : AppCompatActivity() {
         director = findViewById(R.id.movie_director)
 
         movieId = intent.getLongExtra(MOVIE_id, 0)
-        fragmentCast = CastCrewFragment.newInstance(movieId)
+        //fragmentCast = CastCrewFragment.newInstance(movieId)
 
 
-        btnFragmentCastCrew = findViewById(R.id.btn_cast_and_crew)
-        btnFragmentCastCrew.setOnClickListener {
-            //fungsi
 
-
-        }
 
         //display fragment cast sebagai default
-        displayFragmentCast()
+//        displayFragmentCast()
 
 
 
@@ -129,35 +125,58 @@ class MovieDetailsActivity : AppCompatActivity() {
             onError = ::onError
         )
 
+
+
     }
 
+    private fun setUpButtonFragment(overview: String){
+        //Button to change fragment
+        btnOverview = findViewById(R.id.btn_overview)
+        btnCastCrew = findViewById(R.id.btn_cast_and_crew)
+        btnSchedule = findViewById(R.id.btn_jadwal)
 
-//
-//    private fun replaceFragment(fragment: Fragment) {
-//        val fragmentTransaction = supportFragmentManager.beginTransaction()
-//        fragmentTransaction.add(R.id.myfragmentmovie_detail, fragment)
-//        fragmentTransaction.addToBackStack(null)
-//        fragmentTransaction.commit()
-//    }
+        btnOverview.setOnClickListener {
+            changeFragment(1,overview)
 
-    // Replace the switch method
-    protected fun displayFragmentCast() {
-        val ft =
-            supportFragmentManager.beginTransaction()
-        if (fragmentCast.isAdded) { // if the fragment is already in container
-            ft.show(fragmentCast)
-        } else { // fragment needs to be added to frame container
-            ft.add(R.id.myfragmentmovie_detail, fragmentCast, "A")
-        }
-        // Hide fragment B
-        if (fragmentSchedule.isAdded) {
-            ft.hide(fragmentSchedule)
+            //Setting the button
+            btnOverview.isEnabled = false
+            btnOverview.isClickable = false
+            btnCastCrew.isEnabled = true
+            btnCastCrew.isClickable = true
+            btnSchedule.isEnabled = true
+            btnSchedule.isClickable = true
         }
 
-        // Commit changes
-        ft.commit()
+        btnCastCrew.setOnClickListener {
+            changeFragment(2,"")
+
+            //Setting the button
+            btnOverview.isEnabled = true
+            btnOverview.isClickable = true
+            btnCastCrew.isEnabled = false
+            btnCastCrew.isClickable = false
+            btnSchedule.isEnabled = true
+            btnSchedule.isClickable = true
+        }
+
+        btnSchedule.setOnClickListener {
+            changeFragment(3,"")
+
+            //Setting the button
+            btnOverview.isEnabled = true
+            btnOverview.isClickable = true
+            btnCastCrew.isEnabled = true
+            btnCastCrew.isClickable = true
+            btnSchedule.isEnabled = false
+            btnSchedule.isClickable = false
+        }
+
+        //Initialize fragment with overview
+        btnOverview.isEnabled = false
+        btnOverview.isClickable = false
+
+
     }
-
 
 
 
@@ -249,6 +268,16 @@ class MovieDetailsActivity : AppCompatActivity() {
                 this.movieGenre += listGenres[i].name
             }
 
+            //set up button fragment
+            setUpButtonFragment(overview)
+
+            //set up overview fragment
+            var fragment: Fragment = OverviewFragment.newInstance(overview)
+            supportFragmentManager.beginTransaction()
+                .add(R.id.myfragmentmovie_detail, fragment)
+                .commit()
+
+
         } else {
             finish()
         }
@@ -261,5 +290,52 @@ class MovieDetailsActivity : AppCompatActivity() {
     private fun showToast(text: String) {
         Toast.makeText(this@MovieDetailsActivity, text, Toast.LENGTH_LONG).show()
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private fun changeFragment(id: Int, overview:String) {
+        val transaction = supportFragmentManager.beginTransaction()
+        var fragment: Fragment? = null
+
+        if (id == 1) {
+            fragment = OverviewFragment.newInstance(overview)
+            transaction
+                .replace(R.id.myfragmentmovie_detail, fragment)
+                .commit()
+        } else if (id == 2) {
+            fragment = CastCrewFragment.newInstance(movieId)
+            transaction
+                .replace(R.id.myfragmentmovie_detail, fragment)
+                .commit()
+        } else if (id == 3) {
+            fragment = ScheduleFragment()
+            transaction
+                .replace(R.id.myfragmentmovie_detail, fragment)
+                .commit()
+        }
+    }
 }
+
+
+
 
