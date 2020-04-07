@@ -11,4 +11,7 @@
     <color name="colorTextLower">#827070</color>
     <color name="colorBackground">#F5F5F5</color>
     <color name="colorListLocation">#FFEBD9</color>
+    <color name="colorYellow">#EDF10A</color>
+    <color name="colorBrownGray">#696363</color>
+    <color name="colorLightGray">#939393</color>
 </resources>
