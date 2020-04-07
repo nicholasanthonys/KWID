@@ -13,7 +13,7 @@ import com.ppb.kwid.R
  * A simple [Fragment] subclass.
  */
 class OverviewFragment : Fragment() {
-    lateinit  var tv_overview : TextView
+    lateinit  var tvOverview : TextView
     companion object {
         fun newInstance(overview: String) : OverviewFragment {
             val fragment = OverviewFragment()
@@ -22,7 +22,6 @@ class OverviewFragment : Fragment() {
             fragment.setArguments(args)
             return fragment
         }
-
     }
 
     override fun onCreateView(
@@ -30,15 +29,14 @@ class OverviewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.fragment_overview, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tv_overview  = view.findViewById(R.id.movie_overview)
-        tv_overview.text = this.arguments?.getString("overview")
+        tvOverview  = view.findViewById(R.id.movie_overview)
+        tvOverview.text = this.arguments?.getString("overview")
     }
 
 

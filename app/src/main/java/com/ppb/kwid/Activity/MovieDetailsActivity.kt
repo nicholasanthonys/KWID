@@ -34,9 +34,6 @@ const val MOVIE_id = "extra_movie_id"
 
 class MovieDetailsActivity : AppCompatActivity() {
 
-    private lateinit var rv_casts: RecyclerView
-    private lateinit var creditAdapter: CreditsAdapter
-
     private lateinit var backdrop: ImageView
     private lateinit var poster: ImageView
     private lateinit var title: TextView
@@ -65,9 +62,8 @@ class MovieDetailsActivity : AppCompatActivity() {
     private var isLiked: Boolean = false
 
     //inisialisasi
-    var fragmentCast = CastCrewFragment.newInstance(1)
-    var fragmentOverview = OverviewFragment.newInstance(overview)
-    var fragmentSchedule = ScheduleFragment.newInstance()
+    private var fragmentOverview = OverviewFragment.newInstance(overview)
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,7 +71,6 @@ class MovieDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_movie_details)
         initUI()
         println( " this movie id adalah  " +  this.overview)
-
 
     }
 
@@ -90,20 +85,12 @@ class MovieDetailsActivity : AppCompatActivity() {
         director = findViewById(R.id.movie_director)
 
         movieId = intent.getLongExtra(MOVIE_id, 0)
-        //fragmentCast = CastCrewFragment.newInstance(movieId)
-
-
-
-
-        //display fragment cast sebagai default
-//        displayFragmentCast()
-
 
 
         btnLiked = findViewById(R.id.btn_liked)
 
         /* MENENTUKAN LIKE */
-        isLiked = dbHelper.isCurrentMovieLiked(userId.toString(), movieId.toString())
+        isLiked = dbHelper.isCurrentMovieLiked(userId, movieId.toString())
         if (isLiked) {
             btnLiked.setBackgroundResource(R.drawable.ant_designheart_filled)
         }
@@ -123,8 +110,6 @@ class MovieDetailsActivity : AppCompatActivity() {
             onSuccess = ::onMovieDetailsFetched,
             onError = ::onError
         )
-
-
 
     }
 
@@ -207,7 +192,6 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     private fun onCreditsFetched(cast: List<Cast>, crews: List<Crew>) {
-        //creditAdapter.updateCasts(cast, crews)
         //update textview crew
         for (i in crews.indices) {
             if (crews[i].job == "Director") {
@@ -248,18 +232,11 @@ class MovieDetailsActivity : AppCompatActivity() {
 //            rating.rating = movDetails.rating
             releaseDate.text = movDetails.releaseDate
 
-
-
-            this.overview = movDetails.overview
-            //masukin overview ke dalam fragment
-            fragmentOverview = OverviewFragment.newInstance(overview)
-            //display fragment overview ??
-
+            overview = movDetails.overview
 
             duration.text = movDetails.duration.toString() + " minutes"
 
             val listGenres: List<Genres> = movDetails.genres
-
             for (i in listGenres.indices) {
                 if (i > 0) {
                     this.movieGenre += ", "
@@ -271,46 +248,15 @@ class MovieDetailsActivity : AppCompatActivity() {
             setUpButtonFragment(overview)
 
             //set up overview fragment
-            var fragment: Fragment = OverviewFragment.newInstance(overview)
+            fragmentOverview = OverviewFragment.newInstance(overview)
             supportFragmentManager.beginTransaction()
-                .add(R.id.myfragmentmovie_detail, fragment)
+                .add(R.id.myfragmentmovie_detail, fragmentOverview)
                 .commit()
-
 
         } else {
             finish()
         }
     }
-
-    private fun onError() {
-        Toast.makeText(this, getString(R.string.error_fetch_movies), Toast.LENGTH_SHORT).show()
-    }
-
-    private fun showToast(text: String) {
-        Toast.makeText(this@MovieDetailsActivity, text, Toast.LENGTH_LONG).show()
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     private fun changeFragment(id: Int, overview:String) {
         val transaction = supportFragmentManager.beginTransaction()
@@ -333,6 +279,15 @@ class MovieDetailsActivity : AppCompatActivity() {
                 .commit()
         }
     }
+
+    private fun onError() {
+        Toast.makeText(this, getString(R.string.error_fetch_movies), Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showToast(text: String) {
+        Toast.makeText(this@MovieDetailsActivity, text, Toast.LENGTH_LONG).show()
+    }
+
 }
 
 

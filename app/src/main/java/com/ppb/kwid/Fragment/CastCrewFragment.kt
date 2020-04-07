@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ppb.kwid.Model.Credits.Cast
@@ -20,7 +18,7 @@ import com.ppb.kwid.R
  * A simple [Fragment] subclass.
  */
 class CastCrewFragment : Fragment() {
-    private lateinit var rv_casts: RecyclerView
+    private lateinit var rvCasts: RecyclerView
     private lateinit var creditAdapter: CreditsAdapter
 
     companion object {
@@ -38,25 +36,23 @@ class CastCrewFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        println("ini dari cast fragment " + requireArguments().getLong("MOVIEID"))
         return inflater.inflate(R.layout.fragment_cast_crew, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        rv_casts = view.findViewById(R.id.cast_and_crew)
-        rv_casts.layoutManager = LinearLayoutManager(
+        rvCasts = view.findViewById(R.id.cast_and_crew)
+        rvCasts.layoutManager = LinearLayoutManager(
             this.context,
             LinearLayoutManager.HORIZONTAL,
             false
         )
         creditAdapter =
             CreditsAdapter(listOf(), listOf())
-        rv_casts.adapter = creditAdapter
+        rvCasts.adapter = creditAdapter
 
-        var movieId = requireArguments().getLong("MOVIEID",0)
-        println("FRAGMENT CAST MOVIE ID " + movieId)
+        val movieId = requireArguments().getLong("MOVIEID",0)
         CreditsRepository.getCasts(
             id = movieId,
             onSuccess = ::onCreditsFetched,
@@ -72,5 +68,4 @@ class CastCrewFragment : Fragment() {
         println("=======================ERRORR==================================")
         println("=========================================================")
     }
-
 }
