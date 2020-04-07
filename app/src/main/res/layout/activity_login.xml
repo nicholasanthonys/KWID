@@ -77,11 +77,24 @@
         android:layout_marginBottom="8dp" />
 
     <Button
+        android:id="@+id/btn_forgot_password"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="55dp"
+        android:background="@color/colorBackground"
+        android:textAllCaps="false"
+        android:text="@string/forgot_password"
+        android:textColor="#000"
+        style="?borderlessButtonStyle"/>
+
+    <Button
         android:id="@+id/btn_register"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="55dp"
         android:background="@color/colorBackground"
         android:textAllCaps="false"

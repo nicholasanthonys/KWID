@@ -9,7 +9,6 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.setPadding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -37,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var btnLogin: Button
     private lateinit var btnRegister: Button
     private lateinit var tvMessage: TextView
+    private lateinit var btnForgot : Button
 
     companion object {
         fun getLaunchIntent(from: Context) = Intent(from, LoginActivity::class.java).apply {
@@ -70,15 +70,23 @@ class LoginActivity : AppCompatActivity() {
         btnLogin = findViewById(R.id.btn_login)
         btnLogin.setOnClickListener { firebaseLogin() }
 
+
         btnRegister = findViewById(R.id.btn_register)
         btnRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
 
+        btnForgot = findViewById(R.id.btn_forgot_password)
+        btnForgot.setOnClickListener {
+            val intent = Intent(this,ForgotPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
         val signIn = findViewById<View>(R.id.signInBtn) as SignInButton
         signIn.setOnClickListener { googlesignIn() }
     }
+
 
     private fun validateForm(email: String, password: String): Boolean {
         if (email.trim().isNotBlank() && password.isNotBlank()) {
@@ -93,6 +101,7 @@ class LoginActivity : AppCompatActivity() {
         val email = etLoginEmail.text.trim().toString()
         val password = etLoginPassword.text.trim().toString()
 
+
         if (validateForm(email, password)) {
             mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(
@@ -101,7 +110,12 @@ class LoginActivity : AppCompatActivity() {
                     if (task.isSuccessful) { // Sign in success, update UI with the signed-in user's information
                         Log.d("sign in success", "signInWithEmail:success")
                         val user = mAuth.currentUser
-                        updateUI(user, "")
+                        if(user!!.isEmailVerified()){
+                            updateUI(user, "")
+                        }
+                        else{
+                            tvMessage.text ="Email is not verified"
+                        }
 
                     } else { // If sign in fails, display a message to the user.
                         Log.w("sign in fail", "signInWithEmail:failure", task.exception)
@@ -144,7 +158,7 @@ class LoginActivity : AppCompatActivity() {
         error: String
     ) {
         tvMessage.text = error
-        if(!error.isEmpty()){
+        if(error.isNotEmpty()){
             tvMessage.setPadding(16,10,16,10)
         }
         
@@ -156,12 +170,16 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        if (intent.getStringExtra(MESSAGE) != "Register Sukses") {
+        if (intent.getStringExtra(MESSAGE) != "Register Sukses, Check your email address to verify") {
             val currentUser = mAuth.currentUser
+            println("Current user null ?")
+            println(currentUser == null)
+            println("dari onsstart, current user ?" + currentUser.toString())
             updateUI(currentUser, "")
         }
         else{
            tvMessage.text = intent.getStringExtra(MESSAGE)
+            tvMessage.setPadding(16,10,16,10)
         }
     }
 

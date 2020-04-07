@@ -40,4 +40,6 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="register">REGISTER</string>
     <string name="placeholder_username">Username</string>
+    <string name="forgot_password">Forgot your password ? Click Here</string>
+    <string name="reset_my_password">Reset My Password</string>
 </resources>

@@ -71,13 +71,25 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?, error: String) {
         if (user != null) {
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.putExtra(MESSAGE,"Register Sukses")
-            startActivity(intent)
+
+            user.sendEmailVerification()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d("email sent?", "Email sent.")
+                        val intent = Intent(this, LoginActivity::class.java)
+                        intent.putExtra(MESSAGE,"Register Sukses, Check your email address to verify")
+                        startActivity(intent)
+                    }
+                    else{
+                        Log.d("email sent?", "Email failed")
+                    }
+                }
+
+
         } else {
             tvError.visibility = View.VISIBLE
             tvError.text = error
-            if(error?.isNotEmpty()){
+            if(error.isNotEmpty()){
                 tvError.setPadding(16,10,16,10)
             }
         }
