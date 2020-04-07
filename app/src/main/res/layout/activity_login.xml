@@ -1,80 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".Activity.LoginActivity">
 
     <TextView
         android:id="@+id/login_error_message"
-        android:layout_width="match_parent"
-        android:layout_height="34dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/error_message"
         android:gravity="center"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@id/et_login_email"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:text="Message" />
 
     <EditText
         android:id="@+id/et_login_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="172dp"
-        android:hint="EMAIL"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edit_text_rounded"
+        android:drawableStart="@drawable/login_email"
+        android:drawablePadding="10dp"
+        android:hint="@string/email_placeholder"
         android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="10dp"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/colorBlack"/>
 
     <EditText
         android:id="@+id/et_login_password"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="240dp"
-        android:hint="PASSWORD"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edit_text_rounded"
+        android:drawableStart="@drawable/login_password"
+        android:drawablePadding="10dp"
+        android:hint="@string/password_placeholder"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="10dp"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/colorBlack"/>
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="320dp"
-        android:text="LOGIN"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_rounded_login"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:text="@string/login"
+        android:textSize="36sp"
+        style="?borderlessButtonStyle"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/or"
+        android:textColor="@color/colorBlack"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/signInBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.576"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.669" />
+        android:layout_marginBottom="8dp" />
 
     <Button
         android:id="@+id/btn_register"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="55dp"
-        android:background="#fff"
-        android:text="Register"
+        android:background="@color/colorBackground"
+        android:textAllCaps="false"
+        android:text="@string/register"
         android:textColor="#000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInBtn" />
+        style="?borderlessButtonStyle"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
