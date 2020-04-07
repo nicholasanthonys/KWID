@@ -14,4 +14,5 @@
     <color name="colorYellow">#EDF10A</color>
     <color name="colorBrownGray">#696363</color>
     <color name="colorLightGray">#939393</color>
+    <color name="hintColor">#83838A</color>
 </resources>

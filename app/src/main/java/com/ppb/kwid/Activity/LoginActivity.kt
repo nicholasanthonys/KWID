@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.setPadding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -143,6 +144,10 @@ class LoginActivity : AppCompatActivity() {
         error: String
     ) {
         tvMessage.text = error
+        if(!error.isEmpty()){
+            tvMessage.setPadding(16,10,16,10)
+        }
+
 
         if (firebaseAccount != null) {
             startActivity(HomeActivity.getLaunchIntent(this))
