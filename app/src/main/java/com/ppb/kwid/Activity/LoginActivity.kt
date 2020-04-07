@@ -147,8 +147,7 @@ class LoginActivity : AppCompatActivity() {
         if(!error.isEmpty()){
             tvMessage.setPadding(16,10,16,10)
         }
-
-
+        
         if (firebaseAccount != null) {
             startActivity(HomeActivity.getLaunchIntent(this))
         }
