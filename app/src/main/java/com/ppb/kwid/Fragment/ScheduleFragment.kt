@@ -12,6 +12,13 @@ import com.ppb.kwid.R
  * A simple [Fragment] subclass.
  */
 class ScheduleFragment : Fragment() {
+    companion object {
+        fun newInstance(): ScheduleFragment {
+            val fragment = ScheduleFragment()
+            return fragment
+        }
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

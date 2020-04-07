@@ -13,30 +13,27 @@
         android:orientation="vertical">
 
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="14dp"
-            >
+            android:paddingBottom="14dp">
 
             <ImageView
                 android:id="@+id/movie_backdrop"
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
-                android:scaleType="fitXY"
                 android:padding="0dp"
-            />
+                android:scaleType="fitXY" />
 
             <ImageView
                 android:id="@+id/btn_back_movie_detail"
-                android:src="@drawable/icbaseline_arrow_back_with_background"
-                android:elevation="100dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:elevation="100dp"
+                android:src="@drawable/icbaseline_arrow_back_with_background" />
 
 
             <androidx.cardview.widget.CardView
@@ -44,11 +41,10 @@
                 android:layout_width="128dp"
                 android:layout_height="172dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginTop="220dp"
+                android:layout_marginEnd="8dp"
                 app:cardCornerRadius="4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                >
+                app:layout_constraintStart_toStartOf="parent">
 
                 <ImageView
                     android:id="@+id/movie_poster"
@@ -74,129 +70,156 @@
                 android:id="@+id/btn_liked"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="300dp"
-                android:background="@drawable/ant_designheart_outlined"
                 android:layout_alignParentEnd="true"
+                android:layout_marginTop="300dp"
                 android:layout_marginEnd="20dp"
-                />
+                android:background="@drawable/ant_designheart_outlined" />
 
             <TextView
                 android:id="@+id/title_movie_genre"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:textColor="#757575"
-                android:textSize="12sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/movie_poster_card"
                 android:layout_below="@id/movie_title"
-                android:text="Genre"/>
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/movie_poster_card"
+                android:text="Genre"
+                android:textColor="#757575"
+                android:textSize="12sp" />
 
 
             <TextView
                 android:id="@+id/movie_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#757575"
-                android:textSize="12sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="30dp"
-                android:layout_toEndOf="@id/title_movie_genre"
                 android:layout_below="@id/movie_title"
-                android:text="Action, Horror"/>
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/title_movie_genre"
+                android:text="Action, Horror"
+                android:textColor="#757575"
+                android:textSize="12sp" />
 
 
             <TextView
                 android:id="@+id/title_movie_duration"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:textColor="#757575"
-                android:textSize="12sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/movie_poster_card"
                 android:layout_below="@id/title_movie_genre"
-                android:text="Durasi"/>
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/movie_poster_card"
+                android:text="Durasi"
+                android:textColor="#757575"
+                android:textSize="12sp" />
 
 
             <TextView
                 android:id="@+id/movie_duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#757575"
-                android:textSize="12sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="30dp"
-                android:layout_toEndOf="@id/title_movie_release_date"
                 android:layout_below="@id/movie_genre"
-                android:text="123 Minutes"/>
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/title_movie_release_date"
+                android:text="123 Minutes"
+                android:textColor="#757575"
+                android:textSize="12sp" />
 
 
             <TextView
                 android:id="@+id/title_movie_director"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:textColor="#757575"
-                android:textSize="12sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/movie_poster_card"
                 android:layout_below="@id/title_movie_duration"
-                android:text="Director"/>
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/movie_poster_card"
+                android:text="Director"
+                android:textColor="#757575"
+                android:textSize="12sp" />
 
 
             <TextView
                 android:id="@+id/movie_director"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#757575"
-                android:textSize="12sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="30dp"
-                android:layout_toEndOf="@id/title_movie_director"
                 android:layout_below="@id/movie_duration"
-                android:text="Anthony Russo, Joe Russo"/>
-
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/title_movie_director"
+                android:text="Anthony Russo, Joe Russo"
+                android:textColor="#757575"
+                android:textSize="12sp" />
 
 
             <TextView
                 android:id="@+id/title_movie_release_date"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:textColor="#757575"
-                android:textSize="12sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@id/movie_poster_card"
                 android:layout_below="@id/title_movie_director"
-                android:text="Release"/>
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/movie_poster_card"
+                android:text="Release"
+                android:textColor="#757575"
+                android:textSize="12sp" />
 
 
             <TextView
                 android:id="@+id/movie_release_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#757575"
-                android:textSize="12sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="30dp"
-                android:layout_toEndOf="@id/title_movie_release_date"
                 android:layout_below="@id/movie_director"
-                android:text="2019-09-17"/>
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/title_movie_release_date"
+                android:text="2019-09-17"
+                android:textColor="#757575"
+                android:textSize="12sp" />
 
 
-<!--            <RatingBar-->
-<!--                android:id="@+id/movie_rating"-->
-<!--                style="@style/Widget.AppCompat.RatingBar.Small"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginStart="39dp"-->
-<!--                android:layout_toEndOf="@id/movie_poster_card"-->
-<!--                android:layout_below="@id/movie_release_date"-->
-<!--                />-->
+            <!--            <RatingBar-->
+            <!--                android:id="@+id/movie_rating"-->
+            <!--                style="@style/Widget.AppCompat.RatingBar.Small"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="8dp"-->
+            <!--                android:layout_marginStart="39dp"-->
+            <!--                android:layout_toEndOf="@id/movie_poster_card"-->
+            <!--                android:layout_below="@id/movie_release_date"-->
+            <!--                />-->
 
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/tv_cast_and_crew"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:layout_marginEnd="16dp"-->
+            <!--                android:text="Cast and Crew"-->
+            <!--                />-->
+
+            <!--            <androidx.recyclerview.widget.RecyclerView-->
+            <!--                android:id="@+id/cast_and_crew"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:clipToPadding="false"-->
+            <!--                android:paddingStart="16dp"-->
+            <!--                android:paddingEnd="16dp"-->
+            <!--                tools:layout_editor_absoluteX="0dp"-->
+            <!--                tools:layout_editor_absoluteY="475dp" />-->
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -207,77 +230,56 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="3">
-
-                <Button
-                    android:id="@+id/btn_overview"
-                    android:text="Overview"
-                    android:enabled="false"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="14sp"
-                    android:textAllCaps="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_movie_details" />
+                android:weightSum="2">
 
                 <Button
                     android:id="@+id/btn_cast_and_crew"
-                    android:text="Cast  Crew"
-                    android:enabled="true"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="14sp"
-                    android:textAllCaps="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/button_movie_details"
+                    android:enabled="false"
+                    android:text="Cast  Crew"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+
+
+                <Button
+                    android:id="@+id/btn_overview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:enabled="true"
+                    android:text="Overview"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp"
                     android:background="@drawable/button_movie_details" />
 
                 <Button
                     android:id="@+id/btn_jadwal"
-                    android:text="Jadwal"
-                    android:enabled="true"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="14sp"
-                    android:textAllCaps="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/button_movie_details" />
+                    android:background="@drawable/button_movie_details"
+                    android:enabled="true"
+                    android:text="Jadwal"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="14sp" />
+
+
             </LinearLayout>
 
-            <fragment
-                android:id="@+id/fragment_movie_detail"
+            <FrameLayout
+                android:id="@+id/myfragmentmovie_detail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@color/colorBlack" />
+
         </LinearLayout>
 
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="vertical">-->
 
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/tv_cast_and_crew"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_marginStart="16dp"-->
-        <!--                android:layout_marginTop="16dp"-->
-        <!--                android:layout_marginEnd="16dp"-->
-        <!--                android:text="Cast and Crew"-->
-        <!--               />-->
-
-        <!--            <androidx.recyclerview.widget.RecyclerView-->
-        <!--                android:id="@+id/cast_and_crew"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:clipToPadding="false"-->
-        <!--                android:paddingStart="16dp"-->
-        <!--                android:paddingEnd="16dp"-->
-        <!--                tools:layout_editor_absoluteX="0dp"-->
-        <!--                tools:layout_editor_absoluteY="475dp" />-->
-
-        <!--        </LinearLayout>-->
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
