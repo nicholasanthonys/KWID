@@ -36,5 +36,8 @@
     <string name="email_placeholder">Email</string>
     <string name="login">Login</string>
     <string name="or">OR</string>
-    <string name="register">Don\'t have an account ? REGISTER NOW</string>
+    <string name="dont_have_account">Don\'t have an account ? REGISTER NOW</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">REGISTER</string>
+    <string name="placeholder_username">Username</string>
 </resources>

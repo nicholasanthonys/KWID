@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
     tools:context=".Activity.RegisterActivity">
+
+
 
     <TextView
         android:id="@+id/error_message"
@@ -18,40 +23,74 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/et_register_email"/>
 
-
-
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edit_text_rounded"
+        android:drawableStart="@drawable/login_email"
+        android:drawablePadding="10dp"
+        android:hint="@string/placeholder_username"
+        android:inputType="textFilter"
+        android:padding="10dp"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/colorBlack"/>
 
     <EditText
         android:id="@+id/et_register_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="280dp"
-        android:hint="EMAIL"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/edit_text_rounded"
+        android:drawableStart="@drawable/login_email"
+        android:drawablePadding="10dp"
+        android:hint="@string/email_placeholder"
         android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="10dp"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/colorBlack"/>
 
     <EditText
         android:id="@+id/et_register_password"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="356dp"
-        android:hint="PASSWORD"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edit_text_rounded"
+        android:drawableStart="@drawable/login_password"
+        android:drawablePadding="10dp"
+        android:hint="@string/password_placeholder"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="10dp"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/colorBlack"/>
+
+    <EditText
+        android:id="@+id/et_confirm_password"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edit_text_rounded"
+        android:drawableStart="@drawable/login_password"
+        android:drawablePadding="10dp"
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/colorBlack"/>
 
     <Button
         android:id="@+id/btn_register_submit"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="436dp"
-        android:text="Register"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_rounded_login"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:text="@string/register"
+        android:textSize="36sp"
+        style="?borderlessButtonStyle" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
