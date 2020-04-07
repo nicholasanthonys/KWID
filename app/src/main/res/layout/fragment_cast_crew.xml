@@ -15,5 +15,4 @@
         android:paddingEnd="16dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="475dp" />
-
 </FrameLayout>
