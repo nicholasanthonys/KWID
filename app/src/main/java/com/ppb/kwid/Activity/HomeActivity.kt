@@ -17,7 +17,9 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.ppb.kwid.Model.Movie.*
+import com.ppb.kwid.Model.Movie.Movie
+import com.ppb.kwid.Model.Movie.MoviesAdapter
+import com.ppb.kwid.Model.Movie.MoviesRepository
 import com.ppb.kwid.Model.MovieDetail.CurrentlyShowingAdapter
 import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
 import com.ppb.kwid.Model.MovieDetail.MovieDetailsRepository
@@ -34,6 +36,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var signOut: Button
     private lateinit var btnProfile: Button
     private lateinit var btnRefresh: Button
+    private lateinit var btnCity: Button
 
     private lateinit var popularMovies: RecyclerView
     private lateinit var popularMoviesAdapter: MoviesAdapter
@@ -74,6 +77,12 @@ class HomeActivity : AppCompatActivity() {
     private fun initUI() {
         signOut = findViewById<View>(R.id.sign_out_button) as Button
         signOut.setOnClickListener { signOut() }
+
+        btnCity = findViewById(R.id.btn_movieshow_city)
+        btnCity.setOnClickListener {
+            val intent = Intent(this, LocationActivity::class.java)
+            startActivity(intent)
+        }
 
         btnProfile = findViewById(R.id.btn_profile)
         btnProfile.setOnClickListener {
@@ -130,9 +139,11 @@ class HomeActivity : AppCompatActivity() {
             refresh()
         }
 
+        getCurrentlyShowingCity("Bandung")
         getCurrentlyShowing()
         getPopularMovies()
         getTopRatedMovies()
+
     }
 
     private fun refresh() {
@@ -246,6 +257,20 @@ class HomeActivity : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d("DB Read Gagal", "Error getting documents: ", exception)
             }
+    }
+
+
+    private fun getCurrentlyShowingCity(city: String) {
+
+        println("Menjalankan fungsi city")
+        db.collection("currentlyShowingCity").document(city)
+            .get().addOnCompleteListener { task ->
+                var document = task.result
+                var listMovieID = document?.get("movie_id")
+                println("List MOvie ID " + listMovieID)
+            }
+
+
     }
 
 
