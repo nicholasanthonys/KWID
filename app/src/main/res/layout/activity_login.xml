@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:orientation="vertical"
     tools:context=".Activity.LoginActivity">
@@ -11,142 +11,140 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="540dp"
-        android:layout_marginTop="-100dp"
-        android:layout_marginEnd="-50dp"
-        android:layout_height="300dp"
-        app:cardCornerRadius="100dp"
-        app:cardBackgroundColor="@color/colorDarkBlue">
+        <androidx.cardview.widget.CardView
+            android:layout_width="540dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="-100dp"
+            android:layout_marginEnd="-50dp"
+            app:cardBackgroundColor="@color/colorDarkBlue"
+            app:cardCornerRadius="100dp">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_marginStart="120dp"
-            android:src="@drawable/logo"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="120dp"
+                android:layout_marginTop="80dp"
+                android:src="@drawable/logo" />
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login"
-            android:textSize="36sp"
-            android:textColor="@color/colorBlack"/>
+            android:textColor="@color/colorBlack"
+            android:textSize="36sp" />
 
         <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorWhite"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/error_message"
-        android:gravity="center"
-        tools:text="Message" />
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/error_message"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            tools:text="Message" />
 
-    <EditText
-        android:id="@+id/et_login_email"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_rounded"
-        android:drawableStart="@drawable/login_email"
-        android:drawablePadding="10dp"
-        android:hint="@string/email_placeholder"
-        android:inputType="textEmailAddress"
-        android:padding="10dp"
-        android:textColorHint="@color/hintColor"
-        android:textColor="@color/colorBlack"/>
+        <EditText
+            android:id="@+id/et_login_email"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_rounded"
+            android:drawableStart="@drawable/login_email"
+            android:drawablePadding="10dp"
+            android:hint="@string/email_placeholder"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/hintColor" />
 
-    <EditText
-        android:id="@+id/et_login_password"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/edit_text_rounded"
-        android:drawableStart="@drawable/login_password"
-        android:drawablePadding="10dp"
-        android:hint="@string/password_placeholder"
-        android:inputType="textPassword"
-        android:padding="10dp"
-        android:textColorHint="@color/hintColor"
-        android:textColor="@color/colorBlack"/>
+        <EditText
+            android:id="@+id/et_login_password"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edit_text_rounded"
+            android:drawableStart="@drawable/login_password"
+            android:drawablePadding="10dp"
+            android:hint="@string/password_placeholder"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/hintColor" />
 
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button_rounded_login"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp"
-        android:text="@string/login"
-        android:textSize="20sp"
-        style="?borderlessButtonStyle" />
+        <Button
+            android:id="@+id/btn_login"
+            style="?borderlessButtonStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_rounded_login"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:text="@string/login"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/or"
-        android:textColor="@color/colorBlack"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/or"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/signInGoogle"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_rounded_google"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:drawablePadding="-20dp"
-        android:textAllCaps="false"
-        android:text="@string/sign_in_with_google"
-        android:textSize="20sp"
-        android:drawableStart="@drawable/google_logo_drawable"
-        style="?borderlessButtonStyle" />
-
-
+        <Button
+            android:id="@+id/signInGoogle"
+            style="?borderlessButtonStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_rounded_google"
+            android:drawableStart="@drawable/google_logo_drawable"
+            android:drawablePadding="-20dp"
+            android:paddingStart="20dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="6dp"
+            android:text="@string/sign_in_with_google"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
 
 
-    <!--    <com.google.android.gms.common.SignInButton-->
-<!--        android:id="@+id/signInBtn"-->
-<!--        android:layout_width="300dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="8dp" />-->
+        <!--    <com.google.android.gms.common.SignInButton-->
+        <!--        android:id="@+id/signInBtn"-->
+        <!--        android:layout_width="300dp"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginBottom="8dp" />-->
 
-    <Button
-        android:id="@+id/btn_forgot_password"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="55dp"
-        android:background="@color/colorBackground"
-        android:textAllCaps="false"
-        android:text="@string/forgot_password"
-        android:textColor="#000"
-        style="?borderlessButtonStyle"/>
+        <Button
+            android:id="@+id/btn_forgot_password"
+            style="?borderlessButtonStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginEnd="55dp"
+            android:background="@color/colorBackground"
+            android:text="@string/forgot_password"
+            android:textAllCaps="false"
+            android:textColor="#000" />
 
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="55dp"
-        android:background="@color/colorBackground"
-        android:textAllCaps="false"
-        android:text="@string/dont_have_account"
-        android:textColor="#000"
-        style="?borderlessButtonStyle"/>
+        <Button
+            android:id="@+id/btn_register"
+            style="?borderlessButtonStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="55dp"
+            android:background="@color/colorBackground"
+            android:text="@string/dont_have_account"
+            android:textAllCaps="false"
+            android:textColor="#000" />
 
     </LinearLayout>
 
