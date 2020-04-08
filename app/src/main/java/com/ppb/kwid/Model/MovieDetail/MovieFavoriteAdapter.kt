@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ppb.kwid.Model.Credits.Cast
@@ -13,7 +13,6 @@ import com.ppb.kwid.Model.Credits.CreditsRepository
 import com.ppb.kwid.Model.Credits.Crew
 import com.ppb.kwid.Model.Genre.Genres
 import com.ppb.kwid.R
-import org.w3c.dom.Text
 
 class MovieFavoriteAdapter(
     private var movies: MutableList<GetMovieDetailsResponse>,
@@ -48,6 +47,7 @@ class MovieFavoriteAdapter(
         private val tvGenre: TextView = itemView.findViewById(R.id.txt_genre)
         private var tvDirector: TextView = itemView.findViewById(R.id.txt_director)
         private var tvReleaseDate: TextView = itemView.findViewById(R.id.txt_release_date)
+        private val ratingBar: RatingBar = itemView.findViewById(R.id.fav_movie_rating)
         var movieGenre = ""
         var movieDirector = ""
 
@@ -68,6 +68,7 @@ class MovieFavoriteAdapter(
             tvGenre.text = movieGenre
             tvMovieName.text = movie.title
             tvReleaseDate.text = movie.releaseDate
+            ratingBar.rating = (movie.rating / 2)
             itemView.setOnClickListener { onMovieClick.invoke(movie) }
 
 
