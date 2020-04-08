@@ -64,4 +64,13 @@
     <string name="credit_card">Credit Card</string>
     <string name="navigate_next">Navigate Next</string>
     <string name="transfer_bank">Transfer Bank</string>
+    <string name="purchase_confirmation">Purchase Confirmation</string>
+    <string name="cinema_name">Cinema Name</string>
+    <string name="seat">Tempat Duduk</string>
+    <string name="sum_of_ticket_price">Total Harga Tiket</string>
+    <string name="time">Jam</string>
+    <string name="sum_of_seat">Total Tempat Duduk</string>
+    <string name="service_fee">Biaya Layanan</string>
+    <string name="total_payment">Total Bayar</string>
+    <string name="next">Lanjutkan</string>
 </resources>
