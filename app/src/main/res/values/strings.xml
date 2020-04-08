@@ -59,4 +59,9 @@
     <string name="movie_name">Movie Name</string>
     <string name="location">Town or Region</string>
     <string name="rounded_star_image">Rounded Star Image</string>
+    <string name="top_up">Top Up</string>
+    <string name="choose_top_up_method">Choose Top Up Method</string>
+    <string name="credit_card">Credit Card</string>
+    <string name="navigate_next">Navigate Next</string>
+    <string name="transfer_bank">Transfer Bank</string>
 </resources>

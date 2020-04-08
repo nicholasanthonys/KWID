@@ -1,7 +1,8 @@
-package com.ppb.kwid
+package com.ppb.kwid.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ppb.kwid.R
 
 class NotificationActivity : AppCompatActivity() {
 

@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Activity.TransactionHistoryActivity"></activity>
-        <activity android:name=".NotificationActivity" />
+        <activity android:name=".Activity.TopUpActivity"></activity>
+        <activity android:name=".Activity.TransactionHistoryActivity" />
+        <activity android:name=".Activity.NotificationActivity" />
         <activity android:name=".Activity.ReviewActivity" />
         <activity android:name=".Activity.ForgotPasswordActivity" />
         <activity android:name=".Activity.LocationActivity" />
