@@ -73,4 +73,5 @@
     <string name="service_fee">Biaya Layanan</string>
     <string name="total_payment">Total Bayar</string>
     <string name="next">Lanjutkan</string>
+    <string name="city">City</string>
 </resources>
