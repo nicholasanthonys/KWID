@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var btnLogin: Button
     private lateinit var btnRegister: Button
     private lateinit var tvMessage: TextView
-    private lateinit var btnForgot : Button
+    private lateinit var btnForgot: Button
 
     companion object {
         fun getLaunchIntent(from: Context) = Intent(from, LoginActivity::class.java).apply {
@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun initUI() {
 
-        tvMessage = findViewById(R.id.login_error_message)
+        tvMessage = findViewById(R.id.message)
 
         etLoginEmail = findViewById(R.id.et_login_email)
         etLoginPassword = findViewById(R.id.et_login_password)
@@ -79,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
 
         btnForgot = findViewById(R.id.btn_forgot_password)
         btnForgot.setOnClickListener {
-            val intent = Intent(this,ForgotPasswordActivity::class.java)
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
         }
 
@@ -110,11 +110,10 @@ class LoginActivity : AppCompatActivity() {
                     if (task.isSuccessful) { // Sign in success, update UI with the signed-in user's information
                         Log.d("sign in success", "signInWithEmail:success")
                         val user = mAuth.currentUser
-                        if(user!!.isEmailVerified()){
+                        if (user!!.isEmailVerified) {
                             updateUI(user, "")
-                        }
-                        else{
-                            tvMessage.text ="Email is not verified"
+                        } else {
+                            tvMessage.text = "Email is not verified"
                         }
 
                     } else { // If sign in fails, display a message to the user.
@@ -155,13 +154,14 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUI(
         firebaseAccount: FirebaseUser?,
-        error: String
+        message: String
     ) {
-        tvMessage.text = error
-        if(error.isNotEmpty()){
-            tvMessage.setPadding(16,10,16,10)
+
+        if (message.isNotEmpty()) {
+            tvMessage.setPadding(16, 10, 16, 10)
+            tvMessage.text = message
         }
-        
+
         if (firebaseAccount != null) {
             startActivity(HomeActivity.getLaunchIntent(this))
         }
@@ -170,17 +170,20 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        if (intent.getStringExtra(MESSAGE) != "Register Sukses, Check your email address to verify") {
+        var message  = intent.getStringExtra(MESSAGE)
+
+        if (message == null) {
             val currentUser = mAuth.currentUser
-            println("Current user null ?")
-            println(currentUser == null)
-            println("dari onsstart, current user ?" + currentUser.toString())
-            updateUI(currentUser, "")
-        }
-        else{
-           tvMessage.text = intent.getStringExtra(MESSAGE)
+            println("dari onstart, current user ?" + currentUser?.email)
+            if(currentUser != null){
+                if(currentUser.isEmailVerified()){
+                    updateUI(currentUser, "")
+                }
+            }
+        }else if ( message == resources.getString(R.string.email_sent_forgot_password) ||message == resources.getString(R.string.register_success)) {
             tvMessage.setPadding(16,10,16,10)
         }
+        tvMessage.text = message
     }
 
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
