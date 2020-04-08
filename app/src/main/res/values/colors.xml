@@ -17,4 +17,6 @@
     <color name="hintColor">#83838A</color>
     <color name="starColorActive">#f8c100</color>
     <color name="starColorInactive">#595959</color>
+    <color name="colorLightBrown">#A49999</color>
+    <color name="colorOrange">#FFA41B</color>
 </resources>

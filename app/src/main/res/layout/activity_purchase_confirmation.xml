@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    tools:context=".Activity.PurchaseConfirmationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorTopBar">
+
+        <ImageView
+            android:id="@+id/btn_back_purchase_confirmation"
+            android:src="@drawable/icbaseline_arrow_back"
+            android:contentDescription="@string/back_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:text="@string/purchase_confirmation"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:background="@drawable/rounded_bottom_rect_shape_dark_blue">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="20dp">
+
+            <ImageView
+                android:id="@+id/img_movie_poster"
+                android:contentDescription="@string/movie_poster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_marginStart="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="@string/movie_title"
+                android:textSize="14sp"
+                android:textColor="@color/colorLightBrown"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_movie_title"
+                android:text="@string/movie_title"
+                android:textSize="14sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="@string/cinema_name"
+                android:textSize="14sp"
+                android:textColor="@color/colorLightBrown"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txt_cinema_name"
+                android:text="@string/cinema_name"
+                android:textSize="14sp"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@drawable/rect_right_border_white">
+
+                <TextView
+                    android:text="@string/schedule"
+                    android:textSize="12sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorLightBrown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/txt_schedule"
+                    android:text="@string/schedule"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@string/seat"
+                    android:textSize="12sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorLightBrown"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/txt_seat"
+                    android:text="@string/seat"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@string/sum_of_ticket_price"
+                    android:textSize="12sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorLightBrown"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/sum_of_ticket_price"
+                    android:text="@string/sum_of_ticket_price"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@color/colorWhite">
+
+                <TextView
+                    android:text="@string/time"
+                    android:textSize="12sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorLightBrown"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/txt_time"
+                    android:text="@string/time"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@string/sum_of_seat"
+                    android:textSize="12sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorLightBrown"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/sum_of_seat"
+                    android:text="@string/sum_of_seat"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="@string/service_fee"
+                    android:textSize="12sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorLightBrown"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/service_fee"
+                    android:text="@string/service_fee"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:background="@drawable/rectangle_white_color_top_bottom_border">
+
+            <TextView
+                android:text="@string/total_payment"
+                android:textSize="16sp"
+                android:textAllCaps="true"
+                android:textColor="@color/colorLightBrown"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/total_payment"
+                android:text="@string/total_payment"
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_purchase_confirmation"
+            android:text="@string/next"
+            android:textColor="@color/colorOrange"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_purchase_confirmation" />
+    </LinearLayout>
+</LinearLayout>
