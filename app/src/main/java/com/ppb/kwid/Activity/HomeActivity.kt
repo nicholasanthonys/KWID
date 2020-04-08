@@ -137,13 +137,15 @@ class HomeActivity : AppCompatActivity() {
 
     private fun refresh() {
         //refresh currently showing
-        currentlyShowing.layoutManager = currentlyShowingLayoutMgr
-        currentlyShowingAdapter =
-            CurrentlyShowingAdapter(mutableListOf()) { movie ->
-                showMovieDetails(movie)
-            }
-        currentlyShowing.adapter = currentlyShowingAdapter
+//        currentlyShowing.layoutManager = currentlyShowingLayoutMgr
+//        currentlyShowingAdapter =
+//            CurrentlyShowingAdapter(mutableListOf()) { movie ->
+//                showMovieDetails(movie)
+//            }
+//        currentlyShowing.adapter = currentlyShowingAdapter
         getCurrentlyShowing()
+        getPopularMovies()
+        getTopRatedMovies()
 
     }
 
