@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Activity.ReviewActivity"></activity>
+        <activity android:name=".NotificationActivity"></activity>
+        <activity android:name=".Activity.ReviewActivity" />
         <activity android:name=".Activity.ForgotPasswordActivity" />
         <activity android:name=".Activity.LocationActivity" />
         <activity android:name=".Activity.RegisterActivity" />
