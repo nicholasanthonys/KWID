@@ -2,13 +2,9 @@ package com.ppb.kwid.Activity
 
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -19,7 +15,6 @@ import com.ppb.kwid.Fragment.CastCrewFragment
 import com.ppb.kwid.Fragment.OverviewFragment
 import com.ppb.kwid.Fragment.ScheduleFragment
 import com.ppb.kwid.Model.Credits.Cast
-import com.ppb.kwid.Model.Credits.CreditsAdapter
 import com.ppb.kwid.Model.Credits.CreditsRepository
 import com.ppb.kwid.Model.Credits.Crew
 import com.ppb.kwid.Model.Genre.Genres
@@ -37,7 +32,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var backdrop: ImageView
     private lateinit var poster: ImageView
     private lateinit var title: TextView
-    //    private lateinit var rating: RatingBar
+    private lateinit var rating: RatingBar
     private lateinit var releaseDate: TextView
     private lateinit var duration: TextView
     private lateinit var director: TextView
@@ -65,12 +60,11 @@ class MovieDetailsActivity : AppCompatActivity() {
     private var fragmentOverview = OverviewFragment.newInstance(overview)
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
         initUI()
-        println( " this movie id adalah  " +  this.overview)
+        println(" this movie id adalah  " + this.overview)
 
     }
 
@@ -78,7 +72,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         backdrop = findViewById(R.id.movie_backdrop)
         poster = findViewById(R.id.movie_poster)
         title = findViewById(R.id.movie_title)
-//        rating = findViewById(R.id.movie_rating)
+        rating = findViewById(R.id.rating_mov_detail)
         releaseDate = findViewById(R.id.movie_release_date)
         //overview = findViewById(R.id.movie_overview) //di fragment overview
         duration = findViewById(R.id.movie_duration)
@@ -113,14 +107,14 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     }
 
-    private fun setUpButtonFragment(overview: String){
+    private fun setUpButtonFragment(overview: String) {
         //Button to change fragment
         btnOverview = findViewById(R.id.btn_overview)
         btnCastCrew = findViewById(R.id.btn_cast_and_crew)
         btnSchedule = findViewById(R.id.btn_schedule)
 
         btnOverview.setOnClickListener {
-            changeFragment(1,overview)
+            changeFragment(1, overview)
 
             //Setting the button
             btnOverview.isEnabled = false
@@ -132,7 +126,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
 
         btnCastCrew.setOnClickListener {
-            changeFragment(2,"")
+            changeFragment(2, "")
 
             //Setting the button
             btnOverview.isEnabled = true
@@ -144,7 +138,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
 
         btnSchedule.setOnClickListener {
-            changeFragment(3,"")
+            changeFragment(3, "")
 
             //Setting the button
             btnOverview.isEnabled = true
@@ -161,8 +155,6 @@ class MovieDetailsActivity : AppCompatActivity() {
 
 
     }
-
-
 
 
     private fun handleClick() {
@@ -229,7 +221,7 @@ class MovieDetailsActivity : AppCompatActivity() {
             movieName = movDetails.title
 
             title.text = movieName
-//            rating.rating = movDetails.rating
+            rating.rating = movDetails.rating / 2
             releaseDate.text = movDetails.releaseDate
 
             overview = movDetails.overview
@@ -258,7 +250,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeFragment(id: Int, overview:String) {
+    private fun changeFragment(id: Int, overview: String) {
         val transaction = supportFragmentManager.beginTransaction()
         var fragment: Fragment? = null
 
