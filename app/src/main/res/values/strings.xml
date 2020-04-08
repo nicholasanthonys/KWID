@@ -42,4 +42,6 @@
     <string name="placeholder_username">Username</string>
     <string name="forgot_password">Forgot your password ? Click Here</string>
     <string name="reset_my_password">Reset My Password</string>
+    <string name="email_sent_forgot_password">"Email sent. Check your email to reset password"</string>
+    <string name="register_success">Register Sukses, Check your email address to verify</string>
 </resources>
