@@ -7,8 +7,6 @@
     <string name="highest_rated_movies">Highest rated movies of all time</string>
     <string name="upcoming">Upcoming</string>
     <string name="stay_updated">Stay updated with the latest movies</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="now_playing">Now Playing</string>
     <string name="these_movies_are_currently_playing_in_all_cinemas">These movies are currently playing in all cinemas</string>
@@ -45,4 +43,20 @@
     <string name="email_sent_forgot_password">"Email sent. Check your email to reset password"</string>
     <string name="register_success">Register Sukses, Check your email address to verify</string>
     <string name="sign_in_with_google">Sign in</string>
+    <string name="date_and_time">Date and Time</string>
+    <string name="sum_of_tickets">Sum of tickets</string>
+    <string name="ticket_image">Ticket Image</string>
+    <string name="cinema_location">Cinema Location</string>
+    <string name="location_image">Location Image</string>
+    <string name="star_circle_image">Star Circle Image</string>
+    <string name="price">Price</string>
+    <string name="cinema_type">Cinema Type</string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="back_button">Back Button</string>
+    <string name="notification_image">Notification Image</string>
+    <string name="notification_header">Notification Header</string>
+    <string name="notification_body">Notification Body</string>
+    <string name="movie_name">Movie Name</string>
+    <string name="location">Town or Region</string>
+    <string name="rounded_star_image">Rounded Star Image</string>
 </resources>

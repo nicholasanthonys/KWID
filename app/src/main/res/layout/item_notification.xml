@@ -12,6 +12,7 @@
     <ImageView
         android:id="@+id/img_notification"
         android:src="@drawable/icsharp_notifications"
+        android:contentDescription="@string/notification_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -29,7 +30,7 @@
 
             <TextView
                 android:id="@+id/txt_notification_header"
-                android:text="Dapatkan infromasi promo terkini dan transaksi anda lewat notifikasi"
+                android:text="@string/notification_header"
                 android:textSize="12sp"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"
@@ -39,9 +40,9 @@
 
             <TextView
                 android:id="@+id/txt_notification_date"
-                android:text="20 Mar 2020"
+                android:text="@string/date_and_time"
                 android:textSize="12sp"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/colorTextLower"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3" />
@@ -49,9 +50,9 @@
 
         <TextView
             android:id="@+id/txt_notification_body"
-            android:text="Dapatkan infromasi promo terkini dan transaksi anda lewat notifikasi"
+            android:text="@string/notification_body"
             android:textSize="12sp"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/colorTextLower"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

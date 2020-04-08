@@ -15,19 +15,20 @@
         <ImageView
             android:id="@+id/img_favorite_movie_poster"
             android:src="@drawable/digimon_adventure_last_evolution_kizuna"
+            android:contentDescription="@string/movie_poster"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:layout_marginLeft="120dp"
+        android:layout_marginStart="120dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/txt_favorite_movie_name"
-            android:text="Digimon Advanture: Last Evolution Kizuna"
+            android:text="@string/movie_name"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -43,7 +44,8 @@
             <ImageView
                 android:id="@+id/img_star_1"
                 android:src="@drawable/icround_star"
-                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/rounded_star_image"
+                android:layout_marginStart="10dp"
                 android:elevation="2dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -51,7 +53,8 @@
             <ImageView
                 android:id="@+id/img_star_2"
                 android:src="@drawable/icround_star"
-                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/rounded_star_image"
+                android:layout_marginStart="10dp"
                 android:elevation="2dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -59,7 +62,8 @@
             <ImageView
                 android:id="@+id/img_star_3"
                 android:src="@drawable/icround_star"
-                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/rounded_star_image"
+                android:layout_marginStart="10dp"
                 android:elevation="2dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -67,7 +71,8 @@
             <ImageView
                 android:id="@+id/img_star_4"
                 android:src="@drawable/icround_star"
-                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/rounded_star_image"
+                android:layout_marginStart="10dp"
                 android:elevation="2dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -75,7 +80,8 @@
             <ImageView
                 android:id="@+id/img_star_5"
                 android:src="@drawable/icround_star"
-                android:layout_marginLeft="10dp"
+                android:contentDescription="@string/rounded_star_image"
+                android:layout_marginStart="10dp"
                 android:elevation="2dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -91,20 +97,20 @@
                 android:weightSum="4">
 
                 <TextView
-                    android:text="Genre"
+                    android:text="@string/genre"
                     android:textColor="@color/colorTextLower"
                     android:textSize="12sp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/txt_genre"
-                    android:text="Genre"
+                    android:text="@string/genre_value"
                     android:textColor="@color/colorBlack"
                     android:textSize="12sp"
                     android:ellipsize="end"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3" />
             </TableRow>
@@ -114,43 +120,20 @@
                 android:weightSum="4">
 
                 <TextView
-                    android:text="Director"
+                    android:text="@string/director"
                     android:textColor="@color/colorTextLower"
                     android:textSize="12sp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/txt_director"
-                    android:text="Director"
+                    android:text="@string/director_value"
                     android:textColor="@color/colorBlack"
                     android:textSize="12sp"
                     android:ellipsize="end"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3" />
-            </TableRow>
-
-            <TableRow
-                android:layout_marginTop="5dp"
-                android:weightSum="4">
-
-                <TextView
-                    android:text="Rating"
-                    android:textColor="@color/colorTextLower"
-                    android:textSize="12sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/txt_rating"
-                    android:text="Rating"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="12sp"
-                    android:ellipsize="end"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3" />
             </TableRow>

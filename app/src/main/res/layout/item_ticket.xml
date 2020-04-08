@@ -7,25 +7,26 @@
     android:orientation="horizontal"
     android:padding="15dp"
     android:layout_marginTop="5dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginLeft="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginStart="10dp"
     android:layout_marginBottom="5dp"
     android:background="@drawable/rounded_rect_shape_white">
 
     <ImageView
         android:src="@drawable/elstar_alt"
+        android:contentDescription="@string/star_circle_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <LinearLayout
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/txt_mall"
-            android:text="Aeon Mall JGC CGV"
+            android:text="@string/cinema_location"
             android:textColor="@color/colorBlack"
             android:textStyle="bold"
             android:textSize="16sp"
@@ -40,7 +41,7 @@
 
             <TextView
                 android:id="@+id/txt_type"
-                android:text="Regular 2D"
+                android:text="@string/cinema_type"
                 android:textColor="@color/colorBlack"
                 android:textSize="16sp"
                 android:layout_marginTop="5dp"
@@ -50,12 +51,12 @@
 
             <TextView
                 android:id="@+id/txt_price"
-                android:text="Rp. 30.000"
+                android:text="@string/price"
                 android:textColor="@color/colorBrownGray"
                 android:textSize="16sp"
                 android:textAlignment="textEnd"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -66,7 +67,7 @@
             android:layout_marginTop="5dp"
             tools:listitem="@layout/item_time"
             android:orientation="horizontal"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
