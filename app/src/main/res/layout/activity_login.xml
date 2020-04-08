@@ -9,13 +9,30 @@
     android:orientation="vertical"
     tools:context=".Activity.LoginActivity">
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="540dp"
+        android:layout_marginTop="-100dp"
+        android:layout_marginEnd="-50dp"
+        android:layout_height="300dp"
+        app:cardCornerRadius="100dp"
+        app:cardBackgroundColor="@color/colorDarkBlue">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="120dp"
+            android:src="@drawable/logo"/>
+
+    </androidx.cardview.widget.CardView>
+
     <TextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorWhite"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/error_message"
         android:gravity="center"
         tools:text="Message" />
@@ -24,7 +41,6 @@
         android:id="@+id/et_login_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:background="@drawable/edit_text_rounded"
         android:drawableStart="@drawable/login_email"
         android:drawablePadding="10dp"
@@ -52,28 +68,28 @@
         android:id="@+id/btn_login"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_rounded_login"
         android:paddingTop="6dp"
         android:paddingBottom="6dp"
         android:text="@string/login"
-        android:textSize="36sp"
+        android:textSize="20sp"
         style="?borderlessButtonStyle" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/or"
         android:textColor="@color/colorBlack"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/signInBtn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginBottom="8dp" />
 
     <Button
@@ -81,7 +97,6 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="55dp"
         android:background="@color/colorBackground"
         android:textAllCaps="false"
