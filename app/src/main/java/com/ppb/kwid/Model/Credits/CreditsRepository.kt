@@ -35,7 +35,7 @@ object CreditsRepository {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
-                            Log.d("Crew Repository", "CREW: ${responseBody.crews}")
+                            //Log.d("Crew Repository", "CREW: ${responseBody.crews}")
                             onSuccess.invoke(responseBody.casts,responseBody.crews)
                         } else {
                             println("GET CAST ERROR")
