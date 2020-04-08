@@ -77,7 +77,7 @@ class RegisterActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         Log.d("email sent?", "Email sent.")
                         val intent = Intent(this, LoginActivity::class.java)
-                        intent.putExtra(MESSAGE,"Register Sukses, Check your email address to verify")
+                        intent.putExtra(MESSAGE,resources.getString(R.string.register_success))
                         startActivity(intent)
                     }
                     else{
