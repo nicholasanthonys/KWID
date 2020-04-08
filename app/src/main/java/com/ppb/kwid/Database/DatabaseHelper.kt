@@ -74,4 +74,28 @@ class DatabaseHelper(context: Context) :
         }
         return false
     }
+
+    fun getAllFavoriteMovies(user_id: String): MutableList<String> {
+        val db = this.readableDatabase
+        var listIDFavoriteMovies = mutableListOf<String>()
+        var cursor: Cursor = db.rawQuery(
+            "Select $COL_MOVIE_ID from $TABLE_NAME where $COL_USER_ID ='" + user_id + "'",
+            null
+        )
+
+        if (cursor.moveToFirst()) {
+            listIDFavoriteMovies.add(cursor.getString(cursor.getColumnIndex(COL_MOVIE_ID)))
+            while (cursor.moveToNext()) {
+                listIDFavoriteMovies.add(cursor.getString(cursor.getColumnIndex(COL_MOVIE_ID)))
+            }
+        }
+        cursor.close()
+        db.close()
+//        println("print id di dalam list")
+//        for(item in listIDFavoriteMovies){
+//            println(item)
+//        }
+
+        return listIDFavoriteMovies
+    }
 }
