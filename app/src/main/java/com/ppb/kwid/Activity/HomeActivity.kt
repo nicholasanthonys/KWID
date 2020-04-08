@@ -16,6 +16,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.ppb.kwid.Model.Movie.Movie
 import com.ppb.kwid.Model.Movie.MoviesAdapter
@@ -25,7 +26,10 @@ import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
 import com.ppb.kwid.Model.MovieDetail.MovieDetailsRepository
 import com.ppb.kwid.R
 
+const val CITY = "extra_city"
+
 class HomeActivity : AppCompatActivity() {
+
 
     private lateinit var gso: GoogleSignInOptions
     private lateinit var mGoogleSignInClient: GoogleSignInClient
@@ -139,8 +143,17 @@ class HomeActivity : AppCompatActivity() {
             refresh()
         }
 
-        getCurrentlyShowingCity("Bandung")
-        getCurrentlyShowing()
+        println("is intent extra city null")
+        println(intent.getStringExtra(CITY) == null)
+        println(intent.getStringExtra(CITY))
+        var city = intent.getStringExtra(CITY)
+        if (city == null) {
+            city = "Bandung"
+        }
+        btnCity.text = city
+
+        getCurrentlyShowingCity(city)
+        //getCurrentlyShowing()
         getPopularMovies()
         getTopRatedMovies()
 
@@ -259,16 +272,28 @@ class HomeActivity : AppCompatActivity() {
             }
     }
 
+    class MovieCity(
+        var city: String? = null,
+        var movie_id: List<String>? = null
+    )
 
     private fun getCurrentlyShowingCity(city: String) {
-
         println("Menjalankan fungsi city")
-        db.collection("currentlyShowingCity").document(city)
-            .get().addOnCompleteListener { task ->
-                var document = task.result
-                var listMovieID = document?.get("movie_id")
-                println("List MOvie ID " + listMovieID)
+        var docRef = db.collection("currentlyShowingCity").document(city)
+        docRef.get().addOnSuccessListener { documentSnapshot ->
+            val myMovieCity = documentSnapshot.toObject<MovieCity>()
+
+            myMovieCity?.movie_id?.iterator()?.forEach {
+                println("item is " + it)
+                MovieDetailsRepository.getMovieDetails(
+                    id = it.toLong(),
+                    onSuccess = ::onCurrentlyShowingMoviesFetched,
+                    onError = ::onError
+                )
             }
+        }
+
+
 
 
     }

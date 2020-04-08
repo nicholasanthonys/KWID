@@ -1,18 +1,26 @@
 package com.ppb.kwid.Model.Location
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
+import com.ppb.kwid.Activity.CITY
+import com.ppb.kwid.Activity.HomeActivity
 import com.ppb.kwid.R
 
 class LocationAdapter(private val listLocation: MutableList<String>) :
     RecyclerView.Adapter<LocationAdapter.LocationListHolder>() {
     class LocationListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(locationName: String) {
-            val txtLocation: TextView = itemView.findViewById(R.id.txt_location)
-            txtLocation.text = locationName
+            val btnSelectLocation: Button = itemView.findViewById(R.id.btn_select_location)
+            btnSelectLocation.text = locationName
+            btnSelectLocation.setOnClickListener {
+                val intent = Intent(itemView.context, HomeActivity::class.java)
+                intent.putExtra(CITY, locationName)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 
