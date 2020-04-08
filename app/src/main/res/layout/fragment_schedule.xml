@@ -36,10 +36,11 @@
             android:layout_width="325dp"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:text="Bandung"
+            android:layout_marginStart="10dp"
+            android:background="@color/colorBackground"
             android:textColor="@color/colorBlack"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp" />
+            android:text="@string/city" />
 
         <ImageView
             android:src="@drawable/icoutline_expand_more"
