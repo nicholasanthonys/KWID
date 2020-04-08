@@ -44,4 +44,5 @@
     <string name="reset_my_password">Reset My Password</string>
     <string name="email_sent_forgot_password">"Email sent. Check your email to reset password"</string>
     <string name="register_success">Register Sukses, Check your email address to verify</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
 </resources>
