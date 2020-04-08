@@ -30,7 +30,7 @@ const val CITY = "extra_city"
 
 class HomeActivity : AppCompatActivity() {
 
-
+    private var city = ""
     private lateinit var gso: GoogleSignInOptions
     private lateinit var mGoogleSignInClient: GoogleSignInClient
 
@@ -88,6 +88,19 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        println("is intent extra city null")
+        println(intent.getStringExtra(CITY) == null)
+        println(intent.getStringExtra(CITY))
+
+        if (intent.getStringExtra(CITY) == null) {
+            city = "Bandung"
+        } else {
+            city = intent.getStringExtra(CITY)
+        }
+        //set button text
+        btnCity.text = city
+
+
         btnProfile = findViewById(R.id.btn_profile)
         btnProfile.setOnClickListener {
             val intent = Intent(this, AccountDetailActivity::class.java)
@@ -143,14 +156,6 @@ class HomeActivity : AppCompatActivity() {
             refresh()
         }
 
-        println("is intent extra city null")
-        println(intent.getStringExtra(CITY) == null)
-        println(intent.getStringExtra(CITY))
-        var city = intent.getStringExtra(CITY)
-        if (city == null) {
-            city = "Bandung"
-        }
-        btnCity.text = city
 
         getCurrentlyShowingCity(city)
         //getCurrentlyShowing()
@@ -160,14 +165,33 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun refresh() {
+
+
         //refresh currently showing
-//        currentlyShowing.layoutManager = currentlyShowingLayoutMgr
-//        currentlyShowingAdapter =
-//            CurrentlyShowingAdapter(mutableListOf()) { movie ->
-//                showMovieDetails(movie)
-//            }
-//        currentlyShowing.adapter = currentlyShowingAdapter
-        getCurrentlyShowing()
+        currentlyShowing.layoutManager = currentlyShowingLayoutMgr
+        currentlyShowingAdapter =
+            CurrentlyShowingAdapter(mutableListOf()) { movie ->
+                showMovieDetails(movie)
+            }
+        currentlyShowing.adapter = currentlyShowingAdapter
+
+        popularMovies = findViewById(R.id.popular_movies)
+        popularMovies = findViewById(R.id.popular_movies)
+        popularMoviesLayoutMgr = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
+        topRatedMovies = findViewById(R.id.top_rated_movies)
+        topRatedLayoutMgr = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
+//        getCurrentlyShowing()
+        getCurrentlyShowingCity(city)
         getPopularMovies()
         getTopRatedMovies()
 
@@ -292,8 +316,6 @@ class HomeActivity : AppCompatActivity() {
                 )
             }
         }
-
-
 
 
     }
