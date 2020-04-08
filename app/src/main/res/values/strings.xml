@@ -7,8 +7,6 @@
     <string name="highest_rated_movies">Highest rated movies of all time</string>
     <string name="upcoming">Upcoming</string>
     <string name="stay_updated">Stay updated with the latest movies</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="now_playing">Now Playing</string>
     <string name="these_movies_are_currently_playing_in_all_cinemas">These movies are currently playing in all cinemas</string>
