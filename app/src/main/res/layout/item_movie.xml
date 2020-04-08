@@ -48,6 +48,7 @@
 
         <ImageView
             android:id="@+id/item_movie_poster"
+            android:contentDescription="@string/movie_poster"
             android:layout_width="match_parent"
             android:layout_height="210dp"
            />
@@ -63,6 +64,6 @@
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:maxLines="4"
-        android:text="MOVIE NAME/ndfasdfa" />
+        android:text="@string/movie_name" />
 
 </RelativeLayout>
