@@ -41,8 +41,8 @@ class ForgotPasswordActivity : AppCompatActivity() {
     private fun updateMessage(message: String) {
         if (message.isNotEmpty()) {
             if (message == "Email Sent. Please Check Your Email") {
-                var intent = Intent(this,LoginActivity::class.java)
-                intent.putExtra(MESSAGE, "Email sent. Check your email to reset password")
+                val intent = Intent(this,LoginActivity::class.java)
+                intent.putExtra(MESSAGE, resources.getString(R.string.email_sent_forgot_password))
                 startActivity(intent)
             }else{
                 tvMessage.text = message
