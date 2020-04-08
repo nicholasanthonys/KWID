@@ -83,8 +83,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val signIn = findViewById<View>(R.id.signInBtn) as SignInButton
-        signIn.setOnClickListener { googlesignIn() }
+//        val signIn = findViewById<View>(R.id.signInBtn) as SignInButton
+//        signIn.setOnClickListener { googlesignIn() }
+
+        val btnGoogle = findViewById<View>(R.id.signInGoogle)
+        btnGoogle.setOnClickListener { googlesignIn() }
     }
 
 
