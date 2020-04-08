@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
@@ -66,6 +65,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+
             <Button
                 android:id="@+id/btn_liked"
                 android:layout_width="30dp"
@@ -75,11 +75,21 @@
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/ant_designheart_outlined" />
 
+            <RatingBar
+                android:id="@+id/rating_mov_detail"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@id/movie_title"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/movie_poster_card"
+                android:theme="@style/RatingBar" />
+
             <TextView
                 android:id="@+id/title_movie_genre"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/movie_title"
+                android:layout_below="@id/rating_mov_detail"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/movie_poster_card"
@@ -87,11 +97,12 @@
                 android:textColor="#757575"
                 android:textSize="12sp" />
 
+
             <TextView
                 android:id="@+id/movie_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/movie_title"
+                android:layout_below="@id/rating_mov_detail"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@id/title_movie_genre"
