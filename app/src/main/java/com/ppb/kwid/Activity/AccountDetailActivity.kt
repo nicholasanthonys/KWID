@@ -27,7 +27,6 @@ class AccountDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_detail)
         initUI()
-
     }
 
     private fun initUI() {
@@ -51,7 +50,6 @@ class AccountDetailActivity : AppCompatActivity() {
         } else {
             profileName.text = user?.email
         }
-
 
     }
 }
