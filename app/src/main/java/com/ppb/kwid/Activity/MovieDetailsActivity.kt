@@ -106,11 +106,6 @@ class MovieDetailsActivity : AppCompatActivity() {
             onSuccess = ::onMovieDetailsFetched,
             onError = ::onError
         )
-
-        val sectionsPagerAdapter = MovieDetailsSectionsPageAdapter(this, supportFragmentManager)
-        view_pager.adapter = sectionsPagerAdapter
-        tabs_movie_detail.setupWithViewPager(view_pager)
-        supportActionBar?.elevation = 0f
     }
 
 //    private fun setUpButtonFragment(overview: String) {
@@ -251,6 +246,12 @@ class MovieDetailsActivity : AppCompatActivity() {
 //                .add(R.id.myfragmentmovie_detail, fragmentOverview)
 //                .commit()
 
+            //Tablayout
+            val sectionsPagerAdapter = MovieDetailsSectionsPageAdapter(this, supportFragmentManager)
+            sectionsPagerAdapter.setAllParameters(overview, movieId)
+            view_pager.adapter = sectionsPagerAdapter
+            tabs_movie_detail.setupWithViewPager(view_pager)
+            supportActionBar?.elevation = 0f
         } else {
             finish()
         }
