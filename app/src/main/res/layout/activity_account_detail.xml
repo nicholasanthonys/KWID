@@ -23,32 +23,53 @@
         android:background="@drawable/rounded_rect_shape_white"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
+            <EditText
+                android:id="@+id/edit_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="90dp"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+                android:gravity="center"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:singleLine="true"
+                android:text="Your Name Here"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+
             <TextView
                 android:id="@+id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="90dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="100dp"
                 android:gravity="center"
                 android:text="Your Name Here"
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="visible" />
+
 
             <Button
                 android:id="@+id/btn_edit_username"
                 android:layout_width="25dp"
                 android:layout_height="19dp"
                 android:layout_marginTop="90dp"
+                android:layout_toRightOf="@id/profile_name"
                 android:background="@drawable/ic_edit_black_24dp" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_marginTop="25dp"
