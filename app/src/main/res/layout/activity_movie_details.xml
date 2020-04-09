@@ -27,7 +27,6 @@
 
             <ImageView
                 android:id="@+id/btn_back_movie_detail"
-                android:contentDescription="@string/back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -202,7 +201,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <!--            <LinearLayout-->
@@ -260,13 +259,15 @@
                 android:id="@+id/tabs_movie_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorBackground"
+                android:background="@color/colorWhite"
                 app:tabTextColor="@color/colorBlack" />
+
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true" />
         </LinearLayout>
 
     </LinearLayout>
