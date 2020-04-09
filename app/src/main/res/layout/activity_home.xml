@@ -41,6 +41,40 @@
             app:layout_constraintBottom_toBottomOf="@id/appbar"
             app:layout_constraintStart_toStartOf="parent" />
 
+
+        <LinearLayout
+            android:id="@+id/button_location"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/rectangle_skin_color_top_bottom_border"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/icbaseline_location_on" />
+
+            <Button
+                android:id="@+id/btn_movieshow_city"
+                android:layout_width="325dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:background="@color/colorBackground"
+                android:text="@string/city"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/icoutline_expand_more" />
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"

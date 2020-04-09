@@ -80,4 +80,5 @@
     <string name="available">Tersedia</string>
     <string name="ringkasan_order">Ringkasan Order</string>
     <string name="total_price">Total Harga</string>
+    <string name="city">City</string>
 </resources>

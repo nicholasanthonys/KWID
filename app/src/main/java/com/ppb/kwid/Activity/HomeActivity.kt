@@ -16,15 +16,21 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.ppb.kwid.Model.Movie.*
+import com.ppb.kwid.Model.Movie.Movie
+import com.ppb.kwid.Model.Movie.MoviesAdapter
+import com.ppb.kwid.Model.Movie.MoviesRepository
 import com.ppb.kwid.Model.MovieDetail.CurrentlyShowingAdapter
 import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
 import com.ppb.kwid.Model.MovieDetail.MovieDetailsRepository
 import com.ppb.kwid.R
 
+const val CITY = "extra_city"
+
 class HomeActivity : AppCompatActivity() {
 
+    private var city = ""
     private lateinit var gso: GoogleSignInOptions
     private lateinit var mGoogleSignInClient: GoogleSignInClient
 
@@ -34,6 +40,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var signOut: Button
     private lateinit var btnProfile: Button
     private lateinit var btnRefresh: Button
+    private lateinit var btnCity: Button
 
     private lateinit var popularMovies: RecyclerView
     private lateinit var popularMoviesAdapter: MoviesAdapter
@@ -74,6 +81,25 @@ class HomeActivity : AppCompatActivity() {
     private fun initUI() {
         signOut = findViewById<View>(R.id.sign_out_button) as Button
         signOut.setOnClickListener { signOut() }
+
+        btnCity = findViewById(R.id.btn_movieshow_city)
+        btnCity.setOnClickListener {
+            val intent = Intent(this, LocationActivity::class.java)
+            startActivity(intent)
+        }
+
+        println("is intent extra city null")
+        println(intent.getStringExtra(CITY) == null)
+        println(intent.getStringExtra(CITY))
+
+        if (intent.getStringExtra(CITY) == null) {
+            city = "Bandung"
+        } else {
+            city = intent.getStringExtra(CITY)
+        }
+        //set button text
+        btnCity.text = city
+
 
         btnProfile = findViewById(R.id.btn_profile)
         btnProfile.setOnClickListener {
@@ -130,20 +156,42 @@ class HomeActivity : AppCompatActivity() {
             refresh()
         }
 
-        getCurrentlyShowing()
+
+        getCurrentlyShowingCity(city)
+        //getCurrentlyShowing()
         getPopularMovies()
         getTopRatedMovies()
+
     }
 
     private fun refresh() {
+
+
         //refresh currently showing
-//        currentlyShowing.layoutManager = currentlyShowingLayoutMgr
-//        currentlyShowingAdapter =
-//            CurrentlyShowingAdapter(mutableListOf()) { movie ->
-//                showMovieDetails(movie)
-//            }
-//        currentlyShowing.adapter = currentlyShowingAdapter
-        getCurrentlyShowing()
+        currentlyShowing.layoutManager = currentlyShowingLayoutMgr
+        currentlyShowingAdapter =
+            CurrentlyShowingAdapter(mutableListOf()) { movie ->
+                showMovieDetails(movie)
+            }
+        currentlyShowing.adapter = currentlyShowingAdapter
+
+        popularMovies = findViewById(R.id.popular_movies)
+        popularMovies = findViewById(R.id.popular_movies)
+        popularMoviesLayoutMgr = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
+        topRatedMovies = findViewById(R.id.top_rated_movies)
+        topRatedLayoutMgr = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
+//        getCurrentlyShowing()
+        getCurrentlyShowingCity(city)
         getPopularMovies()
         getTopRatedMovies()
 
@@ -246,6 +294,30 @@ class HomeActivity : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.d("DB Read Gagal", "Error getting documents: ", exception)
             }
+    }
+
+    class MovieCity(
+        var city: String? = null,
+        var movie_id: List<String>? = null
+    )
+
+    private fun getCurrentlyShowingCity(city: String) {
+        println("Menjalankan fungsi city")
+        var docRef = db.collection("currentlyShowingCity").document(city)
+        docRef.get().addOnSuccessListener { documentSnapshot ->
+            val myMovieCity = documentSnapshot.toObject<MovieCity>()
+
+            myMovieCity?.movie_id?.iterator()?.forEach {
+                println("item is " + it)
+                MovieDetailsRepository.getMovieDetails(
+                    id = it.toLong(),
+                    onSuccess = ::onCurrentlyShowingMoviesFetched,
+                    onError = ::onError
+                )
+            }
+        }
+
+
     }
 
 

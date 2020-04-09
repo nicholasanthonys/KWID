@@ -3,16 +3,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:gravity="center_vertical"
-    android:background="@drawable/rectangle_item_location">
+    android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/txt_location"
+    <Button
+        android:id="@+id/btn_select_location"
         android:text="@string/location"
-        android:layout_marginStart="20dp"
+        android:layout_width="match_parent"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
         android:textSize="16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:background="@drawable/rectangle_item_location"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:textAlignment="textStart" />
 </LinearLayout>
