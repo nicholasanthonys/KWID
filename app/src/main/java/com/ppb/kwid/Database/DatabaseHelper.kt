@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 
 
@@ -12,27 +13,61 @@ class DatabaseHelper(context: Context) :
 
     companion object {
         // If you change the database schema, you must increment the database version.
-        const val DATABASE_VERSION = 1
+        const val DATABASE_VERSION = 2
         const val DATABASE_NAME = "KWID.db"
-        const val TABLE_NAME = "table_favorite_movies"
+        const val TABLE_FAVORITE = "table_favorite_movies"
         const val COL_USER_ID = "user_id"
         const val COL_MOVIE_ID = "movie_id"
         const val COL_TILTE = "movie_title"
         const val COL_GENRE = "genre"
         const val COL_DIRECTOR = "director"
+
+        const val TABLE_USERS = "table_users"
+        const val COL_USERNAME = "username"
+        const val COL_EMAIL = "email"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(
-            "CREATE TABLE $TABLE_NAME (user_id TEXT,  " +
-                    "movie_id TEXT, movie_title TEXT, genre TEXT, director TEXT )"
+            "CREATE TABLE $TABLE_FAVORITE (" +
+                    "user_id TEXT,  " +
+                    "movie_id TEXT, " +
+                    "movie_title TEXT, " +
+                    "genre TEXT, " +
+                    "director TEXT," +
+                    "PRIMARY KEY (user_id,movie_id)" +
+                    ")"
         )
+
+        db.execSQL(
+            "CREATE TABLE $TABLE_USERS (" +
+                    "username TEXT," +
+                    " email TEXT, " +
+                    "PRIMARY KEY (username, email)" +
+                    ")"
+        )
+    }
+
+    fun insertUser(username: String, email: String) {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(COL_USERNAME, username)
+        contentValues.put(COL_EMAIL, email)
+        try {
+            db.insert(TABLE_USERS, null, contentValues)
+            println("insert username email sukses")
+        } catch (e: SQLiteException) {
+            println(e.printStackTrace())
+        }
+
+
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         // This database is only a cache for online data, so its upgrade policy is
         // to simply to discard the data and start over
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME)
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FAVORITE)
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS)
         onCreate(db)
     }
 
@@ -54,18 +89,23 @@ class DatabaseHelper(context: Context) :
         contentValues.put(COL_TILTE, title)
         contentValues.put(COL_GENRE, genre)
         contentValues.put(COL_DIRECTOR, director)
-        db.insert(TABLE_NAME, null, contentValues)
+        db.insert(TABLE_FAVORITE, null, contentValues)
     }
 
 
     fun deleteFavoriteMovies(user_id: String, movie_id: String) {
         val db = this.writableDatabase
-        db.delete(TABLE_NAME, COL_USER_ID +"= ? AND " + COL_MOVIE_ID + "= ?", arrayOf(user_id, movie_id))
+        db.delete(
+            TABLE_FAVORITE,
+            COL_USER_ID + "= ? AND " + COL_MOVIE_ID + "= ?",
+            arrayOf(user_id, movie_id)
+        )
     }
 
     fun isCurrentMovieLiked (user_id : String, movie_id: String) : Boolean {
         val db = this.readableDatabase
-        val countQuery = "SELECT * FROM $TABLE_NAME WHERE $COL_USER_ID = '" + user_id +"'" + " AND $COL_MOVIE_ID = " + movie_id
+        val countQuery =
+            "SELECT * FROM $TABLE_FAVORITE WHERE $COL_USER_ID = '" + user_id + "'" + " AND $COL_MOVIE_ID = " + movie_id
         val cursor :Cursor = db.rawQuery(countQuery,null)
         val count = cursor.count
         cursor.close()
@@ -79,7 +119,7 @@ class DatabaseHelper(context: Context) :
         val db = this.readableDatabase
         var listIDFavoriteMovies = mutableListOf<String>()
         var cursor: Cursor = db.rawQuery(
-            "Select $COL_MOVIE_ID from $TABLE_NAME where $COL_USER_ID ='" + user_id + "'",
+            "Select $COL_MOVIE_ID from $TABLE_FAVORITE where $COL_USER_ID ='" + user_id + "'",
             null
         )
 

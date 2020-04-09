@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.ppb.kwid.Database.DatabaseHelper
 import com.ppb.kwid.R
 
 
@@ -23,8 +24,11 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var etEmail: EditText
     lateinit var etPassword: EditText
     lateinit var tvError: TextView
-    lateinit var etUsername : TextView
-    lateinit var etConfirmPasssword : TextView
+    lateinit var etUsername: TextView
+    lateinit var etConfirmPasssword: TextView
+
+    //instance db helper
+    private var dbHelper = DatabaseHelper(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,16 +54,20 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun validateForm(username : String,email : String, password : String, confirmPassword : String): Boolean {
-        if(username.isBlank() || email.isBlank() || password.isBlank() || confirmPassword.isBlank()){
-            updateUI(null,"Please complete all the form")
-        }else{
+    private fun validateForm(
+        username: String,
+        email: String,
+        password: String,
+        confirmPassword: String
+    ): Boolean {
+        if (username.isBlank() || email.isBlank() || password.isBlank() || confirmPassword.isBlank()) {
+            updateUI(null, "Please complete all the form")
+        } else {
             if (etPassword.text.length >= 6) {
-                if(password == confirmPassword){
+                if (password == confirmPassword) {
                     return true
-                }
-                else{
-                    updateUI(null,"Password doesn't match")
+                } else {
+                    updateUI(null, "Password doesn't match")
                 }
             } else {
                 updateUI(null, "password must be 6 character or more")
@@ -77,10 +85,9 @@ class RegisterActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         Log.d("email sent?", "Email sent.")
                         val intent = Intent(this, LoginActivity::class.java)
-                        intent.putExtra(MESSAGE,resources.getString(R.string.register_success))
+                        intent.putExtra(MESSAGE, resources.getString(R.string.register_success))
                         startActivity(intent)
-                    }
-                    else{
+                    } else {
                         Log.d("email sent?", "Email failed")
                     }
                 }
@@ -89,19 +96,19 @@ class RegisterActivity : AppCompatActivity() {
         } else {
             tvError.visibility = View.VISIBLE
             tvError.text = error
-            if(error.isNotEmpty()){
-                tvError.setPadding(16,10,16,10)
+            if (error.isNotEmpty()) {
+                tvError.setPadding(16, 10, 16, 10)
             }
         }
     }
 
-    private fun registerSubmit(){
+    private fun registerSubmit() {
         val username = etUsername.text.trim().toString()
         val email = etEmail.text.toString().trim()
         val password = etPassword.text.toString()
         val confirmPassword = etConfirmPasssword.text.toString()
 
-        if (validateForm(username,email,password, confirmPassword)) {
+        if (validateForm(username, email, password, confirmPassword)) {
             mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, object : OnCompleteListener<AuthResult?> {
                     override fun onComplete(task: Task<AuthResult?>) {
@@ -112,6 +119,11 @@ class RegisterActivity : AppCompatActivity() {
 
 
                             //disini masukkan usernamere ke database lokal
+
+                            dbHelper.insertUser(username, email)
+
+
+
 
 
                             updateUI(user, "")
