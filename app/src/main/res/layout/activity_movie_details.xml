@@ -27,6 +27,7 @@
 
             <ImageView
                 android:id="@+id/btn_back_movie_detail"
+                android:contentDescription="@string/back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -201,60 +202,71 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="horizontal"-->
+            <!--                android:weightSum="3">-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/btn_overview"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:enabled="true"-->
+            <!--                    android:text="@string/overview"-->
+            <!--                    android:textAllCaps="true"-->
+            <!--                    android:textColor="@color/colorBlack"-->
+            <!--                    android:textSize="14sp"-->
+            <!--                    android:background="@drawable/button_movie_details" />-->
+
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/btn_cast_and_crew"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:background="@drawable/button_movie_details"-->
+            <!--                    android:enabled="true"-->
+            <!--                    android:text="@string/cast_crew"-->
+            <!--                    android:textAllCaps="true"-->
+            <!--                    android:textColor="@color/colorBlack"-->
+            <!--                    android:textSize="14sp" />-->
+
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/btn_schedule"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_weight="1"-->
+            <!--                    android:background="@drawable/button_movie_details"-->
+            <!--                    android:enabled="true"-->
+            <!--                    android:text="@string/schedule"-->
+            <!--                    android:textAllCaps="true"-->
+            <!--                    android:textColor="@color/colorBlack"-->
+            <!--                    android:textSize="14sp" />-->
+            <!--            </LinearLayout>-->
+
+            <!--            <FrameLayout-->
+            <!--                android:id="@+id/myfragmentmovie_detail"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:background="@color/colorBlack" />-->
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs_movie_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:background="@color/colorBackground"
+                app:tabTextColor="@color/colorBlack" />
 
-                <Button
-                    android:id="@+id/btn_overview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_movie_details"
-                    android:enabled="true"
-                    android:text="@string/overview"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="14sp" />
-
-
-                <Button
-                    android:id="@+id/btn_cast_and_crew"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_movie_details"
-                    android:enabled="true"
-                    android:text="@string/cast_crew"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="14sp" />
-
-
-                <Button
-                    android:id="@+id/btn_schedule"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/button_movie_details"
-                    android:enabled="true"
-                    android:text="@string/schedule"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/myfragmentmovie_detail"
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorBlack" />
-
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
     </LinearLayout>

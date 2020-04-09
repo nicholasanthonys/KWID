@@ -20,8 +20,10 @@ import com.ppb.kwid.Model.Credits.Crew
 import com.ppb.kwid.Model.Genre.Genres
 import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
 import com.ppb.kwid.Model.MovieDetail.MovieDetailsRepository
+import com.ppb.kwid.Model.MovieDetail.MovieDetailsSectionsPageAdapter
 import com.ppb.kwid.R
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
+import kotlinx.android.synthetic.main.activity_movie_details.*
 
 
 const val MOVIE_id = "extra_movie_id"
@@ -37,9 +39,9 @@ class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var duration: TextView
     private lateinit var director: TextView
     private lateinit var btnLiked: Button
-    private lateinit var btnOverview: Button
-    private lateinit var btnCastCrew: Button
-    private lateinit var btnSchedule: Button
+//    private lateinit var btnOverview: Button
+//    private lateinit var btnCastCrew: Button
+//    private lateinit var btnSchedule: Button
 
 
     //instance db helper
@@ -104,57 +106,56 @@ class MovieDetailsActivity : AppCompatActivity() {
             onSuccess = ::onMovieDetailsFetched,
             onError = ::onError
         )
-
     }
 
-    private fun setUpButtonFragment(overview: String) {
-        //Button to change fragment
-        btnOverview = findViewById(R.id.btn_overview)
-        btnCastCrew = findViewById(R.id.btn_cast_and_crew)
-        btnSchedule = findViewById(R.id.btn_schedule)
-
-        btnOverview.setOnClickListener {
-            changeFragment(1, overview)
-
-            //Setting the button
-            btnOverview.isEnabled = false
-            btnOverview.isClickable = false
-            btnCastCrew.isEnabled = true
-            btnCastCrew.isClickable = true
-            btnSchedule.isEnabled = true
-            btnSchedule.isClickable = true
-        }
-
-        btnCastCrew.setOnClickListener {
-            changeFragment(2, "")
-
-            //Setting the button
-            btnOverview.isEnabled = true
-            btnOverview.isClickable = true
-            btnCastCrew.isEnabled = false
-            btnCastCrew.isClickable = false
-            btnSchedule.isEnabled = true
-            btnSchedule.isClickable = true
-        }
-
-        btnSchedule.setOnClickListener {
-            changeFragment(3, "")
-
-            //Setting the button
-            btnOverview.isEnabled = true
-            btnOverview.isClickable = true
-            btnCastCrew.isEnabled = true
-            btnCastCrew.isClickable = true
-            btnSchedule.isEnabled = false
-            btnSchedule.isClickable = false
-        }
-
-        //Initialize fragment with overview
-        btnOverview.isEnabled = false
-        btnOverview.isClickable = false
-
-
-    }
+//    private fun setUpButtonFragment(overview: String) {
+//        //Button to change fragment
+//        btnOverview = findViewById(R.id.btn_overview)
+//        btnCastCrew = findViewById(R.id.btn_cast_and_crew)
+//        btnSchedule = findViewById(R.id.btn_schedule)
+//
+//        btnOverview.setOnClickListener {
+//            changeFragment(1, overview)
+//
+//            //Setting the button
+//            btnOverview.isEnabled = false
+//            btnOverview.isClickable = false
+//            btnCastCrew.isEnabled = true
+//            btnCastCrew.isClickable = true
+//            btnSchedule.isEnabled = true
+//            btnSchedule.isClickable = true
+//        }
+//
+//        btnCastCrew.setOnClickListener {
+//            changeFragment(2, "")
+//
+//            //Setting the button
+//            btnOverview.isEnabled = true
+//            btnOverview.isClickable = true
+//            btnCastCrew.isEnabled = false
+//            btnCastCrew.isClickable = false
+//            btnSchedule.isEnabled = true
+//            btnSchedule.isClickable = true
+//        }
+//
+//        btnSchedule.setOnClickListener {
+//            changeFragment(3, "")
+//
+//            //Setting the button
+//            btnOverview.isEnabled = true
+//            btnOverview.isClickable = true
+//            btnCastCrew.isEnabled = true
+//            btnCastCrew.isClickable = true
+//            btnSchedule.isEnabled = false
+//            btnSchedule.isClickable = false
+//        }
+//
+//        //Initialize fragment with overview
+//        btnOverview.isEnabled = false
+//        btnOverview.isClickable = false
+//
+//
+//    }
 
 
     private fun handleClick() {
@@ -237,40 +238,46 @@ class MovieDetailsActivity : AppCompatActivity() {
             }
 
             //set up button fragment
-            setUpButtonFragment(overview)
+//            setUpButtonFragment(overview)
 
             //set up overview fragment
-            fragmentOverview = OverviewFragment.newInstance(overview)
-            supportFragmentManager.beginTransaction()
-                .add(R.id.myfragmentmovie_detail, fragmentOverview)
-                .commit()
+//            fragmentOverview = OverviewFragment.newInstance(overview)
+//            supportFragmentManager.beginTransaction()
+//                .add(R.id.myfragmentmovie_detail, fragmentOverview)
+//                .commit()
 
+            //Tablayout
+            val sectionsPagerAdapter = MovieDetailsSectionsPageAdapter(this, supportFragmentManager)
+            sectionsPagerAdapter.setAllParameters(overview, movieId)
+            view_pager.adapter = sectionsPagerAdapter
+            tabs_movie_detail.setupWithViewPager(view_pager)
+            supportActionBar?.elevation = 0f
         } else {
             finish()
         }
     }
 
-    private fun changeFragment(id: Int, overview: String) {
-        val transaction = supportFragmentManager.beginTransaction()
-        var fragment: Fragment? = null
-
-        if (id == 1) {
-            fragment = OverviewFragment.newInstance(overview)
-            transaction
-                .replace(R.id.myfragmentmovie_detail, fragment)
-                .commit()
-        } else if (id == 2) {
-            fragment = CastCrewFragment.newInstance(movieId)
-            transaction
-                .replace(R.id.myfragmentmovie_detail, fragment)
-                .commit()
-        } else if (id == 3) {
-            fragment = ScheduleFragment()
-            transaction
-                .replace(R.id.myfragmentmovie_detail, fragment)
-                .commit()
-        }
-    }
+//    private fun changeFragment(id: Int, overview: String) {
+//        val transaction = supportFragmentManager.beginTransaction()
+//        var fragment: Fragment? = null
+//
+//        if (id == 1) {
+//            fragment = OverviewFragment.newInstance(overview)
+//            transaction
+//                .replace(R.id.myfragmentmovie_detail, fragment)
+//                .commit()
+//        } else if (id == 2) {
+//            fragment = CastCrewFragment.newInstance(movieId)
+//            transaction
+//                .replace(R.id.myfragmentmovie_detail, fragment)
+//                .commit()
+//        } else if (id == 3) {
+//            fragment = ScheduleFragment()
+//            transaction
+//                .replace(R.id.myfragmentmovie_detail, fragment)
+//                .commit()
+//        }
+//    }
 
     private fun onError() {
         Toast.makeText(this, getString(R.string.error_fetch_movies), Toast.LENGTH_SHORT).show()
