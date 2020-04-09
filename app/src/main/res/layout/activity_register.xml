@@ -57,7 +57,7 @@
             android:layout_marginTop="12dp"
             android:background="@drawable/edit_text_rounded"
             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
-            android:drawableStart="@drawable/login_email"
+            android:drawableStart="@drawable/ic_account_circle_black_26dp"
             android:drawablePadding="10dp"
             android:hint="@string/placeholder_username"
             android:inputType="textFilter"
