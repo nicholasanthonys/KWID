@@ -19,4 +19,5 @@
     <color name="starColorInactive">#595959</color>
     <color name="colorLightBrown">#A49999</color>
     <color name="colorOrange">#FFA41B</color>
+    <color name="colorGray">#F1F3F4</color>
 </resources>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    tools:context=".Activity.SeatSelectionActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorTopBar">
+
+        <ImageView
+            android:id="@+id/btn_back_seat_selection"
+            android:src="@drawable/icbaseline_arrow_back"
+            android:contentDescription="@string/back_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:text="@string/seat_selection"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:cardCornerRadius="5dp"
+            app:cardBackgroundColor="@color/colorDarkBlue" />
+
+        <TextView
+            android:text="@string/available"
+            android:textSize="14sp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            app:cardCornerRadius="5dp"
+            app:cardBackgroundColor="@color/colorLightGray" />
+
+        <TextView
+            android:text="@string/sold"
+            android:textSize="14sp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            app:cardCornerRadius="5dp"
+            app:cardBackgroundColor="@color/colorBlue" />
+
+        <TextView
+            android:text="@string/your_choice"
+            android:textSize="14sp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="10">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_weight="7"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <fragment
+                android:id="@+id/fragment_list_seat"
+                tools:layout="@layout/fragment_seat_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/rect_right_border_white"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="@string/total_price"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/txt_total_price"
+                    android:text="@string/total_price"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@color/colorWhite"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="@string/seat"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_picked_seat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_seat" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_seat_selection"
+            android:text="@string/ringkasan_order"
+            android:textColor="@color/colorOrange"
+            android:textSize="16sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/button_purchase_confirmation" />
+    </LinearLayout>
+</LinearLayout>

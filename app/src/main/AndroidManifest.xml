@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Activity.PurchaseConfirmationActivity"></activity>
+        <activity android:name=".Activity.SeatSelectionActivity"></activity>
+        <activity android:name=".Activity.PurchaseConfirmationActivity" />
         <activity android:name=".Activity.TopUpActivity" />
         <activity android:name=".Activity.TransactionHistoryActivity" />
         <activity android:name=".Activity.NotificationActivity" />
