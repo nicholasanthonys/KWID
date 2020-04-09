@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 
 class DatabaseHelper(context: Context) :
@@ -60,6 +61,40 @@ class DatabaseHelper(context: Context) :
             println(e.printStackTrace())
         }
 
+
+    }
+
+    fun updateUsername(username: String, email: String) {
+        if (username.isNotEmpty()) {
+            val db = this.writableDatabase
+            val contentValues = ContentValues()
+            contentValues.put(COL_USERNAME, username)
+            db.update(TABLE_USERS, contentValues, "email = ?", arrayOf(email))
+            print("updated")
+        }
+        print("username is empty")
+    }
+
+    fun getUsername(email: String?): String {
+        Log.d("email is ", email)
+        val db = this.readableDatabase
+
+        var cursor: Cursor = db.rawQuery(
+            "Select $COL_USERNAME from $TABLE_USERS where $COL_EMAIL ='" + email + "'",
+            null
+        )
+
+        var username = ""
+        if (cursor.moveToFirst()) {
+            username = (cursor.getString(cursor.getColumnIndex(COL_USERNAME)))
+            while (cursor.moveToNext()) {
+                username = (cursor.getString(cursor.getColumnIndex(COL_USERNAME)))
+            }
+        }
+        cursor.close()
+        db.close()
+        print("username is " + username)
+        return username
 
     }
 
