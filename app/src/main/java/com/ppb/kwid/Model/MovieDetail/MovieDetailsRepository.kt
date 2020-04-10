@@ -1,6 +1,5 @@
 package com.ppb.kwid.Model.MovieDetail
 
-import android.util.Log
 import com.ppb.kwid.API.Api
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,14 +34,14 @@ object MovieDetailsRepository {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
-                            Log.d("Movie Details Repo", "MOVIE TITLE: ${responseBody.title}")
-                            Log.d("MOVIE DETAILS Repo", "MOVIE DURATION: ${responseBody.duration}")
+//                            Log.d("Movie Details Repo", "MOVIE TITLE: ${responseBody.title}")
+//                            Log.d("MOVIE DETAILS Repo", "MOVIE DURATION: ${responseBody.duration}")
 
                             onSuccess(responseBody)
 
                         } else {
-                            println("GET CAST ERROR")
-                            Log.d("CAST REPOSITORY", "Failed to get response")
+                            //println("GET CAST ERROR")
+                            //Log.d("CAST REPOSITORY", "Failed to get response")
                             onError.invoke()
                         }
                     } else {
@@ -51,7 +50,7 @@ object MovieDetailsRepository {
                 }
 
                 override fun onFailure(call: Call<GetMovieDetailsResponse>, t: Throwable) {
-                    Log.e("Movie Details", "onFailure", t)
+                    //Log.e("Movie Details", "onFailure", t)
                     onError.invoke()
                 }
             })
