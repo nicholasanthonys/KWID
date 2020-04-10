@@ -31,6 +31,14 @@
                 android:layout_marginStart="4dp"
                 android:background="@drawable/icbaseline_account_circle" />
 
+            <Button
+                android:id="@+id/btn_notification"
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/icbaseline_notifications" />
+
         </RelativeLayout>
 
         <View

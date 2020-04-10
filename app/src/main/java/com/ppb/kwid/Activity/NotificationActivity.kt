@@ -2,7 +2,9 @@ package com.ppb.kwid.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ppb.kwid.Model.Notification.Notification
 import com.ppb.kwid.Model.Notification.NotificationAdapter
@@ -12,7 +14,8 @@ class NotificationActivity : AppCompatActivity() {
 
     private lateinit var btnBackNotification: ImageView
     private lateinit var recyclerView: RecyclerView
-    private lateinit var listNotification: MutableList<Notification>
+    private var listNotification: MutableList<Notification> = mutableListOf()
+    private lateinit var linearLayoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,9 +26,11 @@ class NotificationActivity : AppCompatActivity() {
             super.onBackPressed()
         }
 
-        addListNotification()
         recyclerView = findViewById(R.id.recyclerview_notification)
-        showRecyclerViewNotification()
+        linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        recyclerView.layoutManager = linearLayoutManager
+
+        addListNotification()
     }
 
     private fun addListNotification() {
@@ -44,6 +49,8 @@ class NotificationActivity : AppCompatActivity() {
 
             listNotification.add(notification)
         }
+
+        showRecyclerViewNotification()
     }
 
     private fun showRecyclerViewNotification() {
