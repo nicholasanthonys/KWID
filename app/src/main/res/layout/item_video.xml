@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBackground"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/video_poster"
-        android:layout_width="150dp"
-        android:layout_height="100dp" />
 
-    <TextView
-        android:id="@+id/tes"
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ini text"
-        android:textColor="@color/colorBlack"
-        android:textSize="26sp" />
+        app:cardCornerRadius="50dp">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/video_poster"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:background="@color/colorBlack" />
+
+        <Button
+            android:id="@+id/btn_play_video_home"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:background="@drawable/icbaseline_play_circle_outline"
+            android:gravity="center" />
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
