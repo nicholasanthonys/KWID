@@ -24,6 +24,10 @@ import com.ppb.kwid.Model.Movie.MoviesRepository
 import com.ppb.kwid.Model.MovieDetail.CurrentlyShowingAdapter
 import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
 import com.ppb.kwid.Model.MovieDetail.MovieDetailsRepository
+import com.ppb.kwid.Model.Video.Result
+import com.ppb.kwid.Model.Video.Video
+import com.ppb.kwid.Model.Video.VideosAdapter
+import com.ppb.kwid.Model.Video.VideosRepository
 import com.ppb.kwid.R
 
 const val CITY = "extra_city"
@@ -53,6 +57,10 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var currentlyShowing: RecyclerView
     private lateinit var currentlyShowingAdapter: CurrentlyShowingAdapter
     private lateinit var currentlyShowingLayoutMgr: LinearLayoutManager
+
+    private lateinit var rvVideos: RecyclerView
+    private lateinit var videosAdapter: VideosAdapter
+    private lateinit var videosLayoutMgr: LinearLayoutManager
 
     private var popularMoviesPage = 1
     private var topRatedMoviesPage = 1
@@ -129,6 +137,15 @@ class HomeActivity : AppCompatActivity() {
             false
         )
 
+
+        rvVideos = findViewById(R.id.rv_videos)
+        videosLayoutMgr = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
+
         popularMovies.layoutManager = popularMoviesLayoutMgr
         popularMoviesAdapter =
             MoviesAdapter(mutableListOf()) { movie ->
@@ -150,6 +167,14 @@ class HomeActivity : AppCompatActivity() {
             }
         currentlyShowing.adapter = currentlyShowingAdapter
 
+
+
+        rvVideos.layoutManager = videosLayoutMgr
+        videosAdapter = VideosAdapter(mutableListOf(), "")
+        rvVideos.adapter = videosAdapter
+
+
+
         btnRefresh = findViewById(R.id.btn_refresh)
 
         btnRefresh.setOnClickListener {
@@ -157,10 +182,12 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
-        getCurrentlyShowingCity(city)
-        //getCurrentlyShowing()
+        //getCurrentlyShowingCity(city)
+        getCurrentlyShowing()
         getPopularMovies()
         getTopRatedMovies()
+        //println(" getmovievideos jalan ")
+        getMovieVideos()
 
     }
 
@@ -195,7 +222,26 @@ class HomeActivity : AppCompatActivity() {
         getPopularMovies()
         getTopRatedMovies()
 
+
     }
+
+    private fun getMovieVideos() {
+        VideosRepository.getMovieVideos(
+            297762,
+            ::onVideosFetched,
+            ::onError
+        )
+    }
+
+    private fun onVideosFetched(videos: Video, backdrop: String) {
+        lateinit var result: Result
+        var results = mutableListOf<Result>()
+
+        //masukin backdrop
+        results.add(videos.videoResults[0])
+        videosAdapter.updateVideo(results, backdrop)
+    }
+
 
     private fun onPopularMoviesFetched(movies: MutableList<Movie>) {
         popularMoviesAdapter.appendMovies(movies)
