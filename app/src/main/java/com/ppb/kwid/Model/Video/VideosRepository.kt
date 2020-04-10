@@ -22,7 +22,7 @@ object VideosRepository {
 
     fun getMovieVideos(
         id: Long = 1,
-        onSuccess: (response: Video, backrop: String) -> Unit,
+        onSuccess: (response: VideosResponse) -> Unit,
         onError: () -> Unit
     ) {
         api.getMovieVideos(id = id)
@@ -36,13 +36,13 @@ object VideosRepository {
 
                         if (responseBody != null) {
                             var id = responseBody.id
-                            var result = responseBody.videos
+                            var videoResponse = responseBody
                             var backdrop = responseBody.backdropPath
                             Log.d("Movie Details Repo", "MOVIE TITLE: ${responseBody.id}")
                             Log.d("Backdrop path", "Movie Backdrop ${responseBody.backdropPath}")
                             Log.d("MOVIE DETAILS Repo", "MOVIE DURATION: ${responseBody.videos}")
 
-                            onSuccess(responseBody.videos, backdrop)
+                            onSuccess(videoResponse)
 
                         } else {
                             println("GET CAST ERROR")

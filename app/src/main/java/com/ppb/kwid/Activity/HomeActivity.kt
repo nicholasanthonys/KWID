@@ -24,10 +24,9 @@ import com.ppb.kwid.Model.Movie.MoviesRepository
 import com.ppb.kwid.Model.MovieDetail.CurrentlyShowingAdapter
 import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
 import com.ppb.kwid.Model.MovieDetail.MovieDetailsRepository
-import com.ppb.kwid.Model.Video.Result
-import com.ppb.kwid.Model.Video.Video
 import com.ppb.kwid.Model.Video.VideosAdapter
 import com.ppb.kwid.Model.Video.VideosRepository
+import com.ppb.kwid.Model.Video.VideosResponse
 import com.ppb.kwid.R
 
 const val CITY = "extra_city"
@@ -170,7 +169,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         rvVideos.layoutManager = videosLayoutMgr
-        videosAdapter = VideosAdapter(mutableListOf(), "", this)
+        videosAdapter = VideosAdapter(mutableListOf(), this)
         rvVideos.adapter = videosAdapter
 
 
@@ -226,20 +225,24 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun getMovieVideos() {
-        VideosRepository.getMovieVideos(
-            297762,
-            ::onVideosFetched,
-            ::onError
-        )
+
+        db.collection("videosShowCase").get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    var id = document.data.get("id").toString().toLong()
+                    VideosRepository.getMovieVideos(
+                        id,
+                        ::onVideosFetched,
+                        ::onError
+                    )
+                }
+            }
+
+
     }
 
-    private fun onVideosFetched(videos: Video, backdrop: String) {
-        lateinit var result: Result
-        var results = mutableListOf<Result>()
-
-        //masukin backdrop
-        results.add(videos.videoResults[0])
-        videosAdapter.updateVideo(results, backdrop)
+    private fun onVideosFetched(videosResponse: VideosResponse) {
+        videosAdapter.updateVideo(videosResponse)
     }
 
 
