@@ -81,4 +81,34 @@
     <string name="ringkasan_order">Ringkasan Order</string>
     <string name="total_price">Total Harga</string>
     <string name="city">City</string>
+
+    <!-- Dummy for notification -->
+    <string-array name="notification_type">
+        <item>system</item>
+        <item>movie</item>
+        <item>movie</item>
+        <item>movie</item>
+        <item>movie</item>
+    </string-array>
+    <string-array name="notification_date">
+        <item>15 Mar 2020</item>
+        <item>17 Mar 2020</item>
+        <item>07 Mar 2020</item>
+        <item>27 Feb 2020</item>
+        <item>26 Feb 2020</item>
+    </string-array>
+    <string-array name="notification_header">
+        <item>Dapatkan informasi promo terkini dan transaksi Anda lewat notifikasi</item>
+        <item>Film Seru Menanti Kamu</item>
+        <item>Promo Special Buat Kamu!</item>
+        <item>Flash Sale Dari DANA!</item>
+        <item>The Invisible Man Sudah Tayang!</item>
+    </string-array>
+    <string-array name="notification_body">
+        <item>Nyalakan notifikasi KW ID di halaman pengaturan notifikasi.</item>
+        <item>Yuk nonton Bloodshot, Disney Pixar\'s Onward, The Invisible Man, atau film seru lainnya #PakeKWID!</item>
+        <item>Dapatkan diskon 30% tiket pertama untuk semua film mulai jam 10.00 waktu setampat!</item>
+        <item>Serbu tiket nonton dengan promo Flash Sale 50% mulai jam 13.00 WIB dan 17.00 WIB!</item>
+        <item>Saksikan cerita mengerikan dari film horror The Invisible Man! Yuk pesan tiketnya!</item>
+    </string-array>
 </resources>
