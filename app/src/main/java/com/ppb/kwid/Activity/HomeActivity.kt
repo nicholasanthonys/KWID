@@ -181,8 +181,8 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
-        //getCurrentlyShowingCity(city)
-        getCurrentlyShowing()
+        getCurrentlyShowingCity(city)
+        //getCurrentlyShowing()
         getPopularMovies()
         getTopRatedMovies()
         //println(" getmovievideos jalan ")
