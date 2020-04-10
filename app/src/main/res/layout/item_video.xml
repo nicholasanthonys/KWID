@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/video_poster"
+        android:layout_width="150dp"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:id="@+id/tes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ini text"
+        android:textColor="@color/colorBlack"
+        android:textSize="26sp" />
+
+</LinearLayout>

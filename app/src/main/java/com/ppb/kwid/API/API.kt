@@ -1,8 +1,9 @@
 package com.ppb.kwid.API
 
 import com.ppb.kwid.Model.Credits.GetCreditsResponse
-import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
 import com.ppb.kwid.Model.Movie.GetMoviesResponse
+import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
+import com.ppb.kwid.Model.Video.VideosResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -37,7 +38,14 @@ interface Api {
     fun getMovieDetails(
         @Path("movie_id") id: Long,
         @Query("api_key") apiKey: String = "d7c23b0b88eb491c20a317ecfee47db3"
+
     ): Call<GetMovieDetailsResponse>
 
+    @GET("movie/{movie_id}")
+    fun getMovieVideos(
+        @Path("movie_id") id: Long,
+        @Query("api_key") apiKey: String = "d7c23b0b88eb491c20a317ecfee47db3",
+        @Query("append_to_response") appendToResponse: String = "videos"
+    ): Call<VideosResponse>
 
 }
