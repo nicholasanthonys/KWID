@@ -44,6 +44,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var btnProfile: Button
     private lateinit var btnRefresh: Button
     private lateinit var btnCity: Button
+    private lateinit var btnNotification: Button
 
     private lateinit var popularMovies: RecyclerView
     private lateinit var popularMoviesAdapter: MoviesAdapter
@@ -111,6 +112,12 @@ class HomeActivity : AppCompatActivity() {
         btnProfile = findViewById(R.id.btn_profile)
         btnProfile.setOnClickListener {
             val intent = Intent(this, AccountDetailActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnNotification = findViewById(R.id.btn_notification)
+        btnNotification.setOnClickListener {
+            val intent = Intent(this, NotificationActivity::class.java)
             startActivity(intent)
         }
 
