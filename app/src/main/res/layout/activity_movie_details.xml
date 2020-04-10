@@ -25,6 +25,14 @@
                 android:scaleType="fitXY"
                 android:contentDescription="@string/background_movie"/>
 
+            <Button
+                android:id="@+id/btn_play_video_movie_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="160dp"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/icbaseline_play_circle_outline" />
+
             <ImageView
                 android:id="@+id/btn_back_movie_detail"
                 android:layout_width="wrap_content"

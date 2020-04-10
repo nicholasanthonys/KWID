@@ -1,19 +1,18 @@
 package com.ppb.kwid.Activity
 
+import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.ppb.kwid.Database.DatabaseHelper
-import com.ppb.kwid.Fragment.CastCrewFragment
 import com.ppb.kwid.Fragment.OverviewFragment
-import com.ppb.kwid.Fragment.ScheduleFragment
 import com.ppb.kwid.Model.Credits.Cast
 import com.ppb.kwid.Model.Credits.CreditsRepository
 import com.ppb.kwid.Model.Credits.Crew
@@ -21,6 +20,8 @@ import com.ppb.kwid.Model.Genre.Genres
 import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
 import com.ppb.kwid.Model.MovieDetail.MovieDetailsRepository
 import com.ppb.kwid.Model.MovieDetail.MovieDetailsSectionsPageAdapter
+import com.ppb.kwid.Model.Video.VideosRepository
+import com.ppb.kwid.Model.Video.VideosResponse
 import com.ppb.kwid.R
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.activity_movie_details.*
@@ -39,6 +40,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var duration: TextView
     private lateinit var director: TextView
     private lateinit var btnLiked: Button
+    private lateinit var btnPlay: Button
 //    private lateinit var btnOverview: Button
 //    private lateinit var btnCastCrew: Button
 //    private lateinit var btnSchedule: Button
@@ -82,6 +84,8 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         movieId = intent.getLongExtra(MOVIE_id, 0)
 
+        //set btn play
+        btnPlay = findViewById(R.id.btn_play_video_movie_detail)
 
         btnLiked = findViewById(R.id.btn_liked)
 
@@ -237,6 +241,12 @@ class MovieDetailsActivity : AppCompatActivity() {
                 this.movieGenre += listGenres[i].name
             }
 
+            VideosRepository.getMovieVideos(
+                movDetails.id,
+                ::onVideoFetched,
+                ::onError
+            )
+
             //set up button fragment
 //            setUpButtonFragment(overview)
 
@@ -255,6 +265,20 @@ class MovieDetailsActivity : AppCompatActivity() {
         } else {
             finish()
         }
+    }
+
+    fun onVideoFetched(videoResponse: VideosResponse) {
+        val youtubeURI = videoResponse.videos.videoResults[0].key
+
+        btnPlay.setOnClickListener {
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("http://www.youtube.com/watch?v=" + youtubeURI)
+            )
+            startActivity(intent)
+        }
+
+
     }
 
 //    private fun changeFragment(id: Int, overview: String) {
