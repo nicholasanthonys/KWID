@@ -170,7 +170,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         rvVideos.layoutManager = videosLayoutMgr
-        videosAdapter = VideosAdapter(mutableListOf(), "")
+        videosAdapter = VideosAdapter(mutableListOf(), "", this)
         rvVideos.adapter = videosAdapter
 
 
