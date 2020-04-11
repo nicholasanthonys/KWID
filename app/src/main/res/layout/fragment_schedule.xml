@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,65 +8,77 @@
     android:background="@color/colorWhite"
     tools:context=".Fragment.ScheduleFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/date_picker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_date"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:background="@drawable/rectangle_white_color_top_bottom_border" />
 
     <LinearLayout
         android:id="@+id/button_location"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:orientation="horizontal"
-        android:background="@drawable/rectangle_skin_color_top_bottom_border">
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_skin_color_top_bottom_border"
+        android:orientation="vertical">
 
-        <ImageView
-            android:src="@drawable/icbaseline_location_on"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="5dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_gravity="top"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txt_location"
-            android:layout_width="325dp"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:layout_marginStart="10dp"
-            android:background="@color/colorBackground"
-            android:textColor="@color/colorBlack"
-            android:layout_gravity="center_vertical"
-            android:text="@string/city" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/icbaseline_location_on" />
 
-        <ImageView
-            android:src="@drawable/icoutline_expand_more"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/txt_location"
+                android:layout_width="325dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:background="@color/colorBackground"
+                android:text="@string/city"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/icoutline_expand_more" />
+
+        </LinearLayout>
+        <!---Untuk date -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/date_picker"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center_vertical" />
+            android:background="@drawable/rectangle_white_color_top_bottom_border"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_date" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ticket_picker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_ticket" />
+        </androidx.core.widget.NestedScrollView>
+
     </LinearLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="200dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/ticket_picker"
-            tools:listitem="@layout/item_ticket"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </androidx.core.widget.NestedScrollView>
-
+    <!---Untuk Button -->
     <LinearLayout
         android:id="@+id/btn_buy_ticket"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
+        android:layout_gravity="bottom"
         android:background="@color/colorDarkBlue">
 
         <ImageView
@@ -84,4 +96,4 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp" />
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>

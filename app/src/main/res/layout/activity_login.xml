@@ -26,8 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="120dp"
-                android:layout_marginTop="80dp"
-                android:src="@drawable/logo" />
+                android:layout_marginTop="80dp" />
 
         </androidx.cardview.widget.CardView>
 
@@ -104,7 +103,6 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_rounded_google"
-            android:drawableStart="@drawable/google_logo_drawable"
             android:drawablePadding="-20dp"
             android:paddingStart="20dp"
             android:paddingTop="6dp"
