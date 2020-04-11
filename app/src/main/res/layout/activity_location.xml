@@ -9,7 +9,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom">
+        android:background="@drawable/rectangle_white_color_top_bottom_border"
+        android:gravity="bottom|center">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -22,7 +23,7 @@
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:background="@drawable/button_my_location"
-                android:text="Gunakan Lokasi Saya"
+                android:text="@string/use_my_location"
                 android:textAllCaps="false"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -43,11 +44,12 @@
 
             <ImageView
                 android:id="@+id/btn_back_favovite_movies"
+                android:contentDescription="@string/back_button"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/icbaseline_arrow_back" />
 
@@ -56,13 +58,16 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:background="@drawable/rectangle_edit_text"
-                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
                 android:paddingTop="5dp"
-                android:paddingRight="5dp"
+                android:paddingEnd="5dp"
                 android:paddingBottom="5dp"
-                android:text="Masukkan kata kunci ..."
+                android:inputType="text"
+                android:text="@string/insert_location"
+                android:hint="@string/insert_location"
+                android:autofillHints="@string/insert_location"
                 android:textColor="@color/colorBlack"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -71,7 +76,6 @@
             android:id="@+id/rv_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/top_bar_location"
             tools:listitem="@layout/item_location" />
     </LinearLayout>
 </FrameLayout>

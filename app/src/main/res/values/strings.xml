@@ -16,7 +16,7 @@
     <string name="durasi">Durasi</string>
     <string name="durasi_value">123 Minutes</string>
     <string name="director_value">Director 1, Director 2</string>
-    <string name="relase_value">2019-09-17</string>
+    <string name="relase_value">2019–09–17</string>
     <string name="directorValue">Director 1, Director 2</string>
     <string name="background_movie">Background Movie</string>
     <string name="movie_poster">Movie Poster</string>>
@@ -26,7 +26,7 @@
     <string name="duration_value">123 Minutes</string>
     <string name="director">Director</string>
     <string name="release">Release</string>
-    <string name="release_value">2019–09-17</string>
+    <string name="release_value">2019–09–17</string>
     <string name="cast_crew">Cast Crew</string>
     <string name="schedule">Jadwal</string>
     <string name="overview">Overview</string>
@@ -81,6 +81,24 @@
     <string name="ringkasan_order">Ringkasan Order</string>
     <string name="total_price">Total Harga</string>
     <string name="city">City</string>
+    <string name="movie_video">Movie Video</string>
+    <string name="actor_name">Actor Name</string>
+    <string name="actor_character">Actor Character</string>
+    <string name="screen">Layar</string>
+    <string name="expand_more">Expand More</string>
+    <string name="buy_ticket">Beli Ticket</string>
+    <string name="publish">Publish</string>
+    <string name="logo">Logo</string>
+    <string name="use_my_location">Gunakan Lokasi Saya</string>
+    <string name="insert_location">Masukkan kata kunci …</string>
+    <string name="videos">Videos</string>
+    <string name="videos_for_you">Videos for you</string>
+    <string name="your_name_here">Your Name Here</string>
+    <string name="point">Poin</string>
+    <string name="point_value">1.800</string>
+    <string name="balance">Balance</string>
+    <string name="balance_value">Rp. 1.000.000</string>
+    <string name="favorite_movies">Favorite Movies</string>
 
     <!-- Dummy for notification -->
     <string-array name="notification_type">
@@ -110,5 +128,35 @@
         <item>Dapatkan diskon 30% tiket pertama untuk semua film mulai jam 10.00 waktu setampat!</item>
         <item>Serbu tiket nonton dengan promo Flash Sale 50% mulai jam 13.00 WIB dan 17.00 WIB!</item>
         <item>Saksikan cerita mengerikan dari film horror The Invisible Man! Yuk pesan tiketnya!</item>
+    </string-array>
+
+    <!-- Dummy for top up -->
+    <string-array name="credit_card_name">
+        <item>Master Card</item>
+        <item>Visa</item>
+    </string-array>
+    <string-array name="credit_card_image_url">
+        <item>https://webcomicms.net/sites/default/files/clipart/171906/mastercard–png–transparent–images-171906-2194630.png</item>
+        <item>https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/800px-Visa_Inc._logo.svg.png</item>
+    </string-array>
+    <string-array name="credit_card_url">
+        <item>https://www.mastercard.co.id/id-id.html</item>
+        <item>https://www.visa.co.id/pay-with-visa/find-a-card/credit-cards.html</item>
+    </string-array>
+
+    <string-array name="bank_name">
+        <item>BCA</item>
+        <item>BRI</item>
+        <item>Mandiri</item>
+    </string-array>
+    <string-array name="bank_image_url">
+        <item>https://vectorlogo4u.com/wp-content/uploads/2018/11/Bank-BCA-Vector-Logo-720x340.png</item>
+        <item>https://4.bp.blogspot.com/-g2Uu50qxcrs/VMvJOSV_9EI/AAAAAAAAAGM/BDzywuaFDEU/s1600/bri.png</item>
+        <item>https://upload.wikimedia.org/wikipedia/id/thumb/f/fa/Bank_Mandiri_logo.svg/1200px-Bank_Mandiri_logo.svg.png</item>
+    </string-array>
+    <string-array name="bank_url">
+        <item>https://www.bca.co.id/</item>
+        <item>https://bri.co.id/</item>
+        <item>https://www.bankmandiri.co.id/</item>
     </string-array>
 </resources>

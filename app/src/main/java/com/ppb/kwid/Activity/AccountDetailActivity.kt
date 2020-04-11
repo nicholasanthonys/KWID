@@ -24,11 +24,12 @@ import de.hdodenhof.circleimageview.CircleImageView
 class AccountDetailActivity : AppCompatActivity() {
 
     private lateinit var btnFavoriteMovies: Button
+    private lateinit var btnTopUp: Button
+    private lateinit var btnTransactionHistory: Button
     private lateinit var profilePicture: CircleImageView
     private lateinit var profileName: TextView
     private lateinit var etUsername: EditText
     private lateinit var btnEditUsername: Button
-
 
     //firebase instance
     private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -110,5 +111,17 @@ class AccountDetailActivity : AppCompatActivity() {
             .load(imageURI)
             .placeholder(R.drawable.profile_picture)
             .into(profilePicture)
+
+        btnTopUp = findViewById(R.id.btn_top_up)
+        btnTopUp.setOnClickListener {
+            val intent = Intent(this, TopUpActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnTransactionHistory = findViewById(R.id.btn_transaction_history)
+        btnTransactionHistory.setOnClickListener {
+            val intent = Intent(this, TransactionHistoryActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
