@@ -10,11 +10,13 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.ppb.kwid.R
 
 class VideosAdapter(
     private var videosResponses: MutableList<VideosResponse>,
+    private var videoResult: MutableList<Result>,
     private var context: Context
 ) : RecyclerView.Adapter<VideosAdapter.VideoViewHolder>() {
 
@@ -26,14 +28,15 @@ class VideosAdapter(
         return VideoViewHolder(view)
     }
 
-    override fun getItemCount(): Int = videosResponses.size
+    override fun getItemCount(): Int = videoResult.size
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         holder.bind(videosResponses[position])
     }
 
-    fun updateVideo(videoResponse: VideosResponse) {
+    fun updateVideo(videoResponse: VideosResponse, result: Result) {
         videosResponses.add(videoResponse)
+        videoResult.add(result)
         notifyDataSetChanged()
     }
 
@@ -44,7 +47,7 @@ class VideosAdapter(
 
             Glide.with(itemView)
                 .load("https://image.tmdb.org/t/p/w342${videoResponse.backdropPath}")
-                .transform(CenterCrop())
+                .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
                 .into(videoPoster)
 
             var youtubeURI = ""

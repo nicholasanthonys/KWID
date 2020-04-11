@@ -176,7 +176,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         rvVideos.layoutManager = videosLayoutMgr
-        videosAdapter = VideosAdapter(mutableListOf(), this)
+        videosAdapter = VideosAdapter(mutableListOf(), mutableListOf(), this)
         rvVideos.adapter = videosAdapter
 
 
@@ -224,7 +224,7 @@ class HomeActivity : AppCompatActivity() {
         topRatedMovies.adapter = topRatedMoviesAdapter
 
         rvVideos.layoutManager = videosLayoutMgr
-        videosAdapter = VideosAdapter(mutableListOf(), this)
+        videosAdapter = VideosAdapter(mutableListOf(), mutableListOf(), this)
         rvVideos.adapter = videosAdapter
 
 
@@ -253,7 +253,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun onVideosFetched(videosResponse: VideosResponse) {
-        videosAdapter.updateVideo(videosResponse)
+        if (!videosResponse.videos.videoResults.isNullOrEmpty()) {
+            videosAdapter.updateVideo(videosResponse, videosResponse.videos.videoResults[0])
+        }
+
     }
 
 
