@@ -14,6 +14,7 @@
 
         <ImageView
             android:id="@+id/video_poster"
+            android:contentDescription="@string/movie_video"
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:background="@color/colorBlack" />

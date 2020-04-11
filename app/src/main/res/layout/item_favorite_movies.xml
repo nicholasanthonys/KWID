@@ -63,7 +63,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Genre"
+                    android:text="@string/genre"
                     android:textColor="@color/colorTextLower"
                     android:textSize="12sp" />
 
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ellipsize="end"
-                    android:text="Genre"
+                    android:text="@string/genre"
                     android:textColor="@color/colorBlack"
                     android:textSize="12sp" />
             </TableRow>
@@ -86,7 +86,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Director"
+                    android:text="@string/director"
                     android:textColor="@color/colorTextLower"
                     android:textSize="12sp" />
 
@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ellipsize="end"
-                    android:text="Director"
+                    android:text="@string/director"
                     android:textColor="@color/colorBlack"
                     android:textSize="12sp" />
             </TableRow>
@@ -109,7 +109,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Release"
+                    android:text="@string/release"
                     android:textColor="@color/colorTextLower"
                     android:textSize="12sp" />
 
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ellipsize="end"
-                    android:text="2020-02-02"
+                    android:text="@string/relase_value"
                     android:textColor="@color/colorBlack"
                     android:textSize="12sp" />
             </TableRow>

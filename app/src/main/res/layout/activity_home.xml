@@ -58,10 +58,11 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:contentDescription="@string/location_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:src="@drawable/icbaseline_location_on" />
 
             <Button
@@ -76,10 +77,11 @@
                 android:textSize="14sp" />
 
             <ImageView
+                android:contentDescription="@string/expand_more"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:src="@drawable/icoutline_expand_more" />
         </LinearLayout>
 
@@ -186,7 +188,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="Videos"
+                android:text="@string/videos"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -196,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="Videos for you"
+                android:text="@string/videos_for_you"
                 android:textColor="@color/colorBlack" />
 
             <androidx.recyclerview.widget.RecyclerView

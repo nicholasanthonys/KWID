@@ -23,7 +23,7 @@
             android:layout_below="@id/item_cast_poster"
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
-            android:text="Actor Name" />
+            android:text="@string/actor_name" />
 
         <TextView
             android:id="@+id/item_cast_character"
@@ -32,6 +32,6 @@
             android:layout_below="@id/item_cast_name"
             android:layout_centerHorizontal="true"
             android:textAlignment="center"
-            android:text="Actor Character" />
+            android:text="@string/actor_character" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

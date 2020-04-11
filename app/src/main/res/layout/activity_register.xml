@@ -24,6 +24,7 @@
             app:cardCornerRadius="100dp">
 
             <ImageView
+                android:contentDescription="@string/logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="120dp"
@@ -60,6 +61,7 @@
             android:drawableStart="@drawable/ic_account_circle_black_26dp"
             android:drawablePadding="10dp"
             android:hint="@string/placeholder_username"
+            android:autofillHints="@string/placeholder_username"
             android:inputType="textFilter"
             android:padding="10dp"
             android:textColor="@color/colorBlack"
@@ -74,6 +76,7 @@
             android:drawableStart="@drawable/login_email"
             android:drawablePadding="10dp"
             android:hint="@string/email_placeholder"
+            android:autofillHints="@string/email_placeholder"
             android:inputType="textEmailAddress"
             android:padding="10dp"
             android:textColor="@color/colorBlack"
@@ -88,6 +91,7 @@
             android:drawableStart="@drawable/login_password"
             android:drawablePadding="10dp"
             android:hint="@string/password_placeholder"
+            android:autofillHints="@string/password_placeholder"
             android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="@color/colorBlack"
@@ -102,6 +106,7 @@
             android:drawableStart="@drawable/login_password"
             android:drawablePadding="10dp"
             android:hint="@string/confirm_password"
+            android:autofillHints="@string/confirm_password"
             android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="@color/colorBlack"

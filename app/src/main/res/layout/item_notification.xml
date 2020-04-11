@@ -34,6 +34,7 @@
                 android:textSize="12sp"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"
+                android:paddingStart="0dp"
                 android:paddingEnd="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

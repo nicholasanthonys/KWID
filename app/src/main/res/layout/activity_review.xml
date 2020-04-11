@@ -11,6 +11,7 @@
     <ImageView
         android:id="@+id/btn_back_review"
         android:src="@drawable/icbaseline_arrow_back_white"
+        android:contentDescription="@string/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -27,6 +28,7 @@
 
         <ImageView
             android:id="@+id/img_movie"
+            android:contentDescription="@string/movie_poster"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:layout_width="match_parent"
@@ -45,7 +47,7 @@
 
         <TextView
             android:id="@+id/txt_movie_title"
-            android:text="Movie Title Goes Here"
+            android:text="@string/movie_title"
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -64,6 +66,7 @@
             <ImageView
                 android:id="@+id/btn_img_star_1"
                 android:src="@drawable/icround_star"
+                android:contentDescription="@string/rounded_star_image"
                 android:layout_marginStart="15dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
@@ -73,6 +76,7 @@
             <ImageView
                 android:id="@+id/btn_img_star_2"
                 android:src="@drawable/icround_star"
+                android:contentDescription="@string/rounded_star_image"
                 android:layout_marginStart="15dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
@@ -82,6 +86,7 @@
             <ImageView
                 android:id="@+id/btn_img_star_3"
                 android:src="@drawable/icround_star"
+                android:contentDescription="@string/rounded_star_image"
                 android:layout_marginStart="15dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
@@ -91,6 +96,7 @@
             <ImageView
                 android:id="@+id/btn_img_star_4"
                 android:src="@drawable/icround_star"
+                android:contentDescription="@string/rounded_star_image"
                 android:layout_marginStart="15dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
@@ -100,6 +106,7 @@
             <ImageView
                 android:id="@+id/btn_img_star_5"
                 android:src="@drawable/star_gray"
+                android:contentDescription="@string/rounded_star_image"
                 android:layout_marginStart="15dp"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
@@ -109,7 +116,7 @@
 
         <Button
             android:id="@+id/btn_publish"
-            android:text="Publish"
+            android:text="@string/publish"
             android:textColor="@color/colorWhite"
             android:textStyle="bold"
             android:textAllCaps="true"
