@@ -136,7 +136,7 @@
         <item>Visa</item>
     </string-array>
     <string-array name="credit_card_image_url">
-        <item>https://webcomicms.net/sites/default/files/clipart/171906/mastercard–png–transparent–images-171906-2194630.png</item>
+        <item>https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/1200px-MasterCard_Logo.svg.png</item>
         <item>https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/800px-Visa_Inc._logo.svg.png</item>
     </string-array>
     <string-array name="credit_card_url">
