@@ -54,8 +54,12 @@ class AccountDetailActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //get username
+        //get username frm local database
         var username = dbHelper.getUsername(user?.email)
+        if (username.isNullOrBlank()) {
+            //ambil dari firebase
+            username = user?.displayName.toString()
+        }
         profileName = findViewById(R.id.profile_name)
         //set profile name as username
         profileName.text = username
