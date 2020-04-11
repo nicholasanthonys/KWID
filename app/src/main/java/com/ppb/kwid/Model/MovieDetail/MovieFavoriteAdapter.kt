@@ -35,10 +35,7 @@ class MovieFavoriteAdapter(
 
     fun updateMovies(movie: GetMovieDetailsResponse, isRefresh: Boolean) {
         this.movies.add(movie)
-        notifyItemRangeInserted(
-            this.movies.size,
-            movies.size - 1
-        )
+        notifyItemInserted(this.movies.size)
     }
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
