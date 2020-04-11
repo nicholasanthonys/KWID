@@ -268,12 +268,16 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     fun onVideoFetched(videoResponse: VideosResponse) {
-        val youtubeURI = videoResponse.videos.videoResults[0].key
+        var youtubeURI = ""
+        if (!videoResponse.videos.videoResults.isNullOrEmpty()) {
+            youtubeURI = "watch?v=" + videoResponse.videos.videoResults[0].key
+        }
+
 
         btnPlay.setOnClickListener {
             val intent = Intent(
                 Intent.ACTION_VIEW,
-                Uri.parse("http://www.youtube.com/watch?v=" + youtubeURI)
+                Uri.parse("http://www.youtube.com/$youtubeURI")
             )
             startActivity(intent)
         }

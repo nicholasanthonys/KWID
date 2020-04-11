@@ -47,10 +47,15 @@ class VideosAdapter(
                 .transform(CenterCrop())
                 .into(videoPoster)
 
+            var youtubeURI = ""
+            if (!videoResponse.videos.videoResults.isNullOrEmpty()) {
+                youtubeURI = "watch?v=" + videoResponse.videos.videoResults[0].key
+            }
+
             btnPlay.setOnClickListener {
                 val intent = Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("http://www.youtube.com/watch?v=" + videoResponse.videos.videoResults[0].key)
+                    Uri.parse("http://www.youtube.com/$youtubeURI")
                 )
                 context.startActivity(intent)
             }
