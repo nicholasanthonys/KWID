@@ -216,10 +216,11 @@ class HomeActivity : AppCompatActivity() {
             false
         )
 
-//        getCurrentlyShowing()
+        //getCurrentlyShowing()
         getCurrentlyShowingCity(city)
         getPopularMovies()
         getTopRatedMovies()
+        getMovieVideos()
 
 
     }
@@ -237,8 +238,6 @@ class HomeActivity : AppCompatActivity() {
                     )
                 }
             }
-
-
     }
 
     private fun onVideosFetched(videosResponse: VideosResponse) {
