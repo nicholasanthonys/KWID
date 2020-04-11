@@ -8,7 +8,6 @@
     android:background="@color/colorWhite"
     tools:context=".Fragment.ScheduleFragment">
 
-
     <LinearLayout
         android:id="@+id/button_location"
         android:layout_width="match_parent"
