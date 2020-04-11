@@ -1,8 +1,8 @@
 package com.ppb.kwid.Activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ppb.kwid.Model.TopUp.Bank
@@ -72,7 +72,7 @@ class TopUpActivity : AppCompatActivity() {
         val bankAdapter = BankAdapter(listOfBank)
         recyclerBank.adapter = bankAdapter
 
-        val creditCardLinearLayoutManager: LinearLayoutManager =
+        val creditCardLinearLayoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerCreditCard = findViewById(R.id.recyclerview_credit_card)
         recyclerCreditCard.layoutManager = creditCardLinearLayoutManager
