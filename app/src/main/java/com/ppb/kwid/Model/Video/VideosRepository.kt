@@ -38,15 +38,10 @@ object VideosRepository {
                             var id = responseBody.id
                             var videoResponse = responseBody
                             var backdrop = responseBody.backdropPath
-                            Log.d("Movie Details Repo", "MOVIE TITLE: ${responseBody.id}")
-                            Log.d("Backdrop path", "Movie Backdrop ${responseBody.backdropPath}")
-                            Log.d("MOVIE DETAILS Repo", "MOVIE DURATION: ${responseBody.videos}")
 
                             onSuccess(videoResponse)
 
                         } else {
-                            println("GET CAST ERROR")
-                            Log.d("CAST REPOSITORY", "Failed to get response")
                             onError.invoke()
                         }
                     } else {
