@@ -26,7 +26,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="120dp"
-                android:layout_marginTop="80dp" />
+                android:layout_marginTop="80dp"
+                android:src="@drawable/logo" />
 
         </androidx.cardview.widget.CardView>
 
@@ -103,6 +104,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_rounded_google"
+            android:drawableStart="@drawable/google_logo_drawable"
             android:drawablePadding="-20dp"
             android:paddingStart="20dp"
             android:paddingTop="6dp"
@@ -111,14 +113,7 @@
             android:text="@string/sign_in_with_google"
             android:textAllCaps="false"
             android:textSize="20sp" />
-
-
-        <!--    <com.google.android.gms.common.SignInButton-->
-        <!--        android:id="@+id/signInBtn"-->
-        <!--        android:layout_width="300dp"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:layout_marginBottom="8dp" />-->
-
+        
         <Button
             android:id="@+id/btn_forgot_password"
             style="?borderlessButtonStyle"
