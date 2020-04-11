@@ -208,20 +208,25 @@ class HomeActivity : AppCompatActivity() {
             }
         currentlyShowing.adapter = currentlyShowingAdapter
 
-        popularMovies = findViewById(R.id.popular_movies)
-        popularMovies = findViewById(R.id.popular_movies)
-        popularMoviesLayoutMgr = LinearLayoutManager(
-            this,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
+        popularMovies.layoutManager = popularMoviesLayoutMgr
+        popularMoviesAdapter =
+            MoviesAdapter(mutableListOf()) { movie ->
+                showMovieDetails(movie)
+            }
+        popularMovies.adapter = popularMoviesAdapter
 
-        topRatedMovies = findViewById(R.id.top_rated_movies)
-        topRatedLayoutMgr = LinearLayoutManager(
-            this,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
+
+        topRatedMovies.layoutManager = topRatedLayoutMgr
+        topRatedMoviesAdapter =
+            MoviesAdapter(mutableListOf()) { movie ->
+                showMovieDetails(movie)
+            }
+        topRatedMovies.adapter = topRatedMoviesAdapter
+
+        rvVideos.layoutManager = videosLayoutMgr
+        videosAdapter = VideosAdapter(mutableListOf(), this)
+        rvVideos.adapter = videosAdapter
+
 
         //getCurrentlyShowing()
         getCurrentlyShowingCity(city)
