@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -13,14 +12,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.ppb.kwid.Database.DatabaseHelper
 import com.ppb.kwid.R
 
 const val MESSAGE = "extra_message"
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -37,6 +37,9 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var btnRegister: Button
     private lateinit var tvMessage: TextView
     private lateinit var btnForgot: Button
+    private lateinit var btnGoogle: Button
+
+    private var dbHelper = DatabaseHelper(this)
 
     companion object {
         fun getLaunchIntent(from: Context) = Intent(from, LoginActivity::class.java).apply {
@@ -86,7 +89,7 @@ class LoginActivity : AppCompatActivity() {
 //        val signIn = findViewById<View>(R.id.signInBtn) as SignInButton
 //        signIn.setOnClickListener { googlesignIn() }
 
-        val btnGoogle = findViewById<View>(R.id.signInGoogle)
+        btnGoogle = findViewById(R.id.signInGoogle)
         btnGoogle.setOnClickListener { googlesignIn() }
     }
 
@@ -147,6 +150,8 @@ class LoginActivity : AppCompatActivity() {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)
                 firebaseAuthWithGoogle(account!!)
+
+
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 Log.w("sign in failed", "Google sign in failed", e)
@@ -179,7 +184,7 @@ class LoginActivity : AppCompatActivity() {
             val currentUser = mAuth.currentUser
             println("dari onstart, current user ?" + currentUser?.email)
             if(currentUser != null){
-                if(currentUser.isEmailVerified()){
+                if (currentUser.isEmailVerified) {
                     updateUI(currentUser, "")
                 }
             }
@@ -199,6 +204,12 @@ class LoginActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("sukses", "signInWithCredential:success")
                     val user = mAuth.currentUser
+
+                    //INSERT USERNAME KE DATABASE
+                    //remove username space
+                    var username = user!!.displayName.toString().replace("\\s".toRegex(), "")
+                    dbHelper.insertUser(username, user.email.toString())
+
                     updateUI(user, "")
                 } else {
                     // If sign in fails, display a message to the user.
