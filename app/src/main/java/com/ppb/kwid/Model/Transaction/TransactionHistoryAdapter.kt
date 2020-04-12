@@ -1,5 +1,6 @@
 package com.ppb.kwid.Model.Transaction
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +10,13 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.ppb.kwid.Activity.PurchaseConfirmationActivity
 import com.ppb.kwid.R
 
-class TransactionHistoryAdapter(private val transactions: MutableList<Transaction>) :
+class TransactionHistoryAdapter(
+    private val transactions: MutableList<Transaction>,
+    private var context: Context
+) :
     RecyclerView.Adapter<TransactionHistoryAdapter.TransactionHistoryListHolder>() {
 
     inner class TransactionHistoryListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,7 +43,12 @@ class TransactionHistoryAdapter(private val transactions: MutableList<Transactio
             val dateAndTimeText = transaction.schedule + ", " + transaction.time
             dateAndTime.text = dateAndTimeText
 
-            itemView.setOnClickListener { }
+            itemView.setOnClickListener {
+                val intent = Intent(context, PurchaseConfirmationActivity::class.java)
+                intent.putExtra(PurchaseConfirmationActivity.EXTRA_TRANSACTION, transaction)
+                intent.putExtra(PurchaseConfirmationActivity.EXTRA_IS_HISTORY, true)
+                context.startActivity(intent)
+            }
         }
     }
 

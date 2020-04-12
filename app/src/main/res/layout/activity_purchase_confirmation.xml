@@ -26,6 +26,7 @@
             android:layout_marginBottom="10dp" />
 
         <TextView
+            android:id="@+id/appbar_title"
             android:text="@string/purchase_confirmation"
             android:textColor="@color/colorBlack"
             android:textSize="20sp"
@@ -235,7 +236,7 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/service_fee"
+                    android:id="@+id/txt_service_fee"
                     android:text="@string/service_fee"
                     android:textSize="12sp"
                     android:textColor="@color/colorBlack"

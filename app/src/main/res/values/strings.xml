@@ -99,6 +99,7 @@
     <string name="balance">Balance</string>
     <string name="balance_value">Rp. 1.000.000</string>
     <string name="favorite_movies">Favorite Movies</string>
+    <string name="transaction_detail">Transaction Detail</string>
 
     <!-- Dummy for notification -->
     <string-array name="notification_type">

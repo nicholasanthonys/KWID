@@ -62,7 +62,7 @@ class TransactionHistoryActivity : AppCompatActivity() {
         layoutManagerTransactionHistory =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerViewTransactionHistory.layoutManager = layoutManagerTransactionHistory
-        val transactionHistoryAdapter = TransactionHistoryAdapter(listOfTransaction)
+        val transactionHistoryAdapter = TransactionHistoryAdapter(listOfTransaction, this)
         recyclerViewTransactionHistory.adapter = transactionHistoryAdapter
     }
 }
