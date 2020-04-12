@@ -159,4 +159,53 @@
         <item>https://bri.co.id/</item>
         <item>https://www.bankmandiri.co.id/</item>
     </string-array>
+
+    <!-- Dummy for transaction history -->
+    <string-array name="transaction_movie_poster">
+        <item>https://cdn0-production-images-kly.akamaized.net/-n7K8QQYtJr2BTASrLaI_WbgxII=/640x853/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/2984036/original/034006400_1575278238-Jumanji_The_Next_Level_Headline.jpg</item>
+        <item>https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_.jpg</item>
+        <item>https://upload.wikimedia.org/wikipedia/id/0/03/Onward_poster.jpg</item>
+    </string-array>
+
+    <string-array name="transaction_movie_title">
+        <item>Jumanji: The Next Level</item>
+        <item>Avenger: Endgame</item>
+        <item>Onward</item>
+    </string-array>
+
+    <string-array name="transaction_cinema_name">
+        <item>Festival Citylink XXI</item>
+        <item>Festival Citylink XXI</item>
+        <item>Festival Citylink XXI</item>
+    </string-array>
+
+    <string-array name="transaction_schedule">
+        <item>Sabtu, 21 Des 2019</item>
+        <item>Senin, 23 Des 2019</item>
+        <item>Selasa, 24 Des 2019</item>
+    </string-array>
+
+    <string-array name="transaction_picked_seat">
+        <item>A1,A2</item>
+        <item>D3,D5</item>
+        <item>B8,B9</item>
+    </string-array>
+
+    <string-array name="transaction_ticket_price">
+        <item>50000</item>
+        <item>35000</item>
+        <item>35000</item>
+    </string-array>
+
+    <string-array name="transaction_time">
+        <item>14:10</item>
+        <item>10:00</item>
+        <item>14:10</item>
+    </string-array>
+
+    <string-array name="transaction_service_fee">
+        <item>3000</item>
+        <item>3000</item>
+        <item>3000</item>
+    </string-array>
 </resources>

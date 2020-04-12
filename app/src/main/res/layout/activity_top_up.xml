@@ -40,6 +40,7 @@
         android:layout_marginStart="15dp"
         android:text="@string/choose_top_up_method"
         android:textAllCaps="true"
+        android:padding="5dp"
         android:textColor="@color/colorTextLower"
         android:textSize="14sp" />
 

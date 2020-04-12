@@ -39,7 +39,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:padding="30dp"
         android:background="@drawable/rounded_bottom_rect_shape_dark_blue">
 
         <androidx.cardview.widget.CardView
@@ -126,6 +126,7 @@
                 android:background="@drawable/rect_right_border_white">
 
                 <TextView
+                    android:paddingTop="20dp"
                     android:text="@string/schedule"
                     android:textSize="12sp"
                     android:textAllCaps="true"
@@ -189,6 +190,7 @@
                 android:background="@color/colorWhite">
 
                 <TextView
+                    android:paddingTop="20dp"
                     android:text="@string/time"
                     android:textSize="12sp"
                     android:textAllCaps="true"
