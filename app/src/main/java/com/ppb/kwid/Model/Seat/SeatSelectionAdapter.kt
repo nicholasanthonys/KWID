@@ -16,16 +16,23 @@ class SeatSelectionAdapter(
 
     inner class SeatSelectionListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private lateinit var button: Button
-        var isSelected: Boolean = false
 
         fun bind(seat: Seat) {
             button = itemView.findViewById(R.id.background)
             button.text = seat.seatNumber
 
             if (seat.isEmpty) {
-                button.isEnabled = true
-                button.isSelected = false
-                button.setTextColor(itemView.resources.getColor(R.color.colorWhite))
+
+                if (seat.isSelected) {
+                    button.isEnabled = true
+                    button.isSelected = true
+                    button.setTextColor(itemView.resources.getColor(R.color.colorWhite))
+                } else {
+                    button.isEnabled = true
+                    button.isSelected = false
+                    button.setTextColor(itemView.resources.getColor(R.color.colorWhite))
+                }
+
             } else {
                 button.isEnabled = false
                 button.isClickable = false
@@ -34,13 +41,14 @@ class SeatSelectionAdapter(
             }
 
             button.setOnClickListener {
-                if (isSelected) {
-                    button.isSelected = false
-                    fragment.addSeat(seat)
-                } else {
-                    button.isSelected = true
+                if (seat.isSelected) {
+                    seat.isSelected = false
                     fragment.deleteSeat(seat)
+                } else {
+                    seat.isSelected = true
+                    fragment.addSeat(seat)
                 }
+                notifyDataSetChanged()
             }
         }
     }

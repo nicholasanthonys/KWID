@@ -17,10 +17,14 @@ class MovieDetailsSectionsPageAdapter(private val mContext: Context, fm: Fragmen
     private val TAB_TITLES = intArrayOf(R.string.overview, R.string.cast_crew, R.string.schedule)
     private var overview: String = ""
     private var movieId: Long = 0
+    private var movieName: String = ""
+    private var moviePoster: String = ""
 
-    fun setAllParameters(overview: String, movieId: Long) {
+    fun setAllParameters(overview: String, movieId: Long, movieName: String, moviePoster: String) {
         this.overview = overview
         this.movieId = movieId
+        this.movieName = movieName
+        this.moviePoster = moviePoster
     }
 
     override fun getItem(position: Int): Fragment {
@@ -28,7 +32,7 @@ class MovieDetailsSectionsPageAdapter(private val mContext: Context, fm: Fragmen
         when (position) {
             0 -> fragment = OverviewFragment.newInstance(overview)
             1 -> fragment = CastCrewFragment.newInstance(movieId)
-            2 -> fragment = ScheduleFragment()
+            2 -> fragment = ScheduleFragment.newInstance(movieName, moviePoster)
         }
 
         return fragment as Fragment

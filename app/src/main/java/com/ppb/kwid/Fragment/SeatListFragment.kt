@@ -23,8 +23,8 @@ class SeatListFragment : Fragment() {
     }
 
     private lateinit var recyclerViewSeatList: RecyclerView
-    private lateinit var listOfSeat: MutableList<Seat>
-    private lateinit var listOfSelectedSeat: MutableList<Seat>
+    private var listOfSeat: MutableList<Seat> = mutableListOf()
+    private var listOfSelectedSeat: MutableList<Seat> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,7 +54,8 @@ class SeatListFragment : Fragment() {
         for (position in seats.indices) {
             val newSeat = Seat(
                 seats[position],
-                isEmptys[position].toBoolean()
+                isEmptys[position].toBoolean(),
+                false
             )
 
             listOfSeat.add(newSeat)

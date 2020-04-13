@@ -20,4 +20,5 @@
     <color name="colorLightBrown">#A49999</color>
     <color name="colorOrange">#FFA41B</color>
     <color name="colorGray">#F1F3F4</color>
+    <color name="colorButtonDisabled">#887C7C</color>
 </resources>

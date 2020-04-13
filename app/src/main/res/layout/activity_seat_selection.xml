@@ -99,9 +99,10 @@
         <androidx.core.widget.NestedScrollView
             android:layout_weight="7"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:background="@drawable/rectangle_white_color_top_bottom_border">
 
-            <fragment
+            <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragment_list_seat"
                 tools:layout="@layout/fragment_seat_list"
                 android:layout_width="match_parent"

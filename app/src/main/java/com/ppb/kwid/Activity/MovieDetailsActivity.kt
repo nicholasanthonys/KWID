@@ -258,7 +258,12 @@ class MovieDetailsActivity : AppCompatActivity() {
 
             //Tablayout
             val sectionsPagerAdapter = MovieDetailsSectionsPageAdapter(this, supportFragmentManager)
-            sectionsPagerAdapter.setAllParameters(overview, movieId)
+            sectionsPagerAdapter.setAllParameters(
+                overview,
+                movieId,
+                movieName,
+                "https://image.tmdb.org/t/p/w1280${movDetails.backdropPath}"
+            )
             view_pager.adapter = sectionsPagerAdapter
             tabs_movie_detail.setupWithViewPager(view_pager)
             supportActionBar?.elevation = 0f

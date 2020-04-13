@@ -4,7 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ppb.kwid.Fragment.SeatListFragment
 import com.ppb.kwid.Model.Seat.Seat
 import com.ppb.kwid.Model.Seat.SelectedSeatAdapter
@@ -15,13 +18,24 @@ import java.util.*
 
 class SeatSelectionActivity : AppCompatActivity() {
 
+    companion object {
+        const val EXTRA_MOVIE_POSTER = "extra_movie_poster"
+        const val EXTRA_MOVIE_NAME = "extra_movie_name"
+        const val EXTRA_CINEMA_NAME = "extra_cinema_name"
+        const val EXTRA_SCHEDULE = "extra_schedule"
+        const val EXTRA_TICKET_PRICE = "extra_ticket_price"
+        const val EXTRA_TIME = "extra_time"
+    }
+
     private lateinit var buttonRingkasanOrder: Button
+    private lateinit var buttonBackSeatSelection: ImageView
     private lateinit var totalTicketPrice: TextView
     private lateinit var ticket: Transaction
-    private lateinit var listOfSelectedSeat: MutableList<Seat>
-    private lateinit var selectedSeatAdapter: SelectedSeatAdapter
     private lateinit var localeId: Locale
     private lateinit var formatRupiah: NumberFormat
+    private lateinit var selectedSeatAdapter: SelectedSeatAdapter
+    private lateinit var recyclerViewSelectedSeat: RecyclerView
+    private var listOfSelectedSeat: MutableList<Seat> = mutableListOf()
 
     //For transaction data
     private var moviePoster: String = ""
@@ -41,6 +55,8 @@ class SeatSelectionActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
+        getTransactionData()
+
         val seatColumns = 5
         val args = Bundle()
         args.putInt(SeatListFragment.SEAT_COLUMNS, seatColumns)
@@ -48,8 +64,7 @@ class SeatSelectionActivity : AppCompatActivity() {
         val mFragmentManager = supportFragmentManager
         val seatListFragment = SeatListFragment()
         seatListFragment.arguments = args
-        val fragment =
-            supportFragmentManager.findFragmentByTag(SeatListFragment::class.java.simpleName)
+        val fragment = mFragmentManager.findFragmentByTag(SeatListFragment::class.java.simpleName)
 
         if (fragment !is SeatListFragment) {
             mFragmentManager.beginTransaction()
@@ -70,6 +85,13 @@ class SeatSelectionActivity : AppCompatActivity() {
         totalTicketPrice = findViewById(R.id.txt_total_price)
         totalTicketPrice.text = formatRupiah.format(0)
 
+        recyclerViewSelectedSeat = findViewById(R.id.recyclerview_picked_seat)
+        val linearLayoutSelectedSeat =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewSelectedSeat.layoutManager = linearLayoutSelectedSeat
+        selectedSeatAdapter = SelectedSeatAdapter(listOfSelectedSeat)
+        recyclerViewSelectedSeat.adapter = selectedSeatAdapter
+
         buttonRingkasanOrder = findViewById(R.id.btn_seat_selection)
         buttonRingkasanOrder.setOnClickListener {
             if (!listOfSelectedSeat.isEmpty()) {
@@ -81,10 +103,17 @@ class SeatSelectionActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        buttonBackSeatSelection = findViewById(R.id.btn_back_seat_selection)
+        buttonBackSeatSelection.setOnClickListener {
+            super.onBackPressed()
+        }
     }
 
     private fun setTransactionData() {
-
+        for (selectedSeat in listOfSelectedSeat) {
+            pickedSeat.add(selectedSeat.seatNumber)
+        }
 
         val newTransaction = Transaction(
             moviePoster,
@@ -112,5 +141,14 @@ class SeatSelectionActivity : AppCompatActivity() {
         selectedSeatAdapter.notifyDataSetChanged()
 
         changeTotalTicketPrice()
+    }
+
+    private fun getTransactionData() {
+        moviePoster = intent.getStringExtra(EXTRA_MOVIE_POSTER)
+        movieTitle = intent.getStringExtra(EXTRA_MOVIE_NAME)
+        cinemaName = intent.getStringExtra(EXTRA_CINEMA_NAME)
+        schedule = intent.getStringExtra(EXTRA_SCHEDULE)
+        ticketPrice = intent.getIntExtra(EXTRA_TICKET_PRICE, 30000)
+        time = intent.getStringExtra(EXTRA_TIME)
     }
 }
