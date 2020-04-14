@@ -1,15 +1,16 @@
 package com.ppb.kwid.Activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.ppb.kwid.Database.DatabaseHelper
-import com.ppb.kwid.Model.Movie.Movie
 import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
 import com.ppb.kwid.Model.MovieDetail.MovieDetailsRepository
 import com.ppb.kwid.Model.MovieDetail.MovieFavoriteAdapter
@@ -25,11 +26,13 @@ class FavoriteMoviesActivity : AppCompatActivity() {
     private lateinit var movieFavoriteAdapter: MovieFavoriteAdapter
     private lateinit var movieFavoriteLayoutManager: LinearLayoutManager
 
+    private lateinit var tvMessageEmpty: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite_movies)
 
-
+        tvMessageEmpty = findViewById(R.id.message_favorite_movie_empty)
 
         movieFavoriteRecycler = findViewById(R.id.rv_favorite_movies)
         movieFavoriteLayoutManager = LinearLayoutManager(
@@ -38,6 +41,22 @@ class FavoriteMoviesActivity : AppCompatActivity() {
             false
         )
 
+//        movieFavoriteRecycler.layoutManager = movieFavoriteLayoutManager
+//        movieFavoriteAdapter =
+//            MovieFavoriteAdapter(mutableListOf()) { movie ->
+//                showMovieDetails(movie)
+//            }
+//        movieFavoriteRecycler.adapter = movieFavoriteAdapter
+//
+//
+//        getFavoriteMovie()
+
+
+    }
+
+
+    override fun onResume() {
+        super.onResume()
         movieFavoriteRecycler.layoutManager = movieFavoriteLayoutManager
         movieFavoriteAdapter =
             MovieFavoriteAdapter(mutableListOf()) { movie ->
@@ -47,10 +66,18 @@ class FavoriteMoviesActivity : AppCompatActivity() {
 
 
         getFavoriteMovie()
+
     }
 
     private fun getFavoriteMovie() {
         listIDMovie = dbHelper.getAllFavoriteMovies(mAuth.currentUser!!.uid)
+
+        if (listIDMovie.isNotEmpty()) {
+            tvMessageEmpty.visibility = View.GONE
+        } else {
+            tvMessageEmpty.visibility = View.VISIBLE
+        }
+
         println("LIST ID MOVIE UKURAN" + listIDMovie.size)
         for (item in listIDMovie) {
             MovieDetailsRepository.getMovieDetails(
@@ -59,6 +86,8 @@ class FavoriteMoviesActivity : AppCompatActivity() {
                 onError = ::onError
             )
         }
+
+
     }
 
     private fun onFavoriteMoviesFetched(movie: GetMovieDetailsResponse) {
