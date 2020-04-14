@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
@@ -134,6 +135,15 @@ class MovieDetailsActivity : AppCompatActivity() {
             btnCastCrew.isClickable = true
             btnSchedule.isEnabled = true
             btnSchedule.isClickable = true
+
+            btnOverview.setBackgroundColor(ContextCompat.getColor(this, R.color.colorDarkBlue))
+            btnOverview.setTextColor(ContextCompat.getColor(this, R.color.colorWhite))
+
+            btnCastCrew.setBackgroundColor(ContextCompat.getColor(this, R.color.colorWhite))
+            btnCastCrew.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+
+            btnSchedule.setBackgroundColor(ContextCompat.getColor(this, R.color.colorWhite))
+            btnSchedule.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
         }
 
         btnCastCrew.setOnClickListener {
@@ -146,6 +156,16 @@ class MovieDetailsActivity : AppCompatActivity() {
             btnCastCrew.isClickable = false
             btnSchedule.isEnabled = true
             btnSchedule.isClickable = true
+
+            btnOverview.setBackgroundColor(ContextCompat.getColor(this, R.color.colorWhite))
+            btnOverview.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+
+            btnCastCrew.setBackgroundColor(ContextCompat.getColor(this, R.color.colorDarkBlue))
+            btnCastCrew.setTextColor(ContextCompat.getColor(this, R.color.colorWhite))
+
+            btnSchedule.setBackgroundColor(ContextCompat.getColor(this, R.color.colorWhite))
+            btnSchedule.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+
         }
 
         btnSchedule.setOnClickListener {
@@ -158,12 +178,21 @@ class MovieDetailsActivity : AppCompatActivity() {
             btnCastCrew.isClickable = true
             btnSchedule.isEnabled = false
             btnSchedule.isClickable = false
+
+            btnOverview.setBackgroundColor(ContextCompat.getColor(this, R.color.colorWhite))
+            btnOverview.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+
+            btnCastCrew.setBackgroundColor(ContextCompat.getColor(this, R.color.colorWhite))
+            btnCastCrew.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+
+            btnSchedule.setBackgroundColor(ContextCompat.getColor(this, R.color.colorDarkBlue))
+            btnSchedule.setTextColor(ContextCompat.getColor(this, R.color.colorWhite))
+
         }
 
         //Initialize fragment with overview
         btnOverview.isEnabled = false
         btnOverview.isClickable = false
-
 
     }
 
