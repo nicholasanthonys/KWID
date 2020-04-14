@@ -4,11 +4,13 @@
     android:layout_width="180dp"
     android:layout_height="240dp"
     android:layout_marginEnd="8dp"
+    android:background="@color/colorWhite"
     app:cardCornerRadius="4dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="240dp"
+        android:background="@color/colorBackground">
 
         <ImageView
             android:id="@+id/item_cast_poster"
@@ -22,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/item_cast_poster"
             android:layout_centerHorizontal="true"
+            android:textColor="@color/colorBlack"
             android:textStyle="bold"
             android:text="@string/actor_name" />
 
@@ -32,6 +35,7 @@
             android:layout_below="@id/item_cast_name"
             android:layout_centerHorizontal="true"
             android:textAlignment="center"
+            android:textColor="@color/colorBlack"
             android:text="@string/actor_character" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
