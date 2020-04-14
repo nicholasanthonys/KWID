@@ -89,6 +89,7 @@
             android:paddingTop="6dp"
             android:paddingBottom="6dp"
             android:text="@string/login"
+            android:foreground="?android:attr/selectableItemBackground"
             android:textSize="20sp" />
 
         <TextView
@@ -115,6 +116,7 @@
             android:paddingBottom="6dp"
             android:text="@string/sign_in_with_google"
             android:textAllCaps="false"
+            android:foreground="?android:attr/selectableItemBackground"
             android:textSize="20sp" />
         
         <Button

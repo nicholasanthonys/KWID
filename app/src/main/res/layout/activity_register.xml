@@ -122,6 +122,7 @@
             android:paddingTop="6dp"
             android:paddingBottom="6dp"
             android:text="@string/register"
+            android:foreground="?android:attr/selectableItemBackground"
             android:textSize="36sp" />
 
     </LinearLayout>
