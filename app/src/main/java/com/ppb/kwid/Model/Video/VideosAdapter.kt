@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -31,7 +32,7 @@ class VideosAdapter(
     override fun getItemCount(): Int = videoResult.size
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
-        holder.bind(videosResponses[position])
+        holder.bind(videosResponses[position], videoResult[position])
     }
 
     fun updateVideo(videoResponse: VideosResponse, result: Result) {
@@ -43,12 +44,16 @@ class VideosAdapter(
     inner class VideoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var videoPoster: ImageView = itemView.findViewById(R.id.video_poster)
         private var btnPlay: Button = itemView.findViewById(R.id.btn_play_video_home)
-        fun bind(videoResponse: VideosResponse) {
+        private var videoTitle: TextView = itemView.findViewById(R.id.text_video_title)
+
+        fun bind(videoResponse: VideosResponse, vResult: Result) {
 
             Glide.with(itemView)
                 .load("https://image.tmdb.org/t/p/w342${videoResponse.backdropPath}")
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
+                .apply(RequestOptions.bitmapTransform(RoundedCorners(40)))
                 .into(videoPoster)
+
+            videoTitle.text = vResult.name
 
             var youtubeURI = ""
             if (!videoResponse.videos.videoResults.isNullOrEmpty()) {

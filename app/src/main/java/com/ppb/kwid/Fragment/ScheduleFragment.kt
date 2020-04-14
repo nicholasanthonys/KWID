@@ -135,8 +135,6 @@ class ScheduleFragment : Fragment() {
                 isSelected = true
             }
 
-            val thisDate = currentDate
-
             val newDatePicker = DatePicker(
                 date,
                 day,

@@ -44,6 +44,8 @@
         android:id="@+id/cardview_poster"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorBlack"
+        android:padding="0.5dp"
         app:cardCornerRadius="10dp">
 
         <ImageView
@@ -64,6 +66,8 @@
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:maxLines="4"
-        android:text="@string/movie_name" />
+        android:text="@string/movie_name"
+        android:textSize="14sp"
+        android:textColor="@color/colorBlack" />
 
 </RelativeLayout>

@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,7 +48,8 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var signOut: Button
     private lateinit var btnProfile: Button
     private lateinit var btnRefresh: Button
-    private lateinit var btnCity: Button
+    private lateinit var btnCity: LinearLayout
+    private lateinit var textCity: TextView
     private lateinit var btnNotification: Button
 
     private lateinit var popularMovies: RecyclerView
@@ -93,7 +96,7 @@ class HomeActivity : AppCompatActivity() {
         signOut = findViewById<View>(R.id.sign_out_button) as Button
         signOut.setOnClickListener { signOut() }
 
-        btnCity = findViewById(R.id.btn_movieshow_city)
+        btnCity = findViewById(R.id.button_location)
         btnCity.setOnClickListener {
             val intent = Intent(this, LocationActivity::class.java)
             startActivity(intent)
@@ -109,7 +112,8 @@ class HomeActivity : AppCompatActivity() {
             city = intent.getStringExtra(CITY)
         }
         //set button text
-        btnCity.text = city
+        textCity = findViewById(R.id.btn_movieshow_city)
+        textCity.text = city
 
 
         btnProfile = findViewById(R.id.btn_profile)
