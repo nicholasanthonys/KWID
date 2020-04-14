@@ -3,6 +3,7 @@ package com.ppb.kwid.Model.Schedule
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewManager
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -20,6 +21,7 @@ class ScheduleAdapter(private var schedules: MutableList<Schedule>) :
     private var ticketPrice: Int = 0
     private var arrayOfButton: MutableList<Button> = mutableListOf()
     private var arrayOfCinemaName: MutableList<String> = mutableListOf()
+    private var arrayOfLinearLayout: MutableList<LinearLayout> = mutableListOf()
 
     inner class ScheduleListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private lateinit var textCinemaName: TextView
@@ -46,6 +48,7 @@ class ScheduleAdapter(private var schedules: MutableList<Schedule>) :
             val timeFormat = SimpleDateFormat("HH.mm")
             val currentTime = timeFormat.format(Calendar.getInstance().time)
             linearLayoutTime = itemView.findViewById(R.id.time_picker)
+            arrayOfLinearLayout.add(linearLayoutTime)
 
             //Add button to linear layout
             for (position in schedule.time.indices) {
@@ -143,6 +146,20 @@ class ScheduleAdapter(private var schedules: MutableList<Schedule>) :
 
     fun updateData(schedules: MutableList<Schedule>) {
         this.schedules = schedules
+
+        //Delete all button
+        for (linearLayout in arrayOfLinearLayout) {
+            linearLayout.removeAllViews()
+        }
+
+        //Setup data
+        time = ""
+        cinemaName = ""
+        ticketPrice = 0
+        arrayOfButton.clear()
+        arrayOfCinemaName.clear()
+        arrayOfLinearLayout.clear()
+
         notifyDataSetChanged()
     }
 

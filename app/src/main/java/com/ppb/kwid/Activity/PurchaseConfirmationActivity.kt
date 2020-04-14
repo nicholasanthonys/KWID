@@ -33,6 +33,7 @@ class PurchaseConfirmationActivity : AppCompatActivity() {
     private lateinit var buttonPurchase: Button
     private var isHistory: Boolean = false
     private lateinit var transaction: Transaction
+    private lateinit var buttonBackPurchaseConfirmation: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,5 +105,10 @@ class PurchaseConfirmationActivity : AppCompatActivity() {
         val intTotalPayment: Int =
             intSumOfTicketPrice + (transaction.service_fee * transaction.picked_seat.size)
         totalPayment.text = formatRupiah.format(intTotalPayment)
+
+        buttonBackPurchaseConfirmation = findViewById(R.id.btn_back_purchase_confirmation)
+        buttonBackPurchaseConfirmation.setOnClickListener {
+            super.onBackPressed()
+        }
     }
 }
