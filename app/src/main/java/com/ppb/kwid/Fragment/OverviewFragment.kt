@@ -1,10 +1,8 @@
 package com.ppb.kwid.Fragment
 
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -42,12 +40,12 @@ class OverviewFragment : Fragment() {
         tvOverview = view.findViewById(R.id.movie_overview)
         tvOverview.text = this.arguments?.getString("overview")
 
-        tvOverview.setOnTouchListener(OnTouchListener { v, event ->
-            tvOverview.parent.requestDisallowInterceptTouchEvent(true)
-            false
-        })
-
-        tvOverview.movementMethod = ScrollingMovementMethod()
+//        tvOverview.setOnTouchListener(OnTouchListener { v, event ->
+//            tvOverview.parent.requestDisallowInterceptTouchEvent(true)
+//            false
+//        })
+//
+//        tvOverview.movementMethod = ScrollingMovementMethod()
     }
 
 
