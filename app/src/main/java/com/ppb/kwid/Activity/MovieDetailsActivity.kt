@@ -6,13 +6,16 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.ppb.kwid.Database.DatabaseHelper
+import com.ppb.kwid.Fragment.CastCrewFragment
 import com.ppb.kwid.Fragment.OverviewFragment
+import com.ppb.kwid.Fragment.ScheduleFragment
 import com.ppb.kwid.Model.Credits.Cast
 import com.ppb.kwid.Model.Credits.CreditsRepository
 import com.ppb.kwid.Model.Credits.Crew
@@ -41,9 +44,9 @@ class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var director: TextView
     private lateinit var btnLiked: Button
     private lateinit var btnPlay: Button
-//    private lateinit var btnOverview: Button
-//    private lateinit var btnCastCrew: Button
-//    private lateinit var btnSchedule: Button
+    private lateinit var btnOverview: Button
+    private lateinit var btnCastCrew: Button
+    private lateinit var btnSchedule: Button
 
 
     //instance db helper
@@ -112,54 +115,59 @@ class MovieDetailsActivity : AppCompatActivity() {
         )
     }
 
-//    private fun setUpButtonFragment(overview: String) {
-//        //Button to change fragment
-//        btnOverview = findViewById(R.id.btn_overview)
-//        btnCastCrew = findViewById(R.id.btn_cast_and_crew)
-//        btnSchedule = findViewById(R.id.btn_schedule)
-//
-//        btnOverview.setOnClickListener {
-//            changeFragment(1, overview)
-//
-//            //Setting the button
-//            btnOverview.isEnabled = false
-//            btnOverview.isClickable = false
-//            btnCastCrew.isEnabled = true
-//            btnCastCrew.isClickable = true
-//            btnSchedule.isEnabled = true
-//            btnSchedule.isClickable = true
-//        }
-//
-//        btnCastCrew.setOnClickListener {
-//            changeFragment(2, "")
-//
-//            //Setting the button
-//            btnOverview.isEnabled = true
-//            btnOverview.isClickable = true
-//            btnCastCrew.isEnabled = false
-//            btnCastCrew.isClickable = false
-//            btnSchedule.isEnabled = true
-//            btnSchedule.isClickable = true
-//        }
-//
-//        btnSchedule.setOnClickListener {
-//            changeFragment(3, "")
-//
-//            //Setting the button
-//            btnOverview.isEnabled = true
-//            btnOverview.isClickable = true
-//            btnCastCrew.isEnabled = true
-//            btnCastCrew.isClickable = true
-//            btnSchedule.isEnabled = false
-//            btnSchedule.isClickable = false
-//        }
-//
-//        //Initialize fragment with overview
-//        btnOverview.isEnabled = false
-//        btnOverview.isClickable = false
-//
-//
-//    }
+    private fun setUpButtonFragment(
+        overview: String,
+        movieID: Long,
+        movieName: String,
+        moviePoster: String
+    ) {
+        //Button to change fragment
+        btnOverview = findViewById(R.id.btn_overview)
+        btnCastCrew = findViewById(R.id.btn_cast_and_crew)
+        btnSchedule = findViewById(R.id.btn_schedule)
+
+        btnOverview.setOnClickListener {
+            changeFragment(1, overview, 0, "", "")
+
+            //Setting the button
+            btnOverview.isEnabled = false
+            btnOverview.isClickable = false
+            btnCastCrew.isEnabled = true
+            btnCastCrew.isClickable = true
+            btnSchedule.isEnabled = true
+            btnSchedule.isClickable = true
+        }
+
+        btnCastCrew.setOnClickListener {
+            changeFragment(2, "", movieID, "", "")
+
+            //Setting the button
+            btnOverview.isEnabled = true
+            btnOverview.isClickable = true
+            btnCastCrew.isEnabled = false
+            btnCastCrew.isClickable = false
+            btnSchedule.isEnabled = true
+            btnSchedule.isClickable = true
+        }
+
+        btnSchedule.setOnClickListener {
+            changeFragment(3, "", 0, movieName, moviePoster)
+
+            //Setting the button
+            btnOverview.isEnabled = true
+            btnOverview.isClickable = true
+            btnCastCrew.isEnabled = true
+            btnCastCrew.isClickable = true
+            btnSchedule.isEnabled = false
+            btnSchedule.isClickable = false
+        }
+
+        //Initialize fragment with overview
+        btnOverview.isEnabled = false
+        btnOverview.isClickable = false
+
+
+    }
 
 
     private fun handleClick() {
@@ -248,7 +256,7 @@ class MovieDetailsActivity : AppCompatActivity() {
             )
 
             //set up button fragment
-//            setUpButtonFragment(overview)
+            setUpButtonFragment(overview, movDetails.id, movDetails.title, movDetails.posterPath)
 
             //set up overview fragment
 //            fragmentOverview = OverviewFragment.newInstance(overview)
@@ -290,27 +298,33 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     }
 
-//    private fun changeFragment(id: Int, overview: String) {
-//        val transaction = supportFragmentManager.beginTransaction()
-//        var fragment: Fragment? = null
-//
-//        if (id == 1) {
-//            fragment = OverviewFragment.newInstance(overview)
-//            transaction
-//                .replace(R.id.myfragmentmovie_detail, fragment)
-//                .commit()
-//        } else if (id == 2) {
-//            fragment = CastCrewFragment.newInstance(movieId)
-//            transaction
-//                .replace(R.id.myfragmentmovie_detail, fragment)
-//                .commit()
-//        } else if (id == 3) {
-//            fragment = ScheduleFragment()
-//            transaction
-//                .replace(R.id.myfragmentmovie_detail, fragment)
-//                .commit()
-//        }
-//    }
+    private fun changeFragment(
+        id: Int,
+        overview: String,
+        movieID: Long,
+        movieName: String,
+        moviePoster: String
+    ) {
+        val transaction = supportFragmentManager.beginTransaction()
+        var fragment: Fragment? = null
+
+        if (id == 1) {
+            fragment = OverviewFragment.newInstance(overview)
+            transaction
+                .replace(R.id.myfragmentmovie_detail, fragment)
+                .commit()
+        } else if (id == 2) {
+            fragment = CastCrewFragment.newInstance(movieId)
+            transaction
+                .replace(R.id.myfragmentmovie_detail, fragment)
+                .commit()
+        } else if (id == 3) {
+            fragment = ScheduleFragment.newInstance(movieName, moviePoster)
+            transaction
+                .replace(R.id.myfragmentmovie_detail, fragment)
+                .commit()
+        }
+    }
 
     private fun onError() {
         Toast.makeText(this, getString(R.string.error_fetch_movies), Toast.LENGTH_SHORT).show()

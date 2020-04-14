@@ -65,6 +65,8 @@ class ScheduleFragment : Fragment() {
         ticketPickerAdapter = ScheduleAdapter(listOfSchedule)
         getDateData()
 
+
+
         buttonLocation = view.findViewById(R.id.button_location)
         buttonLocation.setOnClickListener {
             val intent = Intent(view.context, LocationActivity::class.java)
@@ -105,6 +107,9 @@ class ScheduleFragment : Fragment() {
 
     fun setDate(newDate: DatePicker) {
         date = newDate
+        listOfSchedule.clear()
+
+
         getTicketData()
     }
 

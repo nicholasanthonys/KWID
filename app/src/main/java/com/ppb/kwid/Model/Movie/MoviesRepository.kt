@@ -1,7 +1,9 @@
 package com.ppb.kwid.Model.Movie
 
 import com.ppb.kwid.API.Api
-import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,37 +26,43 @@ object MoviesRepository {
         page: Int = 1,
         onSuccess: (movies: MutableList<Movie>) -> Unit,
         onError: () -> Unit
-    ) {
+    ) = runBlocking {
 
+        launch(Dispatchers.Default) {
+            println("Get popular movie run on thread ${Thread.currentThread().name}")
 
-        api.getPopularMovies(page = page).enqueue(object : Callback<GetMoviesResponse> {
-            override fun onResponse(
-                call: Call<GetMoviesResponse>,
-                response: Response<GetMoviesResponse>
-            ) {
-                if (response.isSuccessful) {
+            api.getPopularMovies(page = page).enqueue(object : Callback<GetMoviesResponse> {
+                override fun onResponse(
+                    call: Call<GetMoviesResponse>,
+                    response: Response<GetMoviesResponse>
+                ) {
+                    if (response.isSuccessful) {
 
-                    val responseBody = response.body()
+                        val responseBody = response.body()
 
-                    if (responseBody != null) {
-                        onSuccess.invoke(responseBody.movies)
-                        println("================================================")
-                        println("page: ${responseBody.page}")
-                        println("pages: ${responseBody.pages}")
-                        println("================================================")
+                        if (responseBody != null) {
+                            onSuccess.invoke(responseBody.movies)
+                            println("================================================")
+                            println("page: ${responseBody.page}")
+                            println("pages: ${responseBody.pages}")
+                            println("================================================")
+                        } else {
+                            onError.invoke()
+                        }
                     } else {
                         onError.invoke()
                     }
-                } else {
+                }
+
+                override fun onFailure(call: Call<GetMoviesResponse>, t: Throwable) {
                     onError.invoke()
                 }
             }
+            )
 
-            override fun onFailure(call: Call<GetMoviesResponse>, t: Throwable) {
-                onError.invoke()
-            }
         }
-        )
+
+
     }
 
     fun getTopRatedMovies(

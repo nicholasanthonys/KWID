@@ -28,6 +28,9 @@ import com.ppb.kwid.Model.Video.VideosAdapter
 import com.ppb.kwid.Model.Video.VideosRepository
 import com.ppb.kwid.Model.Video.VideosResponse
 import com.ppb.kwid.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 const val CITY = "extra_city"
 
@@ -187,15 +190,41 @@ class HomeActivity : AppCompatActivity() {
             refresh()
         }
 
-
-        getCurrentlyShowingCity(city)
-        //getCurrentlyShowing()
-        getPopularMovies()
-        getTopRatedMovies()
-        //println(" getmovievideos jalan ")
-        getMovieVideos()
+        getAllResources()
 
     }
+
+    private fun getAllResources() = runBlocking {
+        launch(Dispatchers.Default) {
+            println("Load currently showing city with thread ${Thread.currentThread().name}")
+            getCurrentlyShowingCity(city)
+        }
+
+//        launch(Dispatchers.Default){
+//            println("Load currently showing with thread ${Thread.currentThread().name}")
+//            //getCurrentlyShowing())
+//        }
+
+        launch(Dispatchers.Default) {
+            println("Load popular movie with thread ${Thread.currentThread().name}")
+            getPopularMovies()
+        }
+
+        launch(Dispatchers.Default) {
+            println("Load Top Rated with thread ${Thread.currentThread().name}")
+            getTopRatedMovies()
+        }
+
+
+        launch(Dispatchers.Default) {
+            println("Load getMovieVideos with thread ${Thread.currentThread().name}")
+            getMovieVideos()
+        }
+
+
+
+    }
+
 
     private fun refresh() {
 

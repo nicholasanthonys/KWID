@@ -80,11 +80,16 @@ class ScheduleAdapter(private var schedules: MutableList<Schedule>) :
                     time = schedule.time[position]
                     ticketPrice = schedule.ticket_price
                     notifyDataSetChanged()
+//                    notifyItemChanged()
                 }
 
                 linearLayoutTime.addView(newButtonTime)
             }
         }
+    }
+
+    fun onUpdate() {
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleListHolder {

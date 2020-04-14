@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:fillViewport="true">
 
     <LinearLayout
@@ -21,9 +23,9 @@
                 android:id="@+id/movie_backdrop"
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
+                android:contentDescription="@string/background_movie"
                 android:padding="0dp"
-                android:scaleType="fitXY"
-                android:contentDescription="@string/background_movie"/>
+                android:scaleType="fitXY" />
 
             <Button
                 android:id="@+id/btn_play_video_movie_detail"
@@ -35,11 +37,11 @@
 
             <ImageView
                 android:id="@+id/btn_back_movie_detail"
-                android:contentDescription="@string/back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
+                android:contentDescription="@string/back_button"
                 android:elevation="100dp"
                 android:src="@drawable/icbaseline_arrow_back_with_background" />
 
@@ -57,7 +59,7 @@
                     android:id="@+id/movie_poster"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/movie_poster"/>
+                    android:contentDescription="@string/movie_poster" />
 
             </androidx.cardview.widget.CardView>
 
@@ -208,76 +210,75 @@
 
         </RelativeLayout>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:weightSum="3">
 
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="horizontal"-->
-            <!--                android:weightSum="3">-->
-
-            <!--                <Button-->
-            <!--                    android:id="@+id/btn_overview"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:enabled="true"-->
-            <!--                    android:text="@string/overview"-->
-            <!--                    android:textAllCaps="true"-->
-            <!--                    android:textColor="@color/colorBlack"-->
-            <!--                    android:textSize="14sp"-->
-            <!--                    android:background="@drawable/button_movie_details" />-->
-
-
-            <!--                <Button-->
-            <!--                    android:id="@+id/btn_cast_and_crew"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:background="@drawable/button_movie_details"-->
-            <!--                    android:enabled="true"-->
-            <!--                    android:text="@string/cast_crew"-->
-            <!--                    android:textAllCaps="true"-->
-            <!--                    android:textColor="@color/colorBlack"-->
-            <!--                    android:textSize="14sp" />-->
-
-
-            <!--                <Button-->
-            <!--                    android:id="@+id/btn_schedule"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_weight="1"-->
-            <!--                    android:background="@drawable/button_movie_details"-->
-            <!--                    android:enabled="true"-->
-            <!--                    android:text="@string/schedule"-->
-            <!--                    android:textAllCaps="true"-->
-            <!--                    android:textColor="@color/colorBlack"-->
-            <!--                    android:textSize="14sp" />-->
-            <!--            </LinearLayout>-->
-
-            <!--            <FrameLayout-->
-            <!--                android:id="@+id/myfragmentmovie_detail"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:background="@color/colorBlack" />-->
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabs_movie_detail"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/btn_overview"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
-                app:tabTextColor="@color/colorBlack" />
+                android:layout_weight="1"
+                android:background="@drawable/button_movie_details"
+                android:enabled="true"
+                android:text="@string/overview"
+                android:textAllCaps="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
 
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/view_pager"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/btn_cast_and_crew"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="true" />
+                android:layout_weight="1"
+                android:background="@drawable/button_movie_details"
+                android:enabled="true"
+                android:text="@string/cast_crew"
+                android:textAllCaps="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
+
+
+            <Button
+                android:id="@+id/btn_schedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_movie_details"
+                android:enabled="true"
+                android:text="@string/schedule"
+                android:textAllCaps="true"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp" />
         </LinearLayout>
 
+        <FrameLayout
+            android:id="@+id/myfragmentmovie_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs_movie_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:visibility="gone"
+            app:tabTextColor="@color/colorBlack" />
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="true"
+            android:visibility="gone" />
+
+
     </LinearLayout>
+
 </androidx.core.widget.NestedScrollView>
