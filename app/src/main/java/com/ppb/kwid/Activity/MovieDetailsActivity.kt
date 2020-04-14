@@ -27,7 +27,6 @@ import com.ppb.kwid.Model.Video.VideosRepository
 import com.ppb.kwid.Model.Video.VideosResponse
 import com.ppb.kwid.R
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
-import kotlinx.android.synthetic.main.activity_movie_details.*
 
 
 const val MOVIE_id = "extra_movie_id"
@@ -272,8 +271,8 @@ class MovieDetailsActivity : AppCompatActivity() {
                 movieName,
                 "https://image.tmdb.org/t/p/w1280${movDetails.backdropPath}"
             )
-            view_pager.adapter = sectionsPagerAdapter
-            tabs_movie_detail.setupWithViewPager(view_pager)
+//            view_pager.adapter = sectionsPagerAdapter
+//            tabs_movie_detail.setupWithViewPager(view_pager)
             supportActionBar?.elevation = 0f
         } else {
             finish()
