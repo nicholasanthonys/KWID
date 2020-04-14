@@ -18,6 +18,8 @@ class ScheduleAdapter(private var schedules: MutableList<Schedule>) :
     private var time: String = ""
     private var cinemaName: String = ""
     private var ticketPrice: Int = 0
+    private var arrayOfButton: MutableList<Button> = mutableListOf()
+    private var arrayOfCinemaName: MutableList<String> = mutableListOf()
 
     inner class ScheduleListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private lateinit var textCinemaName: TextView
@@ -68,28 +70,44 @@ class ScheduleAdapter(private var schedules: MutableList<Schedule>) :
                         time = schedule.time[position]
                         ticketPrice = schedule.ticket_price
                     }
+
+                    newButtonTime.setOnClickListener {
+                        cinemaName = schedule.cinema_name
+                        time = schedule.time[position]
+                        ticketPrice = schedule.ticket_price
+                        updateButtonCondition(itemView)
+                    }
                 }
 
                 newButtonTime.isSelected = false
                 if (schedule.cinema_name.equals(cinemaName) and schedule.time[position].equals(time)) {
                     newButtonTime.isSelected = true
-                }
-
-                newButtonTime.setOnClickListener {
-                    cinemaName = schedule.cinema_name
-                    time = schedule.time[position]
-                    ticketPrice = schedule.ticket_price
-                    notifyDataSetChanged()
-//                    notifyItemChanged()
+                } else {
+                    newButtonTime.setTextColor(itemView.resources.getColor(R.color.colorBlack))
                 }
 
                 linearLayoutTime.addView(newButtonTime)
+                arrayOfButton.add(newButtonTime)
+                arrayOfCinemaName.add(schedule.cinema_name)
             }
         }
     }
 
-    fun onUpdate() {
-
+    private fun updateButtonCondition(itemView: View) {
+        for (position in arrayOfButton.indices) {
+            if (arrayOfButton[position].isEnabled) {
+                if (arrayOfCinemaName[position].equals(cinemaName) and arrayOfButton[position].text.equals(
+                        time
+                    )
+                ) {
+                    arrayOfButton[position].isSelected = true
+                    arrayOfButton[position].setTextColor(itemView.resources.getColor(R.color.colorWhite))
+                } else {
+                    arrayOfButton[position].isSelected = false
+                    arrayOfButton[position].setTextColor(itemView.resources.getColor(R.color.colorBlack))
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleListHolder {
