@@ -63,6 +63,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     //inisialisasi
     private var fragmentOverview = OverviewFragment.newInstance(overview)
+    private var linkMoviePoster = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -229,6 +230,7 @@ class MovieDetailsActivity : AppCompatActivity() {
                 .transform(CenterCrop())
                 .into(poster)
 
+            linkMoviePoster = "https://image.tmdb.org/t/p/w342${movDetails.posterPath}"
             movieName = movDetails.title
 
             title.text = movieName
@@ -254,7 +256,7 @@ class MovieDetailsActivity : AppCompatActivity() {
             )
 
             //set up button fragment
-            setUpButtonFragment(overview, movDetails.id, movDetails.title, movDetails.posterPath)
+            setUpButtonFragment(overview, movDetails.id, movDetails.title, linkMoviePoster)
 
             //set up overview fragment
             fragmentOverview = OverviewFragment.newInstance(overview)

@@ -115,9 +115,11 @@ class ScheduleFragment : Fragment() {
 
     private fun getDateData() {
         val dateFormat = SimpleDateFormat("EEE.dd.MMM")
+        val scheduleFormat = SimpleDateFormat("EEEE, dd MMM YYYY")
         val currentDate = Calendar.getInstance()
 
         for (i in 1..7) {
+            val calendar = scheduleFormat.format(currentDate.time)
             val currentCal = dateFormat.format(currentDate.time).split('.')
             val day = currentCal[0]
             val date = currentCal[1] + " " + currentCal[2]
@@ -133,12 +135,14 @@ class ScheduleFragment : Fragment() {
                 isSelected = true
             }
 
+            val thisDate = currentDate
+
             val newDatePicker = DatePicker(
                 date,
                 day,
                 isEnabled,
                 isSelected,
-                currentDate
+                calendar
             )
 
             listOfDate.add(newDatePicker)
@@ -175,13 +179,13 @@ class ScheduleFragment : Fragment() {
 
     private fun getAllDataForTransaction() {
         moviePoster = this.arguments?.getString("moviePoster").toString()
+        System.out.println(moviePoster)
 
         movieName = this.arguments?.getString("movieName").toString()
 
         cinemaName = ticketPickerAdapter.getSelectedCinemaName()
 
-        val scheduleFormat = SimpleDateFormat("EEEE, dd MMM YYYY")
-        schedule = scheduleFormat.format(date.calendar.time)
+        schedule = date.calendar
 
         ticketPrice = ticketPickerAdapter.getSelectedTicketPrice()
 
