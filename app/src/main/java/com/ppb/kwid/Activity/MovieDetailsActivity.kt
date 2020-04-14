@@ -22,7 +22,6 @@ import com.ppb.kwid.Model.Credits.Crew
 import com.ppb.kwid.Model.Genre.Genres
 import com.ppb.kwid.Model.MovieDetail.GetMovieDetailsResponse
 import com.ppb.kwid.Model.MovieDetail.MovieDetailsRepository
-import com.ppb.kwid.Model.MovieDetail.MovieDetailsSectionsPageAdapter
 import com.ppb.kwid.Model.Video.VideosRepository
 import com.ppb.kwid.Model.Video.VideosResponse
 import com.ppb.kwid.R
@@ -258,19 +257,19 @@ class MovieDetailsActivity : AppCompatActivity() {
             setUpButtonFragment(overview, movDetails.id, movDetails.title, movDetails.posterPath)
 
             //set up overview fragment
-//            fragmentOverview = OverviewFragment.newInstance(overview)
-//            supportFragmentManager.beginTransaction()
-//                .add(R.id.myfragmentmovie_detail, fragmentOverview)
-//                .commit()
+            fragmentOverview = OverviewFragment.newInstance(overview)
+            supportFragmentManager.beginTransaction()
+                .add(R.id.myfragmentmovie_detail, fragmentOverview)
+                .commit()
 
-            //Tablayout
-            val sectionsPagerAdapter = MovieDetailsSectionsPageAdapter(this, supportFragmentManager)
-            sectionsPagerAdapter.setAllParameters(
-                overview,
-                movieId,
-                movieName,
-                "https://image.tmdb.org/t/p/w1280${movDetails.backdropPath}"
-            )
+//            //Tablayout
+//            val sectionsPagerAdapter = MovieDetailsSectionsPageAdapter(this, supportFragmentManager)
+//            sectionsPagerAdapter.setAllParameters(
+//                overview,
+//                movieId,
+//                movieName,
+//                "https://image.tmdb.org/t/p/w1280${movDetails.backdropPath}"
+//            )
 //            view_pager.adapter = sectionsPagerAdapter
 //            tabs_movie_detail.setupWithViewPager(view_pager)
             supportActionBar?.elevation = 0f

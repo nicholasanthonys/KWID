@@ -223,7 +223,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/button_movie_details"
-                android:enabled="true"
+                android:enabled="false"
                 android:text="@string/overview"
                 android:textAllCaps="true"
                 android:textColor="@color/colorBlack"
