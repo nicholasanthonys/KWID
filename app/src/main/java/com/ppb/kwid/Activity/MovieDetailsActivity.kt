@@ -278,7 +278,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
     }
 
-    fun onVideoFetched(videoResponse: VideosResponse) {
+    private fun onVideoFetched(videoResponse: VideosResponse) {
         var youtubeURI = ""
         if (!videoResponse.videos.videoResults.isNullOrEmpty()) {
             youtubeURI = "watch?v=" + videoResponse.videos.videoResults[0].key
@@ -299,7 +299,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     private fun changeFragment(
         id: Int,
         overview: String,
-        movieID: Long,
+        movieId: Long,
         movieName: String,
         moviePoster: String
     ) {
