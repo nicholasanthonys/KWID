@@ -8,5 +8,5 @@ data class DatePicker(
     @SerializedName("day") var day: String,
     @SerializedName("is_enabled") var is_enabled: Boolean,
     @SerializedName("is_selected") var is_selected: Boolean,
-    @SerializedName("calendar") var calendar: Calendar
+    @SerializedName("calendar") var calendar: String
 )
