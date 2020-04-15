@@ -42,8 +42,8 @@
             android:background="@drawable/rectangle_white_color_top_bottom_border"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/btn_back_favovite_movies"
+            <Button
+                android:id="@+id/btn_back_location"
                 android:contentDescription="@string/back_button"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -51,7 +51,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:src="@drawable/icbaseline_arrow_back" />
+                android:background="@drawable/icbaseline_arrow_back" />
 
             <EditText
                 android:id="@+id/edit_text_location"

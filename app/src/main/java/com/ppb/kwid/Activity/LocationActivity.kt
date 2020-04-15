@@ -1,6 +1,7 @@
 package com.ppb.kwid.Activity
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +11,7 @@ import com.ppb.kwid.Model.Location.LocationAdapter
 import com.ppb.kwid.R
 
 class LocationActivity : AppCompatActivity() {
-
+    private lateinit var btnBack: Button
     private lateinit var rv_location: RecyclerView
     // Access a Cloud Firestore instance from your Activity
     private val db = Firebase.firestore
@@ -18,6 +19,11 @@ class LocationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
+
+        btnBack = findViewById(R.id.btn_back_location)
+        btnBack.setOnClickListener {
+            onBackPressed()
+        }
 
         rv_location = findViewById(R.id.rv_location)
         showRecyclerListLocation()

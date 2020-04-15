@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +29,8 @@ class FavoriteMoviesActivity : AppCompatActivity() {
 
     private lateinit var tvMessageEmpty: TextView
 
+    private lateinit var btnBack: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite_movies)
@@ -40,6 +43,11 @@ class FavoriteMoviesActivity : AppCompatActivity() {
             LinearLayoutManager.VERTICAL,
             false
         )
+
+        btnBack = findViewById(R.id.btn_back_favorite_movies)
+        btnBack.setOnClickListener {
+            onBackPressed()
+        }
 
 //        movieFavoriteRecycler.layoutManager = movieFavoriteLayoutManager
 //        movieFavoriteAdapter =

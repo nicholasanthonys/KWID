@@ -208,7 +208,11 @@ class LoginActivity : AppCompatActivity() {
                     //INSERT USERNAME KE DATABASE
                     //remove username space
                     var username = user!!.displayName.toString().replace("\\s".toRegex(), "")
-                    dbHelper.insertUser(username, user.email.toString())
+
+                    //check user if exist in database
+                    if (dbHelper.getUsername(user.email.toString()).isEmpty()) {
+                        dbHelper.insertUser(username, user.email.toString())
+                    }
 
                     updateUI(user, "")
                 } else {

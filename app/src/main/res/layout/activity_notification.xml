@@ -13,9 +13,9 @@
         android:orientation="horizontal"
         android:background="@color/colorTopBar">
 
-        <ImageView
+        <Button
             android:id="@+id/btn_back_notification"
-            android:src="@drawable/icbaseline_arrow_back"
+            android:background="@drawable/icbaseline_arrow_back"
             android:contentDescription="@string/back_button"
             android:layout_width="30dp"
             android:layout_height="30dp"

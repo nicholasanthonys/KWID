@@ -1,7 +1,7 @@
 package com.ppb.kwid.Activity
 
 import android.os.Bundle
-import android.widget.ImageView
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +13,7 @@ import com.ppb.kwid.R
 
 class TopUpActivity : AppCompatActivity() {
 
-    private lateinit var btnBackTopUp: ImageView
+    private lateinit var btnBackTopUp: Button
     private lateinit var recyclerCreditCard: RecyclerView
     private lateinit var recyclerBank: RecyclerView
     private var listOfBank: MutableList<Bank> = mutableListOf()
@@ -63,7 +63,7 @@ class TopUpActivity : AppCompatActivity() {
     private fun initUI() {
         btnBackTopUp = findViewById(R.id.btn_back_top_up)
         btnBackTopUp.setOnClickListener {
-            super.onBackPressed()
+            onBackPressed()
         }
 
         val bankLinearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)

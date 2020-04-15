@@ -1,11 +1,10 @@
 package com.ppb.kwid.Activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ppb.kwid.Fragment.SeatListFragment
@@ -28,7 +27,7 @@ class SeatSelectionActivity : AppCompatActivity() {
     }
 
     private lateinit var buttonRingkasanOrder: Button
-    private lateinit var buttonBackSeatSelection: ImageView
+    private lateinit var buttonBackSeatSelection: Button
     private lateinit var totalTicketPrice: TextView
     private lateinit var ticket: Transaction
     private lateinit var localeId: Locale
@@ -91,6 +90,7 @@ class SeatSelectionActivity : AppCompatActivity() {
         recyclerViewSelectedSeat.layoutManager = linearLayoutSelectedSeat
         selectedSeatAdapter = SelectedSeatAdapter(listOfSelectedSeat)
         recyclerViewSelectedSeat.adapter = selectedSeatAdapter
+
 
         buttonRingkasanOrder = findViewById(R.id.btn_seat_selection)
         buttonRingkasanOrder.setOnClickListener {

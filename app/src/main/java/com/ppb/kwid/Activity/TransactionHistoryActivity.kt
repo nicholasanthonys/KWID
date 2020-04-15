@@ -1,8 +1,8 @@
 package com.ppb.kwid.Activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ppb.kwid.Model.Transaction.Transaction
@@ -12,7 +12,7 @@ import com.ppb.kwid.R
 class TransactionHistoryActivity : AppCompatActivity() {
 
     private lateinit var recyclerViewTransactionHistory: RecyclerView
-    private lateinit var btnBackTransactionHitory: ImageView
+    private lateinit var btnBackTransactionHitory: Button
     private lateinit var layoutManagerTransactionHistory: LinearLayoutManager
     private var listOfTransaction: MutableList<Transaction> = mutableListOf()
 

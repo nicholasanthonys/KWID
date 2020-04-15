@@ -214,6 +214,7 @@
     <string name="dummy_seat_selection">A1,A2,A3,A4,A5,B1,B2,B3,B4,B5,C1,C2,C3,C4,C5,D1,D2,D3,D4,D5,E1,E2,E3,E4,E5,F1,F2,F3,F4,F5,G1,G2,G3,G4,G5</string>
     <string name="dummy_is_empty">true,false,false,false,true,true,true,true,true,true,true,false,false,true,true,true,false,true,true,true,true,true,false,true,true,true,false,false,false,true,true,true,true,false,false</string>
     <string name="empty_favorite_movie_message">Your favorite movie list is empty\n Click some movies and hit that love button!</string>
+    <string name="appbar_forgot_password">Forgot Password</string>
 
     <!-- Dummy for schedule -->
     <string-array name="schedule_cinema_name">

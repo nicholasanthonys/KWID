@@ -14,7 +14,7 @@ class DatabaseHelper(context: Context) :
 
     companion object {
         // If you change the database schema, you must increment the database version.
-        const val DATABASE_VERSION = 3
+        const val DATABASE_VERSION = 4
         const val DATABASE_NAME = "KWID.db"
         const val TABLE_FAVORITE = "table_favorite_movies"
         const val COL_USER_ID = "user_id"

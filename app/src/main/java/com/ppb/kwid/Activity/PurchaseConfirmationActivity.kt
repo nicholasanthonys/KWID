@@ -1,11 +1,11 @@
 package com.ppb.kwid.Activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.ppb.kwid.Model.Transaction.Transaction
 import com.ppb.kwid.R
@@ -13,7 +13,6 @@ import java.text.NumberFormat
 import java.util.*
 
 class PurchaseConfirmationActivity : AppCompatActivity() {
-
     companion object {
         const val EXTRA_TRANSACTION = "extra_transaction"
         const val EXTRA_IS_HISTORY = "extra_is_history"
@@ -33,7 +32,7 @@ class PurchaseConfirmationActivity : AppCompatActivity() {
     private lateinit var buttonPurchase: Button
     private var isHistory: Boolean = false
     private lateinit var transaction: Transaction
-    private lateinit var buttonBackPurchaseConfirmation: ImageView
+    private lateinit var buttonBackPurchaseConfirmation: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

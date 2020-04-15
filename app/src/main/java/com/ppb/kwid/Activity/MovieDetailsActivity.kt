@@ -46,6 +46,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var btnOverview: Button
     private lateinit var btnCastCrew: Button
     private lateinit var btnSchedule: Button
+    private lateinit var btnBack: Button
 
 
     //instance db helper
@@ -89,8 +90,14 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         //set btn play
         btnPlay = findViewById(R.id.btn_play_video_movie_detail)
-
+        //set liked button
         btnLiked = findViewById(R.id.btn_liked)
+
+        //set back button
+        btnBack = findViewById(R.id.btn_back_movie_detail)
+        btnBack.setOnClickListener {
+            onBackPressed()
+        }
 
         /* MENENTUKAN LIKE */
         isLiked = dbHelper.isCurrentMovieLiked(userId, movieId.toString())

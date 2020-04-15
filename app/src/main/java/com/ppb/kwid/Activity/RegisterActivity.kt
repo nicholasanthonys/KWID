@@ -26,6 +26,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var tvError: TextView
     lateinit var etUsername: TextView
     lateinit var etConfirmPasssword: TextView
+    private lateinit var btnBack: Button
 
     //instance db helper
     private var dbHelper = DatabaseHelper(this)
@@ -47,6 +48,11 @@ class RegisterActivity : AppCompatActivity() {
 
         tvError.text = ""
         tvError.visibility = View.INVISIBLE
+
+        btnBack = findViewById(R.id.btn_back_register)
+        btnBack.setOnClickListener {
+            onBackPressed()
+        }
 
         btnRegister = findViewById(R.id.btn_register_submit)
         btnRegister.setOnClickListener {

@@ -1,10 +1,10 @@
 package com.ppb.kwid.Activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.ppb.kwid.R
 
@@ -19,6 +19,7 @@ class ReviewActivity(private val title: String, private val url: String) : AppCo
     private lateinit var btnBackReview: ImageView
     private lateinit var txtTitle: TextView
     private lateinit var btnPublish: Button
+    private lateinit var btnBack: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,11 @@ class ReviewActivity(private val title: String, private val url: String) : AppCo
             .load(url)
             .centerCrop()
             .into(moviePoster)
+
+        btnBack = findViewById(R.id.btn_back_review)
+        btnBack.setOnClickListener {
+            onBackPressed()
+        }
 
         btnPublish = findViewById(R.id.btn_publish)
         btnPublish.setOnClickListener {

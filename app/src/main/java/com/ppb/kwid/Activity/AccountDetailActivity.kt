@@ -30,6 +30,7 @@ class AccountDetailActivity : AppCompatActivity() {
     private lateinit var profileName: TextView
     private lateinit var etUsername: EditText
     private lateinit var btnEditUsername: Button
+    private lateinit var btnBack: Button
 
     //firebase instance
     private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -53,6 +54,11 @@ class AccountDetailActivity : AppCompatActivity() {
         btnFavoriteMovies.setOnClickListener {
             val intent = Intent(this, FavoriteMoviesActivity::class.java)
             startActivity(intent)
+        }
+
+        btnBack = findViewById(R.id.button_back_account_detail)
+        btnBack.setOnClickListener {
+            onBackPressed()
         }
 
         //get username frm local database
@@ -87,16 +93,21 @@ class AccountDetailActivity : AppCompatActivity() {
                 if (actionId == EditorInfo.IME_ACTION_DONE) { // do something, e.g. set your TextView here via .setText()
 
                     val username = etUsername.text.toString()
-                    dbHelper.updateUsername(username, email)
-                    profileName.text = username
-                    profileName.visibility = View.VISIBLE
-                    btnEditUsername.visibility = View.VISIBLE
-                    etUsername.visibility = View.GONE
+                    if (username.isNotEmpty()) {
+                        dbHelper.updateUsername(username, email)
+                        profileName.text = username
+                        profileName.visibility = View.VISIBLE
+                        btnEditUsername.visibility = View.VISIBLE
+                        etUsername.visibility = View.GONE
 
-                    Toast.makeText(this, "username updated", Toast.LENGTH_SHORT).show()
-                    val imm: InputMethodManager =
-                        this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(v.windowToken, 0)
+                        Toast.makeText(this, "username updated", Toast.LENGTH_SHORT).show()
+                        val imm: InputMethodManager =
+                            this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(v.windowToken, 0)
+                    } else {
+                        Toast.makeText(this, "username cannot be empty", Toast.LENGTH_SHORT).show()
+                    }
+
                     return@OnEditorActionListener true
                 }
                 false

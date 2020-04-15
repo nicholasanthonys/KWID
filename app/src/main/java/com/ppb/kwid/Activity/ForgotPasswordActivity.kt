@@ -1,13 +1,12 @@
 package com.ppb.kwid.Activity
 
 import android.content.Intent
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.ppb.kwid.R
 
@@ -16,6 +15,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
     private lateinit var tvMessage: TextView
     private lateinit var etEmail: EditText
     private lateinit var btnReset: Button
+    private lateinit var btnBack: Button
 
     //firebase instance
     private lateinit var mAuth: FirebaseAuth
@@ -32,10 +32,16 @@ class ForgotPasswordActivity : AppCompatActivity() {
         tvMessage = findViewById(R.id.tv_forgotpassword_message)
         etEmail = findViewById(R.id.et_forgotpassword_email)
         btnReset = findViewById(R.id.btn_forgot_password_submit)
+        btnBack = findViewById(R.id.btn_back_forgot_password)
+
+        btnBack.setOnClickListener {
+            onBackPressed()
+        }
 
         btnReset.setOnClickListener {
             sendEmail()
         }
+
     }
 
     private fun updateMessage(message: String) {

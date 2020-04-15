@@ -35,7 +35,7 @@
                 android:layout_marginTop="100dp"
                 android:background="@drawable/icbaseline_play_circle_outline" />
 
-            <ImageView
+            <Button
                 android:id="@+id/btn_back_movie_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/back_button"
                 android:elevation="100dp"
-                android:src="@drawable/icbaseline_arrow_back_with_background" />
+                android:background="@drawable/icbaseline_arrow_back_with_background" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/movie_poster_card"

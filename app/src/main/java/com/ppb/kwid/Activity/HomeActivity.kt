@@ -372,25 +372,25 @@ class HomeActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    //currently showing
-    private fun getCurrentlyShowing() {
-        db.collection("currentlyShowing")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    Log.d("DB Read Sukses", "${document.id} => ${document.data.get("id")}")
-
-                    MovieDetailsRepository.getMovieDetails(
-                        id = document.data.get("id").toString().toLong(),
-                        onSuccess = ::onCurrentlyShowingMoviesFetched,
-                        onError = ::onError
-                    )
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d("DB Read Gagal", "Error getting documents: ", exception)
-            }
-    }
+//    //currently showing
+//    private fun getCurrentlyShowing() {
+//        db.collection("currentlyShowing")
+//            .get()
+//            .addOnSuccessListener { result ->
+//                for (document in result) {
+//                    Log.d("DB Read Sukses", "${document.id} => ${document.data.get("id")}")
+//
+//                    MovieDetailsRepository.getMovieDetails(
+//                        id = document.data.get("id").toString().toLong(),
+//                        onSuccess = ::onCurrentlyShowingMoviesFetched,
+//                        onError = ::onError
+//                    )
+//                }
+//            }
+//            .addOnFailureListener { exception ->
+//                Log.d("DB Read Gagal", "Error getting documents: ", exception)
+//            }
+//    }
 
     class MovieCity(
         var city: String? = null,

@@ -1,9 +1,8 @@
 package com.ppb.kwid.Activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.ImageView
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ppb.kwid.Model.Notification.Notification
@@ -11,8 +10,7 @@ import com.ppb.kwid.Model.Notification.NotificationAdapter
 import com.ppb.kwid.R
 
 class NotificationActivity : AppCompatActivity() {
-
-    private lateinit var btnBackNotification: ImageView
+    private lateinit var btnBackNotification: Button
     private lateinit var recyclerView: RecyclerView
     private var listNotification: MutableList<Notification> = mutableListOf()
     private lateinit var linearLayoutManager: LinearLayoutManager
