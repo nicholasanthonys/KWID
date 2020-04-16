@@ -30,7 +30,7 @@ class MovieDetailsSectionsPageAdapter(private val mContext: Context, fm: Fragmen
     override fun getItem(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position) {
-            0 -> fragment = OverviewFragment.newInstance(overview)
+            0 -> fragment = OverviewFragment.newInstance(overview, movieName, moviePoster)
             1 -> fragment = CastCrewFragment.newInstance(movieId)
             2 -> fragment = ScheduleFragment.newInstance(movieName, moviePoster)
         }

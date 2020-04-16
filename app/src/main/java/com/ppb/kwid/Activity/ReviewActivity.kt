@@ -8,7 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.ppb.kwid.R
 
-class ReviewActivity(private val title: String, private val url: String) : AppCompatActivity() {
+class ReviewActivity : AppCompatActivity() {
+
+    companion object {
+        const val TITLE = "movie_title"
+        const val POSTER = "movie_poster"
+    }
 
     private lateinit var btnStar1: ImageView
     private lateinit var btnStar2: ImageView
@@ -19,10 +24,16 @@ class ReviewActivity(private val title: String, private val url: String) : AppCo
     private lateinit var btnBackReview: ImageView
     private lateinit var txtTitle: TextView
     private lateinit var btnPublish: Button
+    private lateinit var btnBack: Button
+    private var url: String = ""
+    private var title: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_review)
+
+        title = intent.getStringExtra(TITLE)
+        url = intent.getStringExtra(POSTER)
 
         settingRatingButton()
 
