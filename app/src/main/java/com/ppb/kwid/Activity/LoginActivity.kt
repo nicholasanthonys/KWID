@@ -98,6 +98,7 @@ class LoginActivity : AppCompatActivity() {
         if (email.trim().isNotBlank() && password.isNotBlank()) {
             return true
         }
+        println("validate form update ui")
         updateUI(null, "Input is Invalid")
         return false
     }
@@ -117,6 +118,7 @@ class LoginActivity : AppCompatActivity() {
                         Log.d("sign in success", "signInWithEmail:success")
                         val user = mAuth.currentUser
                         if (user!!.isEmailVerified) {
+                            println("firebaselogin updateui")
                             updateUI(user, "")
                         } else {
                             tvMessage.text = "Email is not verified"
@@ -182,9 +184,11 @@ class LoginActivity : AppCompatActivity() {
 
         if (message == null) {
             val currentUser = mAuth.currentUser
+            val uid = currentUser?.uid
             println("dari onstart, current user ?" + currentUser?.email)
-            if(currentUser != null){
+            if (currentUser != null) {
                 if (currentUser.isEmailVerified) {
+                    println("onstart UPDATE UI")
                     updateUI(currentUser, "")
                 }
             }
@@ -213,7 +217,7 @@ class LoginActivity : AppCompatActivity() {
                     if (dbHelper.getUsername(user.email.toString()).isEmpty()) {
                         dbHelper.insertUser(username, user.email.toString())
                     }
-
+                    println("dari firebase auth update ui")
                     updateUI(user, "")
                 } else {
                     // If sign in fails, display a message to the user.
