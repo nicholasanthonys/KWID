@@ -216,6 +216,7 @@
     <string name="empty_favorite_movie_message">Your favorite movie list is empty\n Click some movies and hit that love button!</string>
     <string name="appbar_forgot_password">Forgot Password</string>
     <string name="location_list">Location List</string>
+    <string name="edit_username">Edit username</string>
 
     <!-- Dummy for schedule -->
     <string-array name="schedule_cinema_name">
