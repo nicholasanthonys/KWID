@@ -12,22 +12,22 @@
         android:background="@drawable/rectangle_white_color_top_bottom_border"
         android:gravity="bottom|center">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/rectangle_white_color_top_bottom_border"
-            android:gravity="center">
+        <!--        <RelativeLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            android:background="@drawable/rectangle_white_color_top_bottom_border"-->
+        <!--            android:gravity="center">-->
 
-            <Button
-                android:id="@+id/btn_my_location"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:background="@drawable/button_my_location"
-                android:text="@string/use_my_location"
-                android:textAllCaps="false"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
+        <!--            <Button-->
+        <!--                android:id="@+id/btn_my_location"-->
+        <!--                android:layout_width="300dp"-->
+        <!--                android:layout_height="50dp"-->
+        <!--                android:background="@drawable/button_my_location"-->
+        <!--                android:text="@string/use_my_location"-->
+        <!--                android:textAllCaps="false"-->
+        <!--                android:textSize="14sp"-->
+        <!--                android:textStyle="bold" />-->
+        <!--        </RelativeLayout>-->
     </RelativeLayout>
 
     <LinearLayout
@@ -53,23 +53,32 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/icbaseline_arrow_back" />
 
-            <EditText
-                android:id="@+id/edit_text_location"
-                android:layout_width="250dp"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                android:background="@drawable/rectangle_edit_text"
-                android:paddingStart="10dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="5dp"
-                android:paddingBottom="5dp"
-                android:inputType="text"
-                android:text="@string/insert_location"
-                android:hint="@string/insert_location"
-                android:autofillHints="@string/insert_location"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/location_list"
                 android:textColor="@color/colorBlack"
-                android:textSize="14sp" />
+                android:textSize="24sp" />
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/edit_text_location"-->
+            <!--                android:layout_width="250dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:layout_marginStart="10dp"-->
+            <!--                android:background="@drawable/rectangle_edit_text"-->
+            <!--                android:paddingStart="10dp"-->
+            <!--                android:paddingTop="5dp"-->
+            <!--                android:paddingEnd="5dp"-->
+            <!--                android:paddingBottom="5dp"-->
+            <!--                android:inputType="text"-->
+            <!--                android:text="@string/insert_location"-->
+            <!--                android:hint="@string/insert_location"-->
+            <!--                android:autofillHints="@string/insert_location"-->
+            <!--                android:textColor="@color/colorBlack"-->
+            <!--                android:textSize="14sp" />-->
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
