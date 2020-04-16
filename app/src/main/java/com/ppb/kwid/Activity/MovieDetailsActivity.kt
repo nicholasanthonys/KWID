@@ -46,7 +46,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     private lateinit var btnOverview: Button
     private lateinit var btnCastCrew: Button
     private lateinit var btnSchedule: Button
-    private lateinit var btnBack: Button
+    private lateinit var btnBack: ImageView
 
 
     //instance db helper

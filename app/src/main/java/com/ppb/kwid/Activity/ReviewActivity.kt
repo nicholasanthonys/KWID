@@ -19,7 +19,6 @@ class ReviewActivity(private val title: String, private val url: String) : AppCo
     private lateinit var btnBackReview: ImageView
     private lateinit var txtTitle: TextView
     private lateinit var btnPublish: Button
-    private lateinit var btnBack: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,10 +35,6 @@ class ReviewActivity(private val title: String, private val url: String) : AppCo
             .centerCrop()
             .into(moviePoster)
 
-        btnBack = findViewById(R.id.btn_back_review)
-        btnBack.setOnClickListener {
-            onBackPressed()
-        }
 
         btnPublish = findViewById(R.id.btn_publish)
         btnPublish.setOnClickListener {

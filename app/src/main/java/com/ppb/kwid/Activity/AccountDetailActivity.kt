@@ -8,11 +8,8 @@ import android.text.Selection
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import android.widget.TextView.OnEditorActionListener
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -30,7 +27,7 @@ class AccountDetailActivity : AppCompatActivity() {
     private lateinit var profileName: TextView
     private lateinit var etUsername: EditText
     //    private lateinit var btnEditUsername: Button
-    private lateinit var btnBack: Button
+    private lateinit var btnBack: ImageView
 
     //firebase instance
     private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()

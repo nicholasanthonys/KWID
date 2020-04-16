@@ -8,7 +8,7 @@
     android:background="@color/colorDarkBlue"
     tools:context=".Activity.ReviewActivity">
 
-    <Button
+    <ImageView
         android:id="@+id/btn_back_review"
         android:background="@drawable/icbaseline_arrow_back_white"
         android:contentDescription="@string/back_button"

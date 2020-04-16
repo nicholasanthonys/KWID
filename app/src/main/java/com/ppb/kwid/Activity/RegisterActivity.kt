@@ -6,8 +6,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
@@ -26,7 +26,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var tvError: TextView
     lateinit var etUsername: TextView
     lateinit var etConfirmPasssword: TextView
-    private lateinit var btnBack: Button
+    private lateinit var btnBack: ImageView
 
     //instance db helper
     private var dbHelper = DatabaseHelper(this)
@@ -123,25 +123,16 @@ class RegisterActivity : AppCompatActivity() {
                             Log.d("register success", "createUserWithEmail:success")
                             val user = mAuth.currentUser
 
-
                             //disini masukkan usernamere ke database lokal
-
                             dbHelper.insertUser(username, email)
-
-
-
-
-
                             updateUI(user, "")
+
                         } else { // If sign in fails, display a message to the user.
                             Log.w(
                                 "register failur",
                                 "createUserWithEmail:failure",
                                 task.exception
                             )
-
-                            Toast.makeText(applicationContext, "Input not valid", Toast.LENGTH_LONG)
-                                .show()
                             updateUI(null, "Register Failed")
                         }
                     }
