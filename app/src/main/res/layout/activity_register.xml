@@ -72,6 +72,8 @@
             android:drawablePadding="10dp"
             android:hint="@string/placeholder_username"
             android:autofillHints="@string/placeholder_username"
+            android:maxLength="16"
+            android:maxLines="1"
             android:inputType="textFilter"
             android:padding="10dp"
             android:textColor="@color/colorBlack"

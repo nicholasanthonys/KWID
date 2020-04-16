@@ -211,11 +211,21 @@ class LoginActivity : AppCompatActivity() {
 
                     //INSERT USERNAME KE DATABASE
                     //remove username space
-                    var username = user!!.displayName.toString().replace("\\s".toRegex(), "")
+                    var username = user!!.displayName.toString()
 
+                    //insert username without space
+                    var usernameWithoutSpace = ""
+                    for (letter in username) {
+                        if (letter != ' ') {
+                            usernameWithoutSpace += letter
+                        } else {
+                            break
+                        }
+                    }
+                    println("username without space " + usernameWithoutSpace)
                     //check user if exist in database
                     if (dbHelper.getUsername(user.email.toString()).isEmpty()) {
-                        dbHelper.insertUser(username, user.email.toString())
+                        dbHelper.insertUser(usernameWithoutSpace, user.email.toString())
                     }
                     println("dari firebase auth update ui")
                     updateUI(user, "")

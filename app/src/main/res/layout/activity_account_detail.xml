@@ -15,16 +15,16 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp" />
 
-    <Button
-        android:id="@+id/btn_edit_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/error_message"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:text="@string/edit_username" />
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_edit_username"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="250dp"-->
+    <!--        android:layout_marginTop="20dp"-->
+    <!--        android:background="@drawable/error_message"-->
+    <!--        android:paddingLeft="20dp"-->
+    <!--        android:paddingRight="20dp"-->
+    <!--        android:text="@string/edit_username" />-->
 
     <LinearLayout
         android:layout_marginTop="150dp"
@@ -52,6 +52,7 @@
                 android:imeOptions="actionDone"
                 android:inputType="text"
                 android:singleLine="true"
+                android:maxLength="16"
                 android:text="@string/your_name_here"
                 android:hint="@string/your_name_here"
                 android:autofillHints="@string/your_name_here"
@@ -70,6 +71,7 @@
                 android:gravity="center"
                 android:text="@string/your_name_here"
                 android:textColor="@color/colorBlack"
+                android:drawableEnd="@drawable/ic_edit_black_24dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:visibility="visible" />

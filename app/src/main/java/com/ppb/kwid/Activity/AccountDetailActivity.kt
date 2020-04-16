@@ -29,7 +29,7 @@ class AccountDetailActivity : AppCompatActivity() {
     private lateinit var profilePicture: CircleImageView
     private lateinit var profileName: TextView
     private lateinit var etUsername: EditText
-    private lateinit var btnEditUsername: Button
+    //    private lateinit var btnEditUsername: Button
     private lateinit var btnBack: Button
 
     //firebase instance
@@ -73,16 +73,16 @@ class AccountDetailActivity : AppCompatActivity() {
 
         etUsername = findViewById(R.id.edit_username)
 
-        btnEditUsername = findViewById(R.id.btn_edit_username)
-        btnEditUsername.setOnClickListener {
+//        btnEditUsername = findViewById(R.id.btn_edit_username)
+        profileName.setOnClickListener {
             //if button edit is clicked, profilename, button edit will gone
             //edit text will appear
             profileName.visibility = View.GONE
             etUsername.visibility = View.VISIBLE
-            btnEditUsername.visibility = View.GONE
+//            btnEditUsername.visibility = View.GONE
 
             //set cursor focus to edit text
-            etUsername.setText(username)
+            etUsername.setText(dbHelper.getUsername(user?.email))
             var position = etUsername.length()
             var etext: Editable = etUsername.text
             Selection.setSelection(etext, position)
@@ -91,13 +91,12 @@ class AccountDetailActivity : AppCompatActivity() {
             //after user press enter, input keyboard will be hidden
             etUsername.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) { // do something, e.g. set your TextView here via .setText()
-
                     val username = etUsername.text.toString()
                     if (username.isNotEmpty()) {
                         dbHelper.updateUsername(username, email)
                         profileName.text = username
                         profileName.visibility = View.VISIBLE
-                        btnEditUsername.visibility = View.VISIBLE
+//                        btnEditUsername.visibility = View.VISIBLE
                         etUsername.visibility = View.GONE
 
                         Toast.makeText(this, "username updated", Toast.LENGTH_SHORT).show()
