@@ -25,6 +25,6 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/colorWhite"
-        android:background="@drawable/button_purchase_confirmation"
+        android:background="@drawable/button_my_location"
         android:padding="10dp" />
 </LinearLayout>
