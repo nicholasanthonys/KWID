@@ -12,8 +12,8 @@
         android:id="@+id/btn_back_review"
         android:background="@drawable/icbaseline_arrow_back_white"
         android:contentDescription="@string/back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp" />
 

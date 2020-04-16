@@ -62,9 +62,10 @@ class MovieDetailsActivity : AppCompatActivity() {
     private var movieDirector = ""
     private var overview = "ini overview"
     private var isLiked: Boolean = false
+    private lateinit var movieDetails: GetMovieDetailsResponse
 
     //inisialisasi
-    private var fragmentOverview = OverviewFragment.newInstance(overview)
+    private var fragmentOverview = OverviewFragment.newInstance(overview, "", "")
     private var linkMoviePoster = ""
 
 
@@ -247,6 +248,8 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     private fun onMovieDetailsFetched(movDetails: GetMovieDetailsResponse) {
+        this.movieDetails = movDetails
+
         val extras = intent.extras
         if (extras != null) {
 
@@ -295,7 +298,8 @@ class MovieDetailsActivity : AppCompatActivity() {
             setUpButtonFragment(overview, movDetails.id, movDetails.title, linkMoviePoster)
 
             //set up overview fragment
-            fragmentOverview = OverviewFragment.newInstance(overview)
+            fragmentOverview =
+                OverviewFragment.newInstance(overview, movDetails.title, linkMoviePoster)
             supportFragmentManager.beginTransaction()
                 .add(R.id.myfragmentmovie_detail, fragmentOverview)
                 .commit()
@@ -345,7 +349,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         var fragment: Fragment? = null
 
         if (id == 1) {
-            fragment = OverviewFragment.newInstance(overview)
+            fragment = OverviewFragment.newInstance(overview, movieDetails.title, linkMoviePoster)
             transaction
                 .replace(R.id.myfragmentmovie_detail, fragment)
                 .commit()

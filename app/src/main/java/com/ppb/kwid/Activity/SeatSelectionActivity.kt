@@ -111,6 +111,7 @@ class SeatSelectionActivity : AppCompatActivity() {
     }
 
     private fun setTransactionData() {
+        listOfSelectedSeat.clear()
         for (selectedSeat in listOfSelectedSeat) {
             pickedSeat.add(selectedSeat.seatNumber)
         }
