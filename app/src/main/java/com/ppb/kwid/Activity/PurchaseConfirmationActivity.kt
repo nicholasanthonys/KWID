@@ -89,6 +89,7 @@ class PurchaseConfirmationActivity : AppCompatActivity() {
         for (seat in transaction.picked_seat) {
             allSeat += "$seat, "
         }
+        println("all seat is" + allSeat)
         allSeat = allSeat.substring(0, allSeat.length - 2)
         pickedSeat.text = allSeat
 

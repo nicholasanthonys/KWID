@@ -94,7 +94,7 @@ class SeatSelectionActivity : AppCompatActivity() {
 
         buttonRingkasanOrder = findViewById(R.id.btn_seat_selection)
         buttonRingkasanOrder.setOnClickListener {
-            if (!listOfSelectedSeat.isEmpty()) {
+            if (!listOfSelectedSeat.isNullOrEmpty()) {
                 setTransactionData()
 
                 val intent = Intent(this, PurchaseConfirmationActivity::class.java)
@@ -111,7 +111,7 @@ class SeatSelectionActivity : AppCompatActivity() {
     }
 
     private fun setTransactionData() {
-        listOfSelectedSeat.clear()
+        //listOfSelectedSeat.clear()
         for (selectedSeat in listOfSelectedSeat) {
             pickedSeat.add(selectedSeat.seatNumber)
         }
@@ -126,8 +126,10 @@ class SeatSelectionActivity : AppCompatActivity() {
             time,
             serviceFee
         )
+        println("dari seat selection " + newTransaction.picked_seat)
 
         ticket = newTransaction
+        listOfSelectedSeat.clear()
     }
 
     private fun changeTotalTicketPrice() {
