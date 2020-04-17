@@ -126,10 +126,14 @@ class SeatSelectionActivity : AppCompatActivity() {
             time,
             serviceFee
         )
-        println("dari seat selection " + newTransaction.picked_seat)
 
         ticket = newTransaction
-        listOfSelectedSeat.clear()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        pickedSeat.clear()
     }
 
     private fun changeTotalTicketPrice() {
