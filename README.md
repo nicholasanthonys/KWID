@@ -1,6 +1,6 @@
 # KWID
 
-KWID is n Movie Theatre Application Android Project that me and @AlexTri12 built for university project. We got inspired by the design 
+KWID is a Movie Theatre Application Android Project that me and @AlexTri12 built for university project. We got inspired by the design 
 of Tix ID. We don't copy the whole Tix Id application since we only had 2 weeks before the deadlilne.
 
 KWID use [The Movie Database or TMDB](https://www.themoviedb.org) API to fetch the data. We also use Firebase And SQLite as our database
