@@ -50,7 +50,7 @@ in your email to reset your password
 
 ## 4. Home Activity
 There are 4 section in this activity. Now Playing Movies and Videos are movies that we decided to be shown based on your location input, we just input movie id via firestore and fetch the image and name from TMDB.
-if you click the videos, KWID will direct you youtube application and open the movie trailer. 
+if you click the videos, KWID will direct you to [Youtube](https://www.youtube.com) youtube application and open the movie trailer. 
 <br>
 Popular Movie and Top Rated Movie are movies that we fetch directly via TMDB. 
 <br> 
