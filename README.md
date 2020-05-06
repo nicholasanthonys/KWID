@@ -1,4 +1,6 @@
-# KWID
+# KWID 
+
+UI Prototype : https://www.figma.com/file/hoKlj97u3T4RPt5NaScHcD/ANDROID-UI?node-id=0%3A1 <br>
 
 KWID is a Movie Theatre Application Android Project that me and @AlexTri12 built for university project. We got inspired by the design 
 of Tix ID. We don't copy the whole Tix Id application since we only had 2 weeks before the deadlilne.
