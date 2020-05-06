@@ -93,6 +93,14 @@ class LoginActivity : AppCompatActivity() {
         btnGoogle.setOnClickListener { googlesignIn() }
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (tvMessage.text.isEmpty()) {
+            tvMessage.setPadding(0, 0, 0, 0)
+        }
+
+    }
+
 
     private fun validateForm(email: String, password: String): Boolean {
         if (email.trim().isNotBlank() && password.isNotBlank()) {
